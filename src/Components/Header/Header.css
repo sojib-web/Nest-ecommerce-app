@@ -1,147 +1,138 @@
 header {
-    width: 100%;
-    height: auto;
-    margin: auto;
-    padding: 30px 0px;
-
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 30px 0px;
 }
 
 header .headerSearch {
-    width: 100%;
-    height: 60px;
-    border: 1px solid #bce3c9;
-    padding: 10px 20px;
-    border-radius: 4px;
-
-
-
+  width: 100%;
+  height: 60px;
+  border: 1px solid #bce3c9;
+  padding: 10px 20px;
+  border-radius: 4px;
 }
 
 header .headerSearch .selectDropWrapper {
-    width: 25%;
-    font-size: 16px;
-    font-weight: 500;
-    position: relative;
+  width: 25%;
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
 }
 
 header .headerSearch .selectDropWrapper:after {
-    content: '';
-    width: 1px;
-    height: 30px;
-    background: rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 5px;
-    right: 0px;
+  content: "";
+  width: 1px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 5px;
+  right: 0px;
 }
 
 header .headerSearch .search {
-    width: 75%;
-    padding-left: 30px;
-    position: relative;
+  width: 75%;
+  padding-left: 30px;
+  position: relative;
 }
 
 header .headerSearch .search input {
-    width: 100%;
-    height: 50px;
-    border: 0px;
-    outline: none !important;
-    font-size: 18px;
+  width: 100%;
+  height: 50px;
+  border: 0px;
+  outline: none !important;
+  font-size: 18px;
 }
 
 header .headerSearch .search .searchIcon {
-    position: absolute;
-    top: 15px;
-    right: 5px;
-    opacity: 0.7;
-    font-size: 25px !important;
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  opacity: 0.7;
+  font-size: 25px !important;
 }
 
 header .counrtyWrapper .selectDropWrapper {
-    width: 200px !important;
-    height: 50px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    border-radius: 2px;
-    padding-left: 2px;
-    display: flex;
-    align-items: center;
-
+  width: 200px !important;
+  height: 50px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 2px;
+  padding-left: 2px;
+  display: flex;
+  align-items: center;
 }
 
 header .counrtyWrapper .selectDropWrapper .openSelect {
-    width: 100%;
+  width: 100%;
 }
 
 header .counrtyWrapper .selectDropWrapper .selectDrop {
-    left: 0px !important;
+  left: 0px !important;
 }
 
 header .counrtyWrapper .openSelect {
-    color: #279a65 !important;
+  color: #279a65 !important;
 }
 
 header .headerTabs {
-    padding-left: 30px;
+  padding-left: 30px;
 }
 
 header .headerTabs li {
-    position: relative;
-    margin-left: 10px;
+  position: relative;
+  margin-left: 10px;
 }
 
 header .headerTabs li span {
-    font-size: 20px;
-    cursor: pointer;
+  font-size: 20px;
+  cursor: pointer;
 }
 
-
 header .headerTabs li span img {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 header .headerTabs li span.badge {
-
-    color: #fff;
-    font-weight: 400;
-    position: absolute;
-    top: -25px;
-    left: 8px;
-
-
-
+  color: #fff;
+  font-weight: 400;
+  position: absolute;
+  top: -25px;
+  left: 8px;
 }
 
 .dropdownMenu {
-    position: absolute;
-    top: 40px;
-    right: 0px;
-    width: 200px;
-    height: auto;
-    background: #fff;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    padding: 10px 0px;
+  position: absolute;
+  top: 40px;
+  right: 0px;
+  width: 200px;
+  height: auto;
+  background: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  padding: 10px 0px;
+  z-index: 100;
 }
 
 .dropdownMenu li {
-    width: 100% !important;
-    list-style: none;
-    margin: 0px !important;
+  width: 100% !important;
+  list-style: none;
+  margin: 0px !important;
 }
 
 .dropdownMenu li button {
-    width: 100% !important;
-    text-align: left !important;
-    justify-content: flex-start !important;
-    color: rgba(0, 0, 0, 0.7) !important;
-    text-transform: capitalize !important;
-    font-size: 16px !important;
-    padding: 10px 15px !important;
+  width: 100% !important;
+  text-align: left !important;
+  justify-content: flex-start !important;
+  color: rgba(0, 0, 0, 0.7) !important;
+  text-transform: capitalize !important;
+  font-size: 16px !important;
+  padding: 10px 15px !important;
 }
 
 .dropdownMenu li button svg {
-    opacity: 0.7;
-    margin-right: 8px !important;
+  opacity: 0.7;
+  margin-right: 8px !important;
 }
 
 .dropdownMenu li button:hover {
-    background: #f1f1f1 !important;
+  background: #f1f1f1 !important;
 }

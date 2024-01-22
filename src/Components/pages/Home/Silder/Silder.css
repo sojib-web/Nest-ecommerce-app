@@ -1,0 +1,136 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css");
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
+
+.homeSilder {
+  padding: 30px 0px;
+}
+
+.home_slider_main {
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+}
+.slick-arrow {
+  position: absolute;
+  top: 47%;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 50% !important;
+  background: #f2f3f4 !important;
+  z-index: 10000 !important;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.slick-next {
+  right: 20px !important;
+}
+
+.slick-prev {
+  left: 20px !important;
+}
+
+.slick-prev::before {
+  content: "\f104" !important;
+  font-family: fontAwesome !important;
+  font-size: 30px !important;
+  color: #000;
+}
+
+.slick-next::before {
+  content: "\f105" !important;
+  font-family: fontAwesome !important;
+  font-size: 30px !important;
+  color: #000;
+}
+
+.slick-arrow:hover {
+  background: #3bb773 !important;
+}
+
+.slick-arrow:hover::before {
+  color: #fff !important;
+}
+
+.home_slider_main .slick-dots {
+  position: absolute;
+  bottom: 30px !important;
+}
+
+.home_slider_main .slick-dots button::before {
+  width: 10px !important;
+  height: 10px !important;
+  font-size: 16px !important;
+}
+
+.slick-active button::before {
+  color: #3bb77e !important;
+}
+
+.home_slider_main .item {
+  position: relative;
+}
+
+.home_slider_main .info {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  z-index: 1000;
+}
+
+.home_slider_main .info h2 {
+  font-size: 90px;
+  font-weight: bolder;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.home_slider_main .info p {
+  font-size: 30px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.homeSilder .newsletterBanner {
+  width: 600px;
+  height: 70px;
+  position: absolute;
+  bottom: 150px;
+  left: 9%;
+  z-index: 100;
+}
+
+.homeSilder .newsletterBanner input {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 60px;
+  border: 0px;
+  outline: none !important;
+  padding-left: 80px;
+  font-size: 20px;
+  padding-right: 200px;
+}
+
+.homeSilder .newsletterBanner button {
+  padding: 10px 40px !important;
+  border-radius: 50px !important;
+  color: #fff !important;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 70px !important;
+  font-size: 22px !important;
+  text-transform: capitalize !important;
+  font-weight: 400 !important;
+}
+
+.homeSilder .newsletterBanner svg {
+  position: absolute;
+  top: 18px;
+  left: 30px;
+  z-index: 100;
+  font-size: 32px !important;
+  transform: rotate(-21deg);
+  opacity: 0.5;
+}
