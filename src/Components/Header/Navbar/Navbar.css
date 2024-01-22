@@ -15,6 +15,7 @@
 .nav nav ul li {
   position: relative;
 }
+
 .nav nav ul li button {
   text-transform: capitalize !important;
   padding: 20px 20px !important;
@@ -32,6 +33,7 @@
   opacity: 0.8;
   padding-right: 20px;
 }
+
 .nav .part3 .Phon h3 {
   font-size: 35px !important;
   line-height: 32px !important;
@@ -76,6 +78,7 @@
 .nav nav .dropdown_menu li button a {
   font-weight: 400 !important;
 }
+
 .nav .dropdown_menu li button:hover {
   background: #f1f1f1 !important;
 }

@@ -9,6 +9,7 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+
 #root {
   zoom: 70%;
 }
@@ -20,10 +21,19 @@ body {
 .cursor {
   cursor: pointer;
 }
+
 .bg-g,
 .bg-success {
   background: #3bb77e !important;
 }
+
 .text-g {
   color: #3bb77e;
+}
+
+.hd {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 25px;
+
 }
