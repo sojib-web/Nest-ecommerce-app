@@ -1,0 +1,71 @@
+.ProductThum {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 25px;
+  transition: all 0.3s ease-in-out;
+}
+
+.ProductThum:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.ProductThum .imgWrapper {
+  width: 100%;
+  overflow: hidden;
+}
+.ProductThum .imgWrapper img {
+  transition: all 0.3s ease-in-out;
+}
+
+.ProductThum:hover .imgWrapper img {
+  transform: scale(1.1);
+}
+
+.ProductThum .catName {
+  color: #000;
+  opacity: 0.8;
+  font-size: 15px;
+}
+
+.ProductThum .title a {
+  color: #000;
+  font-weight: 600;
+  font-size: 22px;
+  text-decoration: none;
+  line-height: 22px;
+}
+
+.ProductThum .Brand {
+  color: rgba(0, 0, 0, 0.6);
+}
+.ProductThum .Brand a {
+  text-decoration: none;
+}
+.ProductThum .price {
+  font-size: 25px;
+  margin-right: 20px;
+}
+
+.ProductThum .oldPrice {
+  font-size: 20px;
+  opacity: 0.6;
+  color: #000;
+  text-decoration: line-through;
+}
+
+.ProductThum button {
+  margin-left: auto;
+  font-size: 20px !important;
+  color: #3bb77e !important;
+  padding: 5px 15px !important;
+  background: #def9ec !important;
+  text-transform: capitalize !important;
+}
+
+.ProductThum button:hover {
+  background: #3bb77e !important;
+  color: #fff !important;
+}
