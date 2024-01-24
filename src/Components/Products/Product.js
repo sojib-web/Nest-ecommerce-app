@@ -1,17 +1,44 @@
 import React from "react";
 import "./Product.css";
-import ProductImg from "../../Assets/images/product-16.jpg";
+import ProductImg from "../../Assets/images/product-3.jpg";
 import Rating from "@mui/material/Rating";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-const Product = () => {
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import CompareArrowsOutlinedIcon from '@mui/icons-material/CompareArrowsOutlined';
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
+const Product = (props) => {
   return (
     <div className="ProductThum">
+      {
+        props.tag !== null && props.tag !== undefined &&
+        <span className={`badge ${props.tag}`}>{props.tag}</span>
+      }
       <Link>
         {" "}
         <div className="imgWrapper">
           <img src={ProductImg} alt="" className="w-100" />
+          <div className="overlay transition">
+
+            <ul className="list list-inline mb-0">
+              <li className="list list-inline-item">
+                <a className="cursor" tooltip="Compare">
+                  <FavoriteBorderOutlinedIcon />
+                </a>
+              </li>
+              <li className="list list-inline-item">
+                <a className="cursor" tooltip="Add To Wishlist">
+                  <CompareArrowsOutlinedIcon />
+                </a>
+              </li>
+              <li className="list list-inline-item">
+                <a className="cursor" tooltip="View">
+                  <RemoveRedEyeOutlinedIcon />
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </Link>
       <div className="info">
