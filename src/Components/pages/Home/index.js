@@ -1,13 +1,25 @@
 import React from "react";
-import Slider from "./Silder/Silder";
+import SliderBanner from "./Silder/Silder";
 import CatSlider from "../../CatSlider/CatSlider";
 import Banner from "../../Banner/Banner";
 import "./index.css";
 import Product from "../../Products/Product";
+import bannerImg from "../../../Assets/images/banner 2.jpg";
+import Slider from "react-slick";
+
 const Index = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 4,
+    fade: false,
+    arrows: true,
+  };
   return (
     <div>
-      <Slider />
+      <SliderBanner />
       <CatSlider />
       <Banner />
 
@@ -86,6 +98,44 @@ const Index = () => {
             <div className="item">
               <Product tag="new" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="homeProducts pt-0">
+        <div className="container-fluid">
+          <div className="d-flex align-items-center ">
+            <h2 className="hd mb-0 mt-0 ">Daily Best Sells</h2>
+            <ul className=" list list-inline ml-auto filterTab mb-0">
+              <li className="list-inline-item">
+                <a className="cursor">Featured </a>
+              </li>
+
+              <li className="list-inline-item">
+                <a className="cursor">Popular </a>
+              </li>
+
+              <li className="list-inline-item">
+                <a className="cursor"> new addedd </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <br /> <br />
+        <div className="row">
+          <div className="col-md-3">
+            <img src={bannerImg} alt="" className="w-100" />
+          </div>
+          <div className="col-md-9">
+            <Slider {...settings} className="productSlider">
+              <Product tag="hot" />
+              <Product tag="hot" />
+              <Product tag="hot" />
+              <Product tag="hot" />
+              <Product tag="hot" />
+              <Product tag="hot" />
+              <Product tag="hot" />
+            </Slider>
           </div>
         </div>
       </section>
