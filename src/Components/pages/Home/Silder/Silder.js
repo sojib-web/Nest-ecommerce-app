@@ -3,9 +3,10 @@ import Slider from "react-slick";
 import "./Silder.css";
 import Slider1 from "../../../../Assets/images/slider-1.png";
 import Slider2 from "../../../../Assets/images/slider-2.png";
+import NewsLetter from "../../../NewsLetter/NewsLetter";
 
-import Button from "@mui/material/Button";
-import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
+
+
 
 const Silder = () => {
   const settings = {
@@ -42,11 +43,7 @@ const Silder = () => {
             </div>
           </div>
         </Slider>
-        <div className="newsletterBanner">
-          <SendOutlinedIcon />
-          <input type="text" placeholder=" Your email address..." />
-          <Button className="bg-g">Subscribe</Button>
-        </div>
+        <NewsLetter />
       </div>
     </section>
   );

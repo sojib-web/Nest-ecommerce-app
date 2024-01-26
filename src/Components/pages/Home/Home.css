@@ -1,0 +1,120 @@
+.homeProducts {
+  padding: 25px 0px;
+}
+
+.homeProducts ul {
+  margin-left: auto;
+}
+
+.filterTab li {
+  margin-left: 20px;
+}
+
+.filterTab li a {
+  color: #353131;
+  text-decoration: none;
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  font-weight: 600;
+}
+
+.filterTab li a:hover {
+  color: #3bb77e !important;
+  transform: translateY(-10px);
+}
+
+.sliderbannerImage img {
+  padding: 10%;
+  padding-top: 20px;
+}
+
+.homeProducts .productRow {
+  display: flex;
+  padding: 30px 0px;
+  margin: 0px -15px;
+  flex-wrap: wrap;
+}
+
+.homeProducts .productRow .item {
+  width: 20%;
+  padding: 15px 15px;
+}
+
+.homeProductsRow2 .productSlider .item {
+  padding: 15px 10px;
+  padding-right: 5px !important;
+}
+
+.homeProducts .sliderbannerImage {
+  transition: all 0.3s ease-in-out;
+}
+
+.homeProducts .sliderbannerImage:hover img {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transform: scale(1.1);
+}
+
+.topProductsSection {
+  padding: 35px 0px;
+
+}
+
+
+.newsLetterSection {
+  width: 100%;
+  height: auto;
+
+}
+
+.newsLetterSection .box {
+  background: #D8F1E5;
+  width: 100%;
+  height: auto;
+  padding: 60px 80px;
+  border: 1px solid #e0fbef;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.newsLetterSection .box .info {
+  width: 55%;
+}
+
+.newsLetterSection .box .info h2 {
+  font-size: 70px;
+  font-weight: 500;
+  color: rgb(96, 82, 82);
+  margin-bottom: 2px;
+}
+
+.newsLetterSection .box .info p {
+  font-size: 20px;
+  margin-bottom: 100px;
+  font-weight: bold;
+  color: rgb(116, 122, 122);
+  opacity: 0.8;
+}
+
+.newsLetterSection .box .info span {
+  color: #3BB77E;
+  font-size: 20px;
+}
+
+.newsLetterSection .box img {
+  width: 45%;
+
+}
+
+
+
+.newsLetterSection .box img {
+  position: relative;
+  top: 80px;
+}
+
+.newsLetterSection .box .newsletterBanner {
+  position: relative !important;
+  left: 0px !important;
+  bottom: inherit !important;
+}

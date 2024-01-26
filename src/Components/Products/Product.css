@@ -124,17 +124,7 @@
   text-decoration: none;
 }
 
-.ProductThum .price {
-  font-size: 25px;
-  margin-right: 20px;
-}
 
-.ProductThum .oldPrice {
-  font-size: 20px;
-  opacity: 0.6;
-  color: #000;
-  text-decoration: line-through;
-}
 
 .ProductThum button {
   margin-left: auto;

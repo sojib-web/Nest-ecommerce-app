@@ -49,20 +49,20 @@ const Product = (props) => {
         <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
 
         <span className="Brand d-block">
-          By
-          <a className="text-g">
+          By <a className="text-g">
             <Link className="text-g">NestFood</Link>
           </a>
         </span>
 
         <div className="d-flex align-items-center mt-3">
+          <div className="d-flex align-items-center" />
           <span className="price text-g font-weight-bold">$28.85</span>
           <span className="oldPrice">$40</span>
-          <Button className="transition">
-            <ShoppingCartOutlinedIcon className="btnIcon" />
-            Add
-          </Button>
         </div>
+        <Button className="transition">
+          <ShoppingCartOutlinedIcon className="btnIcon" />
+          Add
+        </Button>
       </div>
     </div>
   );

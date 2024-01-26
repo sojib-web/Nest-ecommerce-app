@@ -1,0 +1,50 @@
+ .newsletterBanner {
+     width: 600px;
+     height: 70px;
+     position: absolute;
+     bottom: 150px;
+     left: 9%;
+     z-index: 100;
+ }
+
+ .newsletterBanner input {
+     width: 100%;
+     height: 100%;
+     background: #fff;
+     border-radius: 60px;
+     border: 0px;
+     outline: none !important;
+     padding-left: 80px;
+     font-size: 20px;
+     padding-right: 200px;
+ }
+
+ .newsletterBanner button {
+     padding: 10px 40px !important;
+     border-radius: 50px !important;
+     color: #fff !important;
+     position: absolute;
+     top: 0px;
+     right: 0px;
+     height: 70px !important;
+     font-size: 22px !important;
+     text-transform: capitalize !important;
+     font-weight: 400 !important;
+ }
+
+ .newsletterBanner svg {
+     position: absolute;
+     top: 18px;
+     left: 30px;
+     z-index: 100;
+     font-size: 32px !important;
+     transform: rotate(-21deg);
+     opacity: 0.5;
+ }
+
+ .newsLetterSection .box .newsletterBanner {
+     position: relative !important;
+     left: 0px !important;
+     bottom: inherit !important;
+
+ }

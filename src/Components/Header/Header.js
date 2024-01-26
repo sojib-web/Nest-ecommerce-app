@@ -188,6 +188,7 @@ const Header = () => {
         </header>
         <Navbar />
       </div>
+      <div className="afterHeader"></div>
     </>
   );
 };
