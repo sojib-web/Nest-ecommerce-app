@@ -46,29 +46,25 @@
   padding-right: 5px !important;
 }
 
-.homeProducts .sliderbannerImage {
+.homeProducts .sliderbannerImage img {
   transition: all 0.3s ease-in-out;
 }
 
 .homeProducts .sliderbannerImage:hover img {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   transform: scale(1.1);
 }
 
 .topProductsSection {
   padding: 35px 0px;
-
 }
-
 
 .newsLetterSection {
   width: 100%;
   height: auto;
-
 }
 
 .newsLetterSection .box {
-  background: #D8F1E5;
+  background: #d8f1e5;
   width: 100%;
   height: auto;
   padding: 60px 80px;
@@ -97,16 +93,13 @@
 }
 
 .newsLetterSection .box .info span {
-  color: #3BB77E;
+  color: #3bb77e;
   font-size: 20px;
 }
 
 .newsLetterSection .box img {
   width: 45%;
-
 }
-
-
 
 .newsLetterSection .box img {
   position: relative;

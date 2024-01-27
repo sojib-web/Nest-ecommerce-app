@@ -7,10 +7,8 @@ import Product from "../../Products/Product";
 import bannerImg from "../../../Assets/images/banner 2.jpg";
 import Slider from "react-slick";
 import TopProducts from "./TopProducts/TopProducts";
-import NewsImg from '../../../Assets/images/banner-9.png'
-import NewsLetter from "../../NewsLetter/NewsLetter";
-import Footer from "../../Footer/Footer";
 
+import Footer from "../../Footer/Footer";
 
 const Home = () => {
   const settings = {
@@ -21,7 +19,6 @@ const Home = () => {
     slidesToScroll: 1,
     fade: false,
     arrows: true,
-
   };
   return (
     <div>
@@ -108,7 +105,6 @@ const Home = () => {
         </div>
       </section>
 
-
       <section className="homeProducts homeProductsRow2 pt-0">
         <div className="container-fluid">
           <div className="d-flex align-items-center ">
@@ -119,7 +115,7 @@ const Home = () => {
               </li>
 
               <li className="list-inline-item">
-                <a className="cursor">Popular  </a>
+                <a className="cursor">Popular </a>
               </li>
 
               <li className="list-inline-item">
@@ -127,7 +123,6 @@ const Home = () => {
               </li>
             </ul>
           </div>
-
           <br /> <br />
           <div className="row">
             <div className="col-md-3 sliderbannerImage">
@@ -165,8 +160,6 @@ const Home = () => {
               </Slider>
             </div>
           </div>
-
-
         </div>
       </section>
       {/* topProductsSection */}
@@ -190,26 +183,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-
-      <section className="newsLetterSection">
-        <div className="container-fluid">
-          <div className="box d-flex align-items-center">
-            <div className="info">
-              <h2>Stay home & get your daily
-                <br /> needs from our shop </h2>
-              <p>Start You'r Daily Shopping with <span>Nest Mart</span></p>
-              <NewsLetter />
-            </div>
-            <div className="img">
-              <img src={NewsImg} alt="" className=" img w-100" />
-            </div>
-          </div>
-        </div>
-      </section>
-      <Footer />
     </div>
-
   );
 };
 

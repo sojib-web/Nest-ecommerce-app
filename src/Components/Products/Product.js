@@ -5,22 +5,20 @@ import Rating from "@mui/material/Rating";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import CompareArrowsOutlinedIcon from '@mui/icons-material/CompareArrowsOutlined';
-import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
+import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 const Product = (props) => {
   return (
     <div className="ProductThum">
-      {
-        props.tag !== null && props.tag !== undefined &&
+      {props.tag !== null && props.tag !== undefined && (
         <span className={`badge ${props.tag}`}>{props.tag}</span>
-      }
+      )}
       <Link>
         {" "}
         <div className="imgWrapper">
           <img src={ProductImg} alt="" className="w-100" />
           <div className="overlay transition">
-
             <ul className="list list-inline mb-0">
               <li className="list list-inline-item">
                 <a className="cursor" tooltip="Compare">
@@ -49,13 +47,14 @@ const Product = (props) => {
         <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
 
         <span className="Brand d-block">
-          By <a className="text-g">
+          By{" "}
+          <a className="text-g">
             <Link className="text-g">NestFood</Link>
           </a>
         </span>
 
-        <div className="d-flex align-items-center mt-3">
-          <div className="d-flex align-items-center" />
+        <div className=" d-flex align-items-center mt-3">
+          <div className=" align-items-center" />
           <span className="price text-g font-weight-bold">$28.85</span>
           <span className="oldPrice">$40</span>
         </div>

@@ -33,7 +33,7 @@
 }
 
 .ProductThum .badge.new {
-  background: #38877E;
+  background: #38877e;
 }
 
 .ProductThum .badge.best {
@@ -83,14 +83,13 @@
   background: #ffff;
   margin: 40px auto;
   border-radius: 10px;
-  border: 1px solid #BCE3C9;
-
+  border: 1px solid #bce3c9;
 }
 
 .ProductThum .imgWrapper .overlay ul li a {
   display: block;
   padding: 10px;
-  border-right: 1px solid #BCE3C9;
+  border-right: 1px solid #bce3c9;
 }
 
 .ProductThum .imgWrapper .overlay ul li a svg {
@@ -124,8 +123,6 @@
   text-decoration: none;
 }
 
-
-
 .ProductThum button {
   margin-left: auto;
   font-size: 20px !important;
@@ -133,6 +130,7 @@
   padding: 5px 15px !important;
   background: #def9ec !important;
   text-transform: capitalize !important;
+  display: flex;
 }
 
 .ProductThum button:hover {
