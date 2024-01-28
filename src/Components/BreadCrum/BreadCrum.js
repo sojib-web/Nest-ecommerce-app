@@ -3,7 +3,7 @@ import { emphasize, styled } from "@mui/material/styles";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Chip from "@mui/material/Chip";
 import HomeIcon from "@mui/icons-material/Home";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 import "../BreadCrum/BreadCrum.css";
 
 const StyledBreadcrumb = styled(Chip)(({ theme }) => {
@@ -13,7 +13,7 @@ const StyledBreadcrumb = styled(Chip)(({ theme }) => {
       : theme.palette.grey[800];
   return {
     backgroundColor,
-    height: theme.spacing(4),
+    height: theme.spacing(5),
     color: theme.palette.text.primary,
     fontWeight: theme.typography.fontWeightRegular,
     "&:hover, &:focus": {
@@ -42,11 +42,9 @@ export default function CustomizedBreadcrumbs() {
           icon={<HomeIcon fontSize="small" />}
         />
         <StyledBreadcrumb component="a" href="#" label="Catalog" />
-        <StyledBreadcrumb
-          label="Accessories"
-          deleteIcon={<ExpandMoreIcon />}
-          onDelete={handleClick}
-        />
+
+        <StyledBreadcrumb component="a" href="#" label="Catalog" />
+        <StyledBreadcrumb component="a" href="#" label="Catalog" />
       </Breadcrumbs>
     </div>
   );

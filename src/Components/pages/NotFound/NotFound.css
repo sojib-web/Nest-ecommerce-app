@@ -1,0 +1,35 @@
+.notFound {
+  width: 100%;
+  height: auto;
+  padding: 45px 0px;
+}
+
+.notFound .box {
+  width: 50%;
+  height: auto;
+  padding: 100px 30px;
+  margin: auto;
+}
+.notFound .box img {
+  width: 100%;
+}
+
+.notFound .box h1 {
+  font-size: 60px;
+  font-weight: bold;
+  color: #000;
+  opacity: 0.5;
+  text-align: center;
+}
+.notFound .box p {
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  color: #000;
+  margin-top: 30px;
+}
+
+.notFound .box .btnn {
+  margin-left: 370px;
+  font-size: 30px;
+}
