@@ -15,8 +15,10 @@ const ProDetails = () => {
     "https://nest-frontend.netlify.app/assets/imgs/shop/product-16-4.jpg"
   );
 
-  const [bigImageSize, setBigImageSize] =useState([1500, 1500]);
-  const [smallImageSize, setSmallSize] = useState ([150, 150]);
+  const [bigImageSize, setBigImageSize] = useState([1500, 1500]);
+  const [smallImageSize, setSmallSize] = useState([150, 150]);
+
+
   const ZoomSlider = useRef();
 
   const settings = {
@@ -29,7 +31,7 @@ const ProDetails = () => {
     arrows: true,
   };
 
-  const goto = (index) => {};
+  const goto = (url) => { setZoomImage(url) };
 
   return (
     <section className="detailsPage">
@@ -48,7 +50,7 @@ const ProDetails = () => {
                   <InnerImageZoom
                     zoomType="hover"
                     zoomScale={1}
-                    src={`https://nest-frontend.netlify.app/assets/imgs/shop/product-16-4.jpg?im=Resize=(${})`}/>
+                    src={`${zoomImage}?im=Resize=(${bigImageSize[0]},${bigImageSize[0]})`} />
                 </div>
 
                 <Slider
@@ -58,76 +60,79 @@ const ProDetails = () => {
                 >
                   <div className="item">
                     <img
-                      src="https://nest-frontend.netlify.app/assets/imgs/shop/product-1-2.jpg?im=Resize=(150,150)"
+                      src={`https://www.jiomart.com/images/product/original/490000073/tata-iodised-salt-1-kg-product-images-o490000073-p490000073-1-202302131739.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
+
                       alt=""
                       className="w-100"
-                      onClick={() => goto(0)}
+                      onClick={() => goto('https://www.jiomart.com/images/product/original/490000073/tata-iodised-salt-1-kg-product-images-o490000073-p490000073-1-202302131739.jpg')}
                     />
                   </div>
 
                   <div className="item">
                     <img
-                      src="https://nest-frontend.netlify.app/assets/imgs/shop/product-3-2.jpg?im=Resize=(150,150)"
+                      src={`https://www.jiomart.com/images/product/original/491551493/good-life-sugar-m-1-kg-product-images-o491551493-p491551493-0-202204281542.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
+
                       alt=""
                       className="w-100"
-                      onClick={() => goto(0)}
+                      onClick={() => goto('https://www.jiomart.com/images/product/original/491551493/good-life-sugar-m-1-kg-product-images-o491551493-p491551493-0-202204281542.jpg')}
                     />
                   </div>
                   <div className="item">
                     <img
-                      src="https://nest-frontend.netlify.app/assets/imgs/shop/product-5-2.jpg?im=Resize=(150,150)"
+                      src={`https://www.jiomart.com/images/product/original/491551493/good-life-sugar-m-1-kg-product-images-o491551493-p491551493-0-202204281542.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
+
                       alt=""
                       className="w-100"
-                      onClick={() => goto(0)}
+                      onClick={() => goto('https://www.jiomart.com/images/product/original/491551493/good-life-sugar-m-1-kg-product-images-o491551493-p491551493-0-202204281542.jpg')}
                     />
                   </div>
                   <div className="item">
                     <img
-                      src="https://nest-frontend.netlify.app/assets/imgs/shop/product-10-2.jpg?im=Resize=(150,150)"
+                      src={`https://www.jiomart.com/images/product/original/491278308/priya-fortified-with-vitamin-a-d-refined-sunflower-oil-1-l-product-images-o491278308-p491278308-0-202203170524.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
                       alt=""
                       className="w-100"
-                      onClick={() => goto(0)}
+                      onClick={() => goto('https://www.jiomart.com/images/product/original/491278308/priya-fortified-with-vitamin-a-d-refined-sunflower-oil-1-l-product-images-o491278308-p491278308-0-202203170524.jpg')}
                     />
                   </div>
                   <div className="item">
                     <img
-                      src="https://nest-frontend.netlify.app/assets/imgs/shop/product-9-2.jpg?im=Resize=(150,150)"
+                      src={`https://www.jiomart.com/images/product/original/491278308/priya-fortified-with-vitamin-a-d-refined-sunflower-oil-1-l-product-images-o491278308-p491278308-1-202203170524.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
                       alt=""
                       className="w-100"
-                      onClick={() => goto(0)}
+                      onClick={() => goto('https://www.jiomart.com/images/product/original/491278308/priya-fortified-with-vitamin-a-d-refined-sunflower-oil-1-l-product-images-o491278308-p491278308-1-202203170524.jpg')}
                     />
                   </div>
 
                   <div className="item">
                     <img
-                      src="https://nest-frontend.netlify.app/assets/imgs/shop/product-6-2.jpg?im=Resize=(150,150)"
+                      src={`https://www.jiomart.com/images/product/original/490001387/amul-butter-100-g-carton-product-images-o490001387-p490001387-1-202203170403.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
                       alt=""
                       className="w-100"
-                      onClick={() => goto(0)}
+                      onClick={() => goto('https://www.jiomart.com/images/product/original/490001387/amul-butter-100-g-carton-product-images-o490001387-p490001387-1-202203170403.jpg')}
                     />
                   </div>
                   <div className="item">
                     <img
-                      src="https://nest-frontend.netlify.app/assets/imgs/shop/product-8-2.jpg?im=Resize=(150,150)"
+                      src={`https://www.jiomart.com/images/product/original/490001387/amul-butter-100-g-carton-product-images-o490001387-p490001387-0-202203170403.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
                       alt=""
                       className="w-100"
-                      onClick={() => goto(0)}
+                      onClick={() => goto('https://www.jiomart.com/images/product/original/490001387/amul-butter-100-g-carton-product-images-o490001387-p490001387-0-202203170403.jpg')}
                     />
                   </div>
                   <div className="item">
                     <img
-                      src="https://nest-frontend.netlify.app/assets/imgs/shop/product-7-2.jpg?im=Resize=(150,150)"
+                      src={`https://www.jiomart.com/images/product/original/490000363/maggi-2-minute-masala-noodles-70-g-product-images-o490000363-p490000363-0-202305292130.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
                       alt=""
                       className="w-100"
-                      onClick={() => goto(0)}
+                      onClick={() => goto('https://www.jiomart.com/images/product/original/490000363/maggi-2-minute-masala-noodles-70-g-product-images-o490000363-p490000363-0-202305292130.jpg')}
                     />
                   </div>
                   <div className="item">
                     <img
-                      src="https://nest-frontend.netlify.app/assets/imgs/shop/product-2-2.jpg?im=Resize=(150,150)"
+                      src={`https://www.jiomart.com/images/product/original/490000363/maggi-2-minute-masala-noodles-70-g-product-images-o490000363-p490000363-2-202305292130.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
                       alt=""
                       className="w-100"
-                      onClick={() => goto(0)}
+                      onClick={() => goto('https://www.jiomart.com/images/product/original/490000363/maggi-2-minute-masala-noodles-70-g-product-images-o490000363-p490000363-2-202305292130.jpg')}
                     />
                   </div>
                 </Slider>
