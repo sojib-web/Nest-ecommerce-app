@@ -37,6 +37,7 @@
   font-size: 20px;
   font-weight: bolder;
 }
+
 .slidebarWrapper h3 {
   font-size: 30px;
   font-weight: 600;
@@ -60,6 +61,7 @@
 
   left: 0px;
 }
+
 .slidebarWrapper h3::before {
   content: "";
 

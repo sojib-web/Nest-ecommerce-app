@@ -66,7 +66,7 @@ const ProDetails = () => {
       </div>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-9 part1">
+          <div className="col-md-6 part1">
             <div className="row">
               {/* productZoom  Start here  */}
               <div className="col-md-5">
@@ -287,7 +287,7 @@ const ProDetails = () => {
                     </Button>
                   </div>
 
-                  <div className="btn-borders">
+                  <div className="btn-borders ml-auto">
                     <Button className="btn-border">
                       <FavoriteBorderOutlinedIcon />
                     </Button>
@@ -301,8 +301,8 @@ const ProDetails = () => {
             </div>
           </div>
 
-          <div className="col-md-3 part2 ml-auto">
-            <Slidebar />
+          <div className="col-md-6 part2 ml-auto">
+            {/* <Slidebar /> */}
           </div>
         </div>
       </div>

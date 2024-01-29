@@ -10,6 +10,7 @@
   padding: 100px 30px;
   margin: auto;
 }
+
 .notFound .box img {
   width: 100%;
 }
@@ -21,6 +22,7 @@
   opacity: 0.5;
   text-align: center;
 }
+
 .notFound .box p {
   font-size: 20px;
   font-weight: 400;
@@ -30,6 +32,8 @@
 }
 
 .notFound .box .btnn {
-  margin-left: 370px;
+  margin-left: 45%;
   font-size: 30px;
+
+
 }

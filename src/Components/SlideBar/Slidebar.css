@@ -15,11 +15,17 @@
 
   z-index: 10;
 }
+
+.sidebar {
+  margin-top: 45px;
+}
+
 .sidebar .card {
   padding: 25px;
   border-radius: 10px !important;
   margin-bottom: 40px;
 }
+
 .sidebar .card .catlist .catItem {
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -28,6 +34,7 @@
   border-radius: 5px;
   transition: all 0.2s ease-in-out;
 }
+
 .catlist .catItem .textheding {
   align-items: center;
   display: flex;
@@ -35,9 +42,11 @@
   font-size: 25px;
   font-weight: bolder;
 }
+
 .roundedCricle {
   margin: auto;
 }
+
 .sidebar .card .catlist .catItem:hover {
   border: 1px solid #bce3c9;
 }
@@ -52,36 +61,43 @@
 .sidebar .card .catlist .catItem h4:hover {
   color: #bce3c9;
 }
+
 .sidebar .card .catlist .catItem .rounded-circle {
   background: #bce3c9;
   width: 40px;
   height: 40px;
+  margin-left: auto;
 }
+
 .priceRange span {
   font-size: 20px;
-  align-items: stretch;
+
 }
 
 .filters {
   padding: 25px 0px;
 }
+
 .filters ul {
   max-height: 200px;
   overflow-y: scroll;
 }
+
 .filters ul::-webkit-scrollbar {
   width: 7px !important;
 }
+
 .filters ul::-webkit-scrollbar-thumb {
   background: #fff !important;
 }
 
 .filters h5 {
-  /* padding-left: 40px; */
+  padding-left: 40px;
   font-weight: 600;
   color: #56605c;
   margin-bottom: 10px;
 }
+
 .filters ul li {
   width: 100%;
   margin-bottom: 0px;
@@ -96,10 +112,12 @@
   background: #def9ec !important;
   text-transform: capitalize !important;
 }
+
 .filters button:hover {
   background: #fdc040 !important;
   color: #fff !important;
 }
+
 .filters img {
   padding-left: 30px;
   width: 125px;

@@ -28,60 +28,58 @@ const Slidebar = () => {
 
           <div className="catlist">
             <div className="catItem d-flex align-items-center">
-              <span className="img d-flex">
+              <span className="img">
                 <img src={CatImg} alt="" width={40} />
-                <h4 className="textheding"> Milks & Dairie</h4>
               </span>
-              <div className="roundedCricle">
-                <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
-                  30
-                </span>
-              </div>
+              <h4 className="mb-0 ml-3 mr-3"> Milks & Dairie</h4>
+              <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
+                30
+              </span>
             </div>
             <div className="catItem d-flex align-items-center">
-              <span className="img d-flex">
+              <span className="img">
                 <img src={CatImg} alt="" width={40} />
               </span>
-              <h4 className="mb-0 ml-3 mr-3"> Milks & Dairies</h4>
+              <h4 className="mb-0 ml-3 mr-3"> Milks & Dairie</h4>
               <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
                 30
               </span>
             </div>
 
             <div className="catItem d-flex align-items-center">
-              <span className="img d-flex">
+              <span className="img">
                 <img src={CatImg} alt="" width={40} />
               </span>
-              <h4 className="mb-0 ml-3 mr-3"> Clothing</h4>
+              <h4 className="mb-0 ml-3 mr-3"> Milks & Dairie</h4>
               <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
                 30
               </span>
             </div>
 
             <div className="catItem d-flex align-items-center">
-              <span className="img d-flex">
+              <span className="img">
                 <img src={CatImg} alt="" width={40} />
               </span>
-              <h4 className="mb-0 ml-3 mr-3"> Pet Foods </h4>
+              <h4 className="mb-0 ml-3 mr-3"> Milks & Dairie</h4>
               <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
                 30
               </span>
             </div>
 
             <div className="catItem d-flex align-items-center">
-              <span className="img d-flex">
+              <span className="img">
                 <img src={CatImg} alt="" width={40} />
               </span>
-              <h4 className="mb-0 ml-3 mr-3"> Baking material</h4>
+              <h4 className="mb-0 ml-3 mr-3"> Milks & Dairie</h4>
               <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
                 30
               </span>
             </div>
             <div className="catItem d-flex align-items-center">
-              <span className="img d-flex">
+              <span className="img">
                 <img src={CatImg} alt="" width={40} />
               </span>
-              <h4 className="mb-0 ml-3 mr-3"> Fresh Fruit</h4>
+              <h4 className="mb-0 ml-3 mr-3"> Milks & Dairie</h4>
               <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
                 30
               </span>
