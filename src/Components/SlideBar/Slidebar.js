@@ -30,11 +30,13 @@ const Slidebar = () => {
             <div className="catItem d-flex align-items-center">
               <span className="img d-flex">
                 <img src={CatImg} alt="" width={40} />
+                <h4 className="textheding"> Milks & Dairie</h4>
               </span>
-              <h4 className="mb-0 ml-3 mr-3"> Milks & Dairies</h4>
-              <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
-                30
-              </span>
+              <div className="roundedCricle">
+                <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
+                  30
+                </span>
+              </div>
             </div>
             <div className="catItem d-flex align-items-center">
               <span className="img d-flex">

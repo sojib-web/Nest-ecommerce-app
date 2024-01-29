@@ -26,7 +26,7 @@ body {
   cursor: pointer;
 }
 .btn-g {
-  color: #3bb77e !important;
+  background: #3bb77e !important;
   padding: 10px 25px !important;
   border-radius: 5px !important;
   color: #fff !important;
@@ -35,12 +35,36 @@ body {
 .btn-g:hover {
   background: #fdc840;
 }
+
 .btn-lg {
   font-size: 22px !important;
 }
 .bg-g,
 .bg-success {
   background: #3bb77e !important;
+}
+
+.btn-borders {
+  padding-left: 20px;
+}
+.btn-border {
+  border: 3px solid rgba(0, 0, 0, 0.1) !important;
+  color: #000 !important;
+  padding: 10px 25px !important ;
+  border-radius: 10px !important;
+  margin-left: 20px;
+}
+.btn-border svg {
+  opacity: 0.5;
+}
+
+.btn-border:hover {
+  border: 1px solid #3bb77e !important;
+  background: #3bb77e !important;
+  color: #fff !important;
+}
+.btn-border:hover svg {
+  opacity: 1;
 }
 
 .text-g {

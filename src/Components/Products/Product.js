@@ -57,11 +57,11 @@ const Product = (props) => {
           <div className=" align-items-center" />
           <span className="price text-g font-weight-bold">$28.85</span>
           <span className="oldPrice">$40</span>
+          <Button className="transition">
+            <ShoppingCartOutlinedIcon className="btnIcon" />
+            Add
+          </Button>
         </div>
-        <Button className="transition">
-          <ShoppingCartOutlinedIcon className="btnIcon" />
-          Add
-        </Button>
       </div>
     </div>
   );

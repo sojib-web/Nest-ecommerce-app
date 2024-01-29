@@ -16,6 +16,9 @@
 .productZoomSlide {
   padding-top: 30px;
 }
+.productZoomSlide * {
+  outline: none !important;
+}
 .productZoomSlide .slick-slide {
   overflow: hidden;
   border-radius: 15px;
@@ -48,10 +51,19 @@
   padding: 45px 35px;
   border-radius: 20px;
 }
+.detailContainer {
+  max-width: 90%;
+  padding: 30px 0px;
+}
+.product-info {
+  padding-left: 50px;
+}
 
 .product-info h1 {
   color: #253d4e;
   font-size: 50px;
+  font-size: 55px;
+  font-weight: bold;
 }
 .product-info .TextPro {
   color: #b6b6b6;
@@ -82,4 +94,107 @@
   color: #353434;
   font-size: 16px;
   font-weight: 600;
+}
+.SizeOption {
+  width: 100%;
+  height: auto;
+  padding: 25px 0px;
+}
+
+.SizeOption ul li {
+  margin-right: 15px !important;
+  margin-left: 10px !important;
+}
+
+.SizeOption ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px !important;
+  cursor: pointer;
+  text-decoration: none !important;
+  color: black !important;
+  font-size: 16px !important;
+  transition: all 0.1s ease-in-out;
+}
+
+.SizeOption ul li a.active {
+  background: #3bb77e !important;
+  color: #fff !important;
+}
+
+.addcartSection {
+  width: 100%;
+  height: auto;
+}
+
+.addcartSection .counterSection {
+  width: 120px;
+  height: 60px;
+  border-radius: 10px;
+  border: 1px solid #3bb77e !important;
+  overflow: hidden !important;
+  padding: 10px;
+}
+
+.addcartSection .counterSection input {
+  width: 60px;
+
+  height: 40px;
+  padding-left: 15px;
+  border: 0px;
+  outline: none !important;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.addcartSection .counterSection {
+  position: relative;
+}
+.addcartSection .counterSection .arrow {
+  position: absolute;
+  cursor: pointer;
+}
+
+.addcartSection .counterSection .arrow.plus {
+  top: 0px;
+  right: 10px;
+}
+
+.addcartSection .counterSection .arrow.minus {
+  bottom: 0px;
+  right: 10px;
+}
+
+.btnProduct button {
+  font-size: 15px !important;
+  padding: 0px 15px !important;
+  color: #fff;
+  text-transform: capitalize !important;
+  margin-left: 20px;
+  background: #3bb77e !important;
+  height: 60px;
+  min-height: inherit !important;
+}
+
+.btnProduct button:hover {
+  background: rgb(5, 0, 0) !important;
+  color: #fff !important;
+}
+
+.addCart svg {
+  font-size: 30px;
+  padding-right: 5px;
 }
