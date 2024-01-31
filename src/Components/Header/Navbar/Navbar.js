@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import Button from "@mui/material/Button";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -7,7 +7,14 @@ import HeadphonesOutlinedIcon from "@mui/icons-material/HeadphonesOutlined";
 import image from "../../../Assets/images/banner-menu.png";
 
 import { Link } from "react-router-dom";
-const Navbar = () => {
+
+const Navbar = (props) => {
+  const [navData, setnavData] = useState([]);
+
+  useEffect(() => {
+    setnavData(props.data);
+  }, []);
+
   return (
     <div className="nav d-flex align-items-center">
       <div className="container-fluid">
@@ -24,19 +31,16 @@ const Navbar = () => {
               <ul className="list list-inline mb-0">
                 <li className="list-inline-item">
                   <Button>
-                    <Link>
-                      Home <KeyboardArrowDownIcon />
-                    </Link>
+                    <Link>Home</Link>
                   </Button>
                 </li>
 
-                <li className="list-inline-item">
-                  <Button>
-                    <Link>About</Link>
-                  </Button>
-                </li>
+                {navData.length !== 0 &&
+                  navData.map((item, index) => {
+                    console.log(item.cat_name);
+                  })}
 
-                <li className="list-inline-item">
+                {/* <li className="list-inline-item">
                   <Button>
                     <Link>
                       Shop <KeyboardArrowDownIcon />
@@ -76,9 +80,9 @@ const Navbar = () => {
                       </li>
                     </ul>
                   </div>
-                </li>
+                </li> */}
 
-                <li className="list-inline-item">
+                {/* <li className="list-inline-item">
                   <Button>
                     <Link>
                       Vendors <KeyboardArrowDownIcon />
@@ -274,7 +278,7 @@ const Navbar = () => {
                   <Button>
                     <Link>Contact</Link>
                   </Button>
-                </li>
+                </li> */}
               </ul>
             </nav>
           </div>

@@ -19,7 +19,7 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import Navbar from "./Navbar/Navbar";
 
-const Header = () => {
+const Header = (props) => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const headerRef = useRef();
 
@@ -186,7 +186,8 @@ const Header = () => {
             </div>
           </div>
         </header>
-        <Navbar />
+        <Navbar data={props.data} />
+        {/* data={props.data}  */}
       </div>
       <div className="afterHeader"></div>
     </>
