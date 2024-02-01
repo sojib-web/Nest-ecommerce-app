@@ -31,14 +31,45 @@ const Navbar = (props) => {
               <ul className="list list-inline mb-0">
                 <li className="list-inline-item">
                   <Button>
-                    <Link>Home</Link>
+                    <Link to={"/"}>Home</Link>
                   </Button>
                 </li>
-
                 {navData.length !== 0 &&
-                  navData.map((item, index) => {
-                    console.log(item.cat_name);
-                  })}
+                  navData.map((item, index) => (
+                    <li className="list-inline-item" key={index}>
+                      <Button>
+                        <Link
+                          to={`/cat/${
+                            item.cat_name ? item.cat_name.toLowerCase() : ""
+                          }`}
+                        >
+                          {item.cat_name}
+                        </Link>
+                      </Button>
+                      {item.items && item.items.length !== 0 && (
+                        <div className="dropdown_menu">
+                          <ul>
+                            {item.items.map((innerItem, innerIndex) => (
+                              <li key={innerIndex}>
+                                <Button>
+                                  <Link
+                                    to={`/cat/${innerItem.cat_name.toLowerCase()}/${innerItem.cat_name.replace(
+                                      /\s/g,
+                                      "-"
+                                    )}`}
+                                  >
+                                    {innerItem.cat_name}
+                                  </Link>
+                                </Button>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </li>
+                  ))}
+
+                {/* Shop star */}
 
                 {/* <li className="list-inline-item">
                   <Button>
@@ -80,126 +111,61 @@ const Navbar = (props) => {
                       </li>
                     </ul>
                   </div>
-                </li> */}
+                </li>  */}
 
-                {/* <li className="list-inline-item">
-                  <Button>
-                    <Link>
-                      Vendors <KeyboardArrowDownIcon />
-                    </Link>
-                  </Button>
-                  <div className="dropdown_menu">
-                    <ul>
-                      <li>
-                        <Button>
-                          <Link to="/vendor">Vendors Grid</Link>
-                        </Button>
-                        <Button>
-                          <Link to="/vendor"> Vendors List</Link>
-                        </Button>
-                        <Button>
-                          <Link to="/vendor">Vendor Details 01</Link>
-                        </Button>
-                        <Button>
-                          <Link to="/vendor">Vendor Details 02</Link>
-                        </Button>
-                        <Button>
-                          <Link to="/vendor">Vendor Dashboard</Link>
-                        </Button>
-                        <Button>
-                          <Link to="/vendor">Vendor Guide</Link>
-                        </Button>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-
+                {/* megam=Menu statrt  */}
                 <li className="list-inline-item position-static">
                   <Button>
-                    <Link>
-                      {" "}
+                    <Link to={"/megaMenu"}>
                       Mega menu <KeyboardArrowDownIcon />
                     </Link>
                   </Button>
-
                   <div className="dropdown_menu megaMenu w-100">
                     <div className="row">
+                      {props.data.length !== 0 &&
+                        props.data.map((item, index) => {
+                          return (
+                            <div className="col" key={index}>
+                              {item.cat_name && (
+                                <Link
+                                  to={`/cat/${item.cat_name.toLowerCase()}`}
+                                >
+                                  <h4 className="text-g text-capitalize">
+                                    {item.cat_name}
+                                  </h4>
+                                </Link>
+                              )}
+                              {item.items && item.items.length !== 0 && (
+                                <ul className="mt-4 mb-0">
+                                  {item.items.map((innerItem, innerIndex) => (
+                                    <li key={innerIndex}>
+                                      {innerItem.cat_name && (
+                                        <Link
+                                          onClick={props.closeNav}
+                                          to={`/cat/${item.cat_name.toLowerCase()}/${innerItem.cat_name
+                                            .replace(/\s/g, "-")
+                                            .toLowerCase()}`}
+                                        >
+                                          {innerItem.cat_name}
+                                        </Link>
+                                      )}
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
+                          );
+                        })}
+
                       <div className="col">
-                        <h4 className="text-g">Fruit & Vegetables</h4>
-                        <ul className="mt-4 mb-0">
-                          <li>
-                            <Link to=""> Meat & Poultry </Link>
-                          </li>
-                          <li>
-                            <Link to=""> Fresh Vegetables </Link>
-                          </li>
-                          <li>
-                            <Link to="">Herbs & Seasonings </Link>
-                          </li>
-                          <li>
-                            <Link to=""> Cuts & Sprouts </Link>
-                          </li>
-                          <li>
-                            <Link to=""> Exotic Fruits & Veggies </Link>
-                          </li>
-                          <li>
-                            <Link to=""> Packaged Produce </Link>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col">
-                        <h4 className="text-g">Breakfast & Dairy</h4>
-                        <ul className="mt-4 mb-0">
-                          <li>
-                            <Link to=""> Meat & Poultry </Link>
-                          </li>
-                          <li>
-                            <Link to=""> Fresh Vegetables </Link>
-                          </li>
-                          <li>
-                            <Link to="">Herbs & Seasonings </Link>
-                          </li>
-                          <li>
-                            <Link to=""> Cuts & Sprouts </Link>
-                          </li>
-                          <li>
-                            <Link to=""> Exotic Fruits & Veggies </Link>
-                          </li>
-                          <li>
-                            <Link to=""> Packaged Produce </Link>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col">
-                        <h4 className="text-g">Meat & Seafood</h4>
-                        <ul className="mt-4 mb-0">
-                          <li>
-                            <Link to=""> Meat & Poultry </Link>
-                          </li>
-                          <li>
-                            <Link to=""> Fresh Vegetables </Link>
-                          </li>
-                          <li>
-                            <Link to="">Herbs & Seasonings </Link>
-                          </li>
-                          <li>
-                            <Link to=""> Cuts & Sprouts </Link>
-                          </li>
-                          <li>
-                            <Link to=""> Exotic Fruits & Veggies </Link>
-                          </li>
-                          <li>
-                            <Link to=""> Packaged Produce </Link>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col">
-                        <img src={image} alt="" className="w-100"></img>
+                        <img src={image} alt="" className="w-100" />
                       </div>
                     </div>
                   </div>
                 </li>
-                <li className="list-inline-item">
+
+                {/* blog start */}
+                {/* <li className="list-inline-item">
                   <Button>
                     <Link>
                       Blog <KeyboardArrowDownIcon />{" "}
@@ -226,9 +192,10 @@ const Navbar = (props) => {
                       </li>
                     </ul>
                   </div>
-                </li>
+                </li> */}
 
-                <li className="list-inline-item">
+                {/* Pages start */}
+                {/* <li className="list-inline-item">
                   <Button>
                     <Link>
                       Pages <KeyboardArrowDownIcon />
@@ -273,12 +240,15 @@ const Navbar = (props) => {
                       </li>
                     </ul>
                   </div>
-                </li>
+                </li> */}
+
+                {/* Contact start  */}
+
                 <li className="list-inline-item">
                   <Button>
                     <Link>Contact</Link>
                   </Button>
-                </li> */}
+                </li>
               </ul>
             </nav>
           </div>

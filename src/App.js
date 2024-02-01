@@ -14,13 +14,14 @@ function App() {
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
-    getData("http://localhost:3000/productData");
+    getData("http://localhost:3030/productData");
   }, []);
 
   const getData = async (url) => {
     try {
       await axios.get(url).then((respone) => {
         setProductData(respone.data);
+        // console.log(respone.data);
       });
     } catch (error) {
       console.log(error.message);
@@ -28,18 +29,27 @@ function App() {
   };
 
   return (
-    <div className="App">
+    productData.length !== 0 && (
       <BrowserRouter>
         <Header data={productData} />
         <Routes>
-          <Route exact={true} path="/" element={<Home />} />
-          <Route exact={true} path="/listing" element={<ListingProduct />} />
+          <Route exact={true} path="/" element={<Home data={productData} />} />
+          <Route
+            exact={true}
+            path="/cat/:id"
+            element={<ListingProduct data={productData} single={true} />}
+          />
+          <Route
+            exact={true}
+            path="/cat/:id/:id/"
+            element={<ListingProduct data={productData} single={true} />}
+          />
           <Route exact={true} path="/product/detail" element={<ProDetails />} />
           <Route exact={true} path="/notfound" element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>
-    </div>
+    )
   );
 }
 

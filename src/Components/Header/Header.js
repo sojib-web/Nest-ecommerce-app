@@ -20,6 +20,7 @@ import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import Navbar from "./Navbar/Navbar";
 
 const Header = (props) => {
+  // console.log(props);
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const headerRef = useRef();
 

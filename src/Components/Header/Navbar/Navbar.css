@@ -59,6 +59,9 @@
   transition: all 0.4s ease-in-out;
 }
 
+.nav .dropdown_menu .megaMenu a {
+  text-decoration: none;
+}
 .nav .dropdown_menu li {
   width: 100% !important;
   list-style: none;

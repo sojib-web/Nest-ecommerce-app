@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SliderBanner from "./Silder/Silder";
 import CatSlider from "../../CatSlider/CatSlider";
 import Banner from "../../Banner/Banner";
@@ -8,9 +8,13 @@ import bannerImg from "../../../Assets/images/banner 2.jpg";
 import Slider from "react-slick";
 import TopProducts from "./TopProducts/TopProducts";
 
-import Footer from "../../Footer/Footer";
+const Home = (props) => {
+  const [prodData, setprodData] = useState([props.data]);
+  const [catArry, setCatArry] = useState([]);
+  const [activeTab, setactivetab] = useState([]);
+  const [activeTabIndex, setactiveTabIndex] = useState([]);
+  const [activeTabData, setActiveTabData] = useState([]);
 
-const Home = () => {
   const settings = {
     dots: false,
     infinite: true,
@@ -20,6 +24,44 @@ const Home = () => {
     fade: false,
     arrows: true,
   };
+  const catArr = [];
+
+  useEffect(() => {
+    prodData.length !== 0 &&
+      prodData.map((item) => {
+        console.log(item);
+        // item.items.length !== 0 &&
+        //   item.items.map((itemss) => {
+        //     console.log(itemss);
+        //   });
+      });
+
+    // prodData.length !== 0 &&
+    //   prodData.map((item, index) => {
+    //     item.items.map((item_, index_) => {
+    //       catArr.push(item_.cat_name);
+    //     });
+    //   });
+    // const list2 = catArry.filter(
+    //   (item, index) => catArry.indexOf(item) === index
+    // );
+    // setCatArry(list2);
+    // setactivetab(list2[0]);
+  }, [prodData]);
+
+  // useEffect(() => {
+  //   var arr = [];
+  //   setActiveTabData(arr);
+  //   prodData.length !== 0 &&
+  //     prodData.map((item, index) => {
+  //       item.items.map((item_, index_) => {
+  //         if (item.cat_name === activeTab) {
+  //           setActiveTabData(item_.products);
+  //         }
+  //       });
+  //     });
+  // }, [activeTab, activeTabdata]);
+
   return (
     <div>
       <SliderBanner />
