@@ -15,6 +15,7 @@ const Home = (props) => {
   const [activeTabIndex, setactiveTabIndex] = useState(0);
   const [activeTabData, setActiveTabData] = useState([]);
 
+
   const settings = {
     dots: false,
     infinite: true,
@@ -51,10 +52,12 @@ const Home = (props) => {
         item.items.map((item_, index_) => {
           if (item.cat_name === activeTab) {
             setActiveTabData(item_.products);
+            console.log(item_.products)
           }
         });
       });
   }, [activeTab, activeTabData]);
+  // console.log(activeTabData)
 
   return (
     <div>
@@ -69,12 +72,12 @@ const Home = (props) => {
             <ul className=" list list-inline ml-auto filterTab mb-0">
               {catArry.length !== 0 &&
                 catArry.map((item, index) => {
+                  // console.log(item)
                   return (
                     <li className="list-inline-item">
                       <a
-                        className={`cursor text-capitalize ${
-                          activeTabIndex === index ? "act" : ""
-                        }`}
+                        className={`cursor text-capitalize ${activeTabIndex === index ? "act" : ""
+                          }`}
                         onClick={() => {
                           setactiveTabIndex(index);
                         }}
@@ -89,7 +92,9 @@ const Home = (props) => {
 
           <div className="productRow">
             {activeTabData.length !== 0 &&
+
               activeTabData.map((item, index) => {
+                console.log(item)
                 return (
                   <div className="item" key={index}>
                     <Product tag={item.type} item={item} />

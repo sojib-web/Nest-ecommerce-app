@@ -15,14 +15,14 @@ const Product = (props) => {
 
   useEffect(() => {
     setProductData(props.item);
-  }, [props.item]);
+  }, []);
 
   return (
     <div className="ProductThum">
       {props.tag !== null && props.tag !== undefined && (
         <span className={`badge ${props.tag}`}>{props.tag}</span>
       )}
-      {productData !== undefined && (
+      {productData !== undefined &&
         <>
           <Link>
             <div className="imgWrapper">
@@ -76,7 +76,7 @@ const Product = (props) => {
             </div>
           </div>
         </>
-      )}
+      }
     </div>
   );
 };
