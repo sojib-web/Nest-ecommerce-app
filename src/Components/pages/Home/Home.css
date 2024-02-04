@@ -8,6 +8,7 @@
 
 .filterTab li {
   margin-left: 20px;
+  position: relative;
 }
 
 .filterTab li a {
@@ -19,7 +20,8 @@
   font-weight: 600;
 }
 
-.filterTab li a:hover {
+.filterTab li :hover a,
+.filterTab li a.act {
   color: #3bb77e !important;
   transform: translateY(-10px);
 }

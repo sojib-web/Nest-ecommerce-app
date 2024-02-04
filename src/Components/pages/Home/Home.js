@@ -9,10 +9,10 @@ import Slider from "react-slick";
 import TopProducts from "./TopProducts/TopProducts";
 
 const Home = (props) => {
-  const [prodData, setprodData] = useState([props.data]);
+  const [productData, setprodData] = useState(props.data);
   const [catArry, setCatArry] = useState([]);
-  const [activeTab, setactivetab] = useState([]);
-  const [activeTabIndex, setactiveTabIndex] = useState([]);
+  const [activeTab, setactivetab] = useState();
+  const [activeTabIndex, setactiveTabIndex] = useState(0);
   const [activeTabData, setActiveTabData] = useState([]);
 
   const settings = {
@@ -27,40 +27,34 @@ const Home = (props) => {
   const catArr = [];
 
   useEffect(() => {
-    prodData.length !== 0 &&
-      prodData.map((item) => {
+    productData.length !== 0 &&
+      productData.map((item) => {
         console.log(item);
-        // item.items.length !== 0 &&
-        //   item.items.map((itemss) => {
-        //     console.log(itemss);
-        //   });
+        item.items.length !== 0 &&
+          item.items.map((items_) => {
+            // console.log(items_.cat_name);
+            catArr.push(items_.cat_name);
+          });
       });
+    const list2 = catArr.filter(
+      (item, index) => catArr.indexOf(item) === index
+    );
+    setCatArry(list2);
+    setactivetab(list2[0]);
+  }, [productData]);
 
-    // prodData.length !== 0 &&
-    //   prodData.map((item, index) => {
-    //     item.items.map((item_, index_) => {
-    //       catArr.push(item_.cat_name);
-    //     });
-    //   });
-    // const list2 = catArry.filter(
-    //   (item, index) => catArry.indexOf(item) === index
-    // );
-    // setCatArry(list2);
-    // setactivetab(list2[0]);
-  }, [prodData]);
-
-  // useEffect(() => {
-  //   var arr = [];
-  //   setActiveTabData(arr);
-  //   prodData.length !== 0 &&
-  //     prodData.map((item, index) => {
-  //       item.items.map((item_, index_) => {
-  //         if (item.cat_name === activeTab) {
-  //           setActiveTabData(item_.products);
-  //         }
-  //       });
-  //     });
-  // }, [activeTab, activeTabdata]);
+  useEffect(() => {
+    var arr = [];
+    setActiveTabData(arr);
+    productData.length !== 0 &&
+      productData.map((item, index) => {
+        item.items.map((item_, index_) => {
+          if (item.cat_name === activeTab) {
+            setActiveTabData(item_.products);
+          }
+        });
+      });
+  }, [activeTab, activeTabData]);
 
   return (
     <div>
@@ -73,76 +67,35 @@ const Home = (props) => {
           <div className="d-flex align-items-center ">
             <h2 className="hd mb-0 mt-0 ">Popular Products</h2>
             <ul className=" list list-inline ml-auto filterTab mb-0">
-              <li className="list-inline-item">
-                <a className="cursor">ALL</a>
-              </li>
-
-              <li className="list-inline-item">
-                <a className="cursor">Milks & Dairies </a>
-              </li>
-
-              <li className="list-inline-item">
-                <a className="cursor">Coffes & Teas </a>
-              </li>
-
-              <li className="list-inline-item">
-                <a className="cursor">Pet Foods </a>
-              </li>
-
-              <li className="list-inline-item">
-                <a className="cursor">Meats </a>
-              </li>
-
-              <li className="list-inline-item">
-                <a className="cursor">Vegetables </a>
-              </li>
-
-              <li className="list-inline-item">
-                <a className="cursor">Fruits </a>
-              </li>
+              {catArry.length !== 0 &&
+                catArry.map((item, index) => {
+                  return (
+                    <li className="list-inline-item">
+                      <a
+                        className={`cursor text-capitalize ${
+                          activeTabIndex === index ? "act" : ""
+                        }`}
+                        onClick={() => {
+                          setactiveTabIndex(index);
+                        }}
+                      >
+                        {item}
+                      </a>
+                    </li>
+                  );
+                })}
             </ul>
           </div>
 
-          <div className=" row productRow">
-            <div className="item">
-              <Product tag="hot" />
-            </div>
-
-            <div className="item">
-              <Product tag="new" />
-            </div>
-
-            <div className="item">
-              <Product tag="sale" />
-            </div>
-
-            <div className="item">
-              <Product tag="hot" />
-            </div>
-
-            <div className="item">
-              <Product tag="best" />
-            </div>
-
-            <div className="item">
-              <Product tag="new" />
-            </div>
-
-            <div className="item">
-              <Product tag="sale" />
-            </div>
-
-            <div className="item">
-              <Product tag="hot" />
-            </div>
-
-            <div className="item">
-              <Product tag="best" />
-            </div>
-
-            <div className="item">
-              <Product tag="new" />
-            </div>
+          <div className="productRow">
+            {activeTabData.length !== 0 &&
+              activeTabData.map((item, index) => {
+                return (
+                  <div className="item" key={index}>
+                    <Product tag={item.type} item={item} />
+                  </div>
+                );
+              })}
           </div>
         </div>
       </section>
@@ -178,26 +131,26 @@ const Home = (props) => {
                 </div>
 
                 <div className="item">
-                  <Product tag="new" />
+                  <Product tag="sale" />
                 </div>
                 <div className="item">
-                  <Product tag="new" />
+                  <Product tag="hot" />
                 </div>
 
                 <div className="item">
-                  <Product tag="new" />
+                  <Product tag="sale" />
                 </div>
                 <div className="item">
                   <Product tag="new" />
                 </div>
                 <div className="item">
-                  <Product tag="new" />
+                  <Product tag="sale" />
                 </div>
                 <div className="item">
                   <Product tag="new" />
                 </div>
                 <div className="item">
-                  <Product tag="new" />
+                  <Product tag="hot" />
                 </div>
               </Slider>
             </div>
