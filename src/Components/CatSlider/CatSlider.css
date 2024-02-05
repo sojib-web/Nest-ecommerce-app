@@ -18,6 +18,9 @@
   padding: 10px 0px;
 }
 
+.cat_slider_main a {
+  text-decoration: none;
+}
 .cat_slider_main .item .info {
   margin: auto;
   display: flex;
@@ -27,16 +30,18 @@
   padding: 15px;
   transition: all 0.3s ease-in-out;
   position: relative;
+  text-decoration: none;
 }
 
 .cat_slider_main .item .info h4 {
   font-weight: 600 !important;
+  color: #000 !important;
 }
 
 .cat_slider_main .item .info span {
-  font-size: 15px;
+  font-size: 17px;
   opacity: 0.8;
-  color: #000;
+  color: #000 !important;
   margin-bottom: 0px;
 }
 

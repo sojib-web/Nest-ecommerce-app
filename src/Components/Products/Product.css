@@ -49,9 +49,15 @@
   overflow: hidden;
   position: relative;
 }
+.ProductThum .imgWrapper .wrapper {
+  height: 350px;
+  overflow: hidden;
+}
 
 .ProductThum .imgWrapper img {
   transition: all 0.3s ease-in-out;
+  /* height: 100%;
+  object-fit: cover; */
 }
 
 .ProductThum:hover .imgWrapper img {

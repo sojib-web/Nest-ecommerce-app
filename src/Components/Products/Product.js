@@ -15,18 +15,18 @@ const Product = (props) => {
 
   useEffect(() => {
     setProductData(props.item);
-  }, []);
+  }, [props.item]);
 
   return (
     <div className="ProductThum">
       {props.tag !== null && props.tag !== undefined && (
         <span className={`badge ${props.tag}`}>{props.tag}</span>
       )}
-      {productData !== undefined &&
+      {productData !== undefined && (
         <>
           <Link>
             <div className="imgWrapper">
-              <div className="p-4 wrapper mb-3">
+              <div className="p-4 wrapper mb-3 wrapper">
                 <img src={productData.catImg} className="w-100" alt="" />
               </div>
               <div className="overlay transition">
@@ -52,23 +52,29 @@ const Product = (props) => {
           </Link>
 
           <div className="info">
-            <span className="d-block catName">Snack </span>
+            <span className="d-block catName">{productData.brand} </span>
             <h4 className="title">
-              <Link> Foster Farms Takeout Crispy Classic Buffalo Wings</Link>
+              <Link>{productData.productName.substr(0, 20) + "..."}</Link>
             </h4>
-            <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+            <Rating
+              name="half-rating"
+              defaultValue={parseFloat(productData.rating)}
+              precision={0.5}
+            />
 
             <span className="Brand d-block">
               By{" "}
               <a className="text-g">
-                <Link className="text-g">NestFood</Link>
+                <Link className="text-g">{productData.brand} </Link>
               </a>
             </span>
 
             <div className=" d-flex align-items-center mt-3">
               <div className=" align-items-center" />
-              <span className="price text-g font-weight-bold">$28.85</span>
-              <span className="oldPrice">$40</span>
+              <span className="price text-g font-weight-bold">
+                $ {productData.price}
+              </span>
+              <span className="oldPrice">$ {productData.oldPrice}</span>
               <Button className="transition">
                 <ShoppingCartOutlinedIcon className="btnIcon" />
                 Add
@@ -76,7 +82,7 @@ const Product = (props) => {
             </div>
           </div>
         </>
-      }
+      )}
     </div>
   );
 };

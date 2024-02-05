@@ -1,19 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CatSlider.css";
 import Slider from "react-slick";
-import Vegetables from "../../Assets/images/cat-1.png";
-// import Snack from "../../Assets/images/cat-3.png";
-// import Black_plum from "../../Assets/images/cat-4.png";
-// import Custard_apple from "../../Assets/images/cat-5.png";
-// import Red_apple from "../../Assets/images/cat-9.png";
-// import Cake_Milk from "../../Assets/images/cat-13.png";
-// import Peach from "../../Assets/images/cat-11.png";
-// import HeadPhone from "../../Assets/images/cat-15.png";
-// import Coffe_Tea from "../../Assets/images/cat-14.png";
-// import Oranic_Kiwi from "../../Assets/images/cat-12.png";
-// import Strawberry from "../../Assets/images/cat-2.png";
+import { Link } from "react-router-dom";
 
-const CatSlider = () => {
+const CatSlider = (props) => {
+  const [allData, setAlldata] = useState(props.data);
+  const [totalLength, setTotallength] = useState([]);
+
   const [itemBg, setItemBg] = useState([
     "#ffffceb",
     "#ecffec",
@@ -36,7 +29,7 @@ const CatSlider = () => {
   ]);
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 10,
     slidesToScroll: 1,
@@ -44,12 +37,33 @@ const CatSlider = () => {
     arrows: true,
   };
 
+  var catLength = 0;
+  var lengthArray = [];
+  useEffect(() => {
+    allData.length !== 0 &&
+      allData.map((item, index) => {
+        item.items.length !== 0 &&
+          item.items.map((item_) => {
+            catLength += item_.products.length;
+          });
+        lengthArray.push(catLength);
+        // console.log(catLength);
+        catLength = 0;
+      });
+    const list = lengthArray.filter(
+      (item, index) => lengthArray.indexOf(item) === index
+    );
+    setTotallength(list);
+    // console.log(list);
+  });
+
   return (
     <div>
       <div className="catSliderSection">
         <div className="container-fluid">
           <h2 className="hd">Featured Categories</h2>
-          <div className="listItem">
+          {/* all name golo show korte hobe  */}
+          {/* <div className="listItem">
             <ul className=" list list-inline ml-auto filterTab">
               <li className="list-inline-item">
                 <a className="cursor">ALL</a>
@@ -79,109 +93,27 @@ const CatSlider = () => {
                 <a className="cursor">Fruits </a>
               </li>
             </ul>
-          </div>
+          </div> */}
           <Slider {...settings} className="cat_slider_main">
-            {itemBg.length !== 0 &&
-              itemBg.map((item, index) => {
+            {allData.length !== 0 &&
+              allData.map((allItem, index) => {
                 return (
-                  <div className="item">
-                    <div className="info" style={{ background: item }}>
-                      <img src={Vegetables} alt="" />
-                      <h4>Vegetables</h4>
-                      <span>35 items</span>
-                    </div>
+                  <div className="item" key={index}>
+                    <Link to={`/cat/${allItem.cat_name.toLowerCase()}`}>
+                      <div
+                        className="info"
+                        style={{ background: itemBg[index] }}
+                      >
+                        <img src={allItem.image} alt="" width="80" />
+                        <h4 className="text-capitalize mt-3">
+                          {allItem.cat_name}
+                        </h4>
+                        <span>{totalLength[index]} items</span>
+                      </div>
+                    </Link>
                   </div>
                 );
               })}
-            {/* <div className='item'>
-                            <div className='info'>
-                                <img src={Vegetables} alt='' />
-                                <h4>Vegetables</h4>
-                                <span>35 items</span>
-                            </div>
-                        </div>
-
-                        <div className='item'>
-                            <div className='info'>
-                                <img src={Snack} alt='' />
-                                <h4>Snack</h4>
-                                <span>35 items</span>
-                            </div>
-                        </div>
-
-                        <div className='item'>
-                            <div className='info'>
-                                <img src={Black_plum} alt='' />
-                                <h4>Black plum</h4>
-                                <span>35 items</span>
-                            </div>
-                        </div>
-
-                        <div className='item'>
-                            <div className='info'>
-                                <img src={Custard_apple} alt='' />
-                                <h4>Custard apple</h4>
-                                <span>35 items</span>
-                            </div>
-                        </div>
-
-                        <div className='item'>
-                            <div className='info'>
-                                <img src={Red_apple} alt='' />
-                                <h4>Red Apple</h4>
-                                <span>76 items</span>
-                            </div>
-                        </div>
-
-                        <div className='item'>
-                            <div className='info'>
-                                <img src={Cake_Milk} alt='' />
-                                <h4>Cake Milk</h4>
-                                <span>35 items </span>
-                            </div>
-                        </div>
-
-                        <div className='item'>
-                            <div className='info'>
-                                <img src={Peach} alt='' />
-                                <h4>Peach</h4>
-                                <span>35 items</span>
-                            </div>
-                        </div>
-
-                        <div className='item'>
-                            <div className='info'>
-                                <img src={HeadPhone} alt='' />
-                                <h4>HeadPhone</h4>
-                                <span>35 items</span>
-                            </div>
-                        </div>
-
-
-                        <div className='item'>
-                            <div className='info'>
-                                <img src={Coffe_Tea} alt='' />
-                                <h4>Coffe & Tea</h4>
-                                <span>35 items</span>
-                            </div>
-                        </div>
-
-
-                        <div className='item'>
-                            <div className='info'>
-                                <img src={Oranic_Kiwi} alt='' />
-                                <h4>Oranic Kiwi</h4>
-                                <span>35 items</span>
-                            </div>
-                        </div>
-
-                        <div className='item'>
-                            <div className='info'>
-                                <img src={Strawberry} alt='' />
-                                <h4>Strawberry</h4>
-                                <span>35 items</span>
-                            </div>
-                        </div> */}
           </Slider>
         </div>
       </div>

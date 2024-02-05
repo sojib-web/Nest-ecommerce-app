@@ -15,6 +15,7 @@ const Home = (props) => {
   const [activeTabIndex, setactiveTabIndex] = useState(0);
   const [activeTabData, setActiveTabData] = useState([]);
 
+  const [BestSells, setBestSell] = useState([]);
 
   const settings = {
     dots: false,
@@ -47,22 +48,40 @@ const Home = (props) => {
   useEffect(() => {
     var arr = [];
     setActiveTabData(arr);
+    console.log(arr);
     productData.length !== 0 &&
       productData.map((item, index) => {
-        item.items.map((item_, index_) => {
-          if (item.cat_name === activeTab) {
-            setActiveTabData(item_.products);
-            console.log(item_.products)
+        item.items.map((innerItem, index_) => {
+          if (innerItem.cat_name === activeTab) {
+            setActiveTabData(innerItem.products);
+            // console.log(innerItem.products);
           }
         });
       });
   }, [activeTab, activeTabData]);
   // console.log(activeTabData)
 
+  const BestSellsArry = [];
+  useEffect(() => {
+    productData.length !== 0 &&
+      productData.map((item, index) => {
+        if (item.cat_name === "Fashion") {
+          item.items.length !== 0 &&
+            item.items.map((InnerItem, index) => {
+              InnerItem.products.length !== 0 &&
+                InnerItem.products.map((InnerProducts, InnerIndex) => {
+                  BestSellsArry.push(InnerProducts);
+                });
+            });
+        }
+      });
+    setBestSell(BestSellsArry);
+  }, []);
+
   return (
     <div>
       <SliderBanner />
-      <CatSlider />
+      <CatSlider data={productData} />
       <Banner />
 
       <section className="homeProducts">
@@ -76,9 +95,12 @@ const Home = (props) => {
                   return (
                     <li className="list-inline-item">
                       <a
-                        className={`cursor text-capitalize ${activeTabIndex === index ? "act" : ""
-                          }`}
+                        className={`cursor text-capitalize ${
+                          activeTabIndex === index ? "act" : ""
+                        }`}
                         onClick={() => {
+                          // setActiveTabData([]);
+                          setactivetab(item);
                           setactiveTabIndex(index);
                         }}
                       >
@@ -90,11 +112,10 @@ const Home = (props) => {
             </ul>
           </div>
 
-          <div className="productRow">
+          <div className="productRow ">
             {activeTabData.length !== 0 &&
-
               activeTabData.map((item, index) => {
-                console.log(item)
+                console.log(item);
                 return (
                   <div className="item" key={index}>
                     <Product tag={item.type} item={item} />
@@ -110,7 +131,7 @@ const Home = (props) => {
           <div className="d-flex align-items-center ">
             <h2 className="hd mb-0 mt-0 ">Daily Best Sells</h2>
             <ul className=" list list-inline ml-auto filterTab mb-0">
-              <li className="list-inline-item">
+              {/* <li className="list-inline-item">
                 <a className="cursor">Featured </a>
               </li>
 
@@ -120,7 +141,7 @@ const Home = (props) => {
 
               <li className="list-inline-item">
                 <a className="cursor">New addd </a>
-              </li>
+              </li> */}
             </ul>
           </div>
           <br /> <br />
@@ -131,11 +152,15 @@ const Home = (props) => {
 
             <div className="col-md-9">
               <Slider {...settings} className="productSlider">
-                <div className="item">
-                  <Product tag="new" />
-                </div>
-
-                <div className="item">
+                {BestSells.length !== 0 &&
+                  BestSells.map((item, index) => {
+                    return (
+                      <div className="item" key={index}>
+                        <Product tag={item.type} item={item} />
+                      </div>
+                    );
+                  })}
+                {/* <div className="item">
                   <Product tag="sale" />
                 </div>
                 <div className="item">
@@ -156,7 +181,7 @@ const Home = (props) => {
                 </div>
                 <div className="item">
                   <Product tag="hot" />
-                </div>
+                </div> */}
               </Slider>
             </div>
           </div>

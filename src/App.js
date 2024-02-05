@@ -14,7 +14,7 @@ function App() {
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
-    getData("http://localhost:5000/productData");
+    getData("http://localhost:3001/productData");
   }, []);
 
   const getData = async (url) => {
@@ -42,7 +42,7 @@ function App() {
           <Route
             exact={true}
             path="/cat/:id/:id/"
-            element={<ListingProduct data={productData} single={true} />}
+            element={<ListingProduct data={productData} single={false} />}
           />
           <Route exact={true} path="/product/detail" element={<ProDetails />} />
           <Route exact={true} path="/notfound" element={<NotFound />} />
