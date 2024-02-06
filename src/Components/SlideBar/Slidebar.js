@@ -8,7 +8,13 @@ import Button from "@mui/material/Button";
 import FilterImg from "../../Assets/images/fillter-widget-bg.png";
 import FilterAltOffOutlinedIcon from "@mui/icons-material/FilterAltOffOutlined";
 import CatImg1 from "../../Assets/images/1.jpg";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+
 function valuetext(value) {
   return `${value}°C`;
 }
@@ -16,15 +22,28 @@ function valuetext(value) {
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const Slidebar = (props) => {
-  const [value, setValue] = React.useState([0, 1000]);
+  const [value, setValue] = React.useState([100, 60000]);
   const [totalLength, setTotallength] = useState([]);
+  const [brandFilters, setbrandFilters] = React.useState([])
+  const [ratingArr, setRating] = React.useState([])
+  const [value2, setValue2] = useState(0);
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    console.log(newValue)
+    props.filterBYPrice(newValue[0], newValue[1])
+
   };
 
+  let { id } = useParams()
+  var ratings = [];
+  var brands = [];
   var catLength = 0;
   var lengthArray = [];
+
+
+
   useEffect(() => {
     props.data.length !== 0 &&
       props.data.map((item, index) => {
@@ -41,8 +60,71 @@ const Slidebar = (props) => {
     );
     setTotallength(list);
     // console.log(list);
-  });
+  }, []);
 
+
+
+  useEffect(() => {
+    brands = [];
+    ratings = []
+    props.currentcatData.length !== 0 &&
+      props.currentcatData.map((item, index) => {
+        brands.push(item.brand);
+        ratings.push(parseFloat(item.rating))
+      })
+
+    const BrandList = brands.filter(
+      (item, index) => brands.indexOf(item) === index
+    );
+
+    setbrandFilters(BrandList);
+
+    const ratingss = ratings.filter(
+      (item, index) => ratings.indexOf(item) === index
+    );
+
+    setRating(ratingss);
+  }, [id])
+
+
+
+  useEffect(() => {
+    var price = 0;
+    props.currentCatData.length !== 0 &&
+      props.currentCatData.map((item, index) => {
+        let prodPrice = parseInt(item.price.toString().replace(/,/g, ""));
+        if (prodPrice > price) {
+          price = prodPrice
+        }
+      })
+
+
+    setValue2(price)
+
+    //setValue(price);
+    //filterByPrice(price[0], price[1]);
+
+
+
+  }, [props.currentCatData]);
+
+
+  const filterByBrand = (keyword) => {
+    props.filterByBrand = (keyword)
+  }
+
+  const filterByRating = (keyword) => {
+    props.filterByRating(parseFloat(keyword))
+  }
+
+
+  useEffect(() => {
+    filterByPrice(value[0], value[1]);
+  }, [value]);
+
+  const filterByPrice = (minValue, maxValue) => {
+    props.filterByPrice(minValue, maxValue)
+  }
   return (
     <div>
       <div className="sidebar">
@@ -66,73 +148,17 @@ const Slidebar = (props) => {
                   </Link>
                 );
               })}
-            {/* <div className="catItem d-flex align-items-center">
-              <span className="img">
-                <img src={CatImg} alt="" width={40} />
-              </span>
-              <h4 className="mb-0 ml-3 mr-3"> Milks & Dairie</h4>
-              <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
-                30
-              </span>
-            </div>
-            <div className="catItem d-flex align-items-center">
-              <span className="img">
-                <img src={CatImg} alt="" width={40} />
-              </span>
-              <h4 className="mb-0 ml-3 mr-3"> Milks & Dairie</h4>
-              <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
-                30
-              </span>
-            </div>
 
-            <div className="catItem d-flex align-items-center">
-              <span className="img">
-                <img src={CatImg} alt="" width={40} />
-              </span>
-              <h4 className="mb-0 ml-3 mr-3"> Milks & Dairie</h4>
-              <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
-                30
-              </span>
-            </div>
-
-            <div className="catItem d-flex align-items-center">
-              <span className="img">
-                <img src={CatImg} alt="" width={40} />
-              </span>
-              <h4 className="mb-0 ml-3 mr-3"> Milks & Dairie</h4>
-              <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
-                30
-              </span>
-            </div>
-
-            <div className="catItem d-flex align-items-center">
-              <span className="img">
-                <img src={CatImg} alt="" width={40} />
-              </span>
-              <h4 className="mb-0 ml-3 mr-3"> Milks & Dairie</h4>
-              <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
-                30
-              </span>
-            </div>
-            <div className="catItem d-flex align-items-center">
-              <span className="img">
-                <img src={CatImg} alt="" width={40} />
-              </span>
-              <h4 className="mb-0 ml-3 mr-3"> Milks & Dairie</h4>
-              <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
-                30
-              </span>
-            </div> */}
           </div>
         </div>
 
         <div className="card border-0 shadow">
           <h3>Fill By Price</h3>
-          <Box sx={{ width: 300 }}>
+          <Box sx={{ width: 450 }}>
             <Slider
               min={0}
               step={1}
-              max={1000}
+              max={60000}
               getAriaLabel={() => "Temperature range"}
               value={value}
               onChange={handleChange}
@@ -144,86 +170,63 @@ const Slidebar = (props) => {
 
           <div className="d-flex pt-2 pb-2 priceRange">
             <span>
-              From: <strong className="text-success">${value[0]}</strong>
+              From: <strong className="text-success">TK  {value[0]}</strong>
             </span>
-            <span className="ml-auto">
-              To: <strong className="text-success">${value[1]}</strong>
+            <span className="ml-auto priceFrom">
+              To: <strong className="text-success">Tk {value[1]}</strong>
             </span>
           </div>
 
-          <div className="filters mb-0">
-            <h5>Color</h5>
-            <ul>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
+          <div className="filters mb-5">
+
+            <ul className="mb-0">
+              <h4>Filter By Brand</h4>
+              <FormControl>
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="female"
+                  name="radio-buttons-group"
+                >
+                  {
+                    brandFilters.length !== 0 &&
+                    brandFilters.map((item, index) => {
+                      return (
+                        <li key={index}><FormControlLabel value={item} control={<Radio onChange={() => filterByBrand(item)} />} label={item} />
+
+
+                        </li>
+                      )
+                    })
+
+                  }
+                </RadioGroup>
+              </FormControl>
             </ul>
           </div>
           <hr />
           <div className="filters">
-            <h5>Item Condition</h5>
+            <h5>Filter By Rating</h5>
             <ul>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
-              <li>
-                <Checkbox {...label} color="success" />
-                Green (78)
-              </li>
+              <FormControl>
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="female"
+                  name="radio-buttons-group"
+                >
+                  {
+                    ratingArr.length !== 0 &&
+                    ratingArr.map((item, index) => {
+                      return (
+                        <li key={index}><FormControlLabel value={item} control={<Radio onChange={() => filterByRating(item)} />} label={item} />
+
+
+                        </li>
+                      )
+                    })
+
+                  }
+                </RadioGroup>
+              </FormControl>
             </ul>
           </div>
 

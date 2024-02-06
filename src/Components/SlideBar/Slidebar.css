@@ -50,6 +50,7 @@
 .sidebar .card .catlist a {
   text-decoration: none;
 }
+
 .sidebar .card .catlist .catItem:hover {
   border: 1px solid #bce3c9;
 }
@@ -71,6 +72,10 @@
   width: 40px;
   height: 40px;
   margin-left: auto;
+}
+
+.priceRange .priceFrom {
+  margin-left: auto !important;
 }
 
 .priceRange span {

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../ListingProduct/ListingProduct.css";
-import Breadcrum from "../../../Components/BreadCrum/BreadCrum";
 import Slidebar from "../../SlideBar/Slidebar";
 import Product from "../../Products/Product";
 import { Link, useParams } from "react-router-dom";
@@ -14,6 +13,9 @@ const ListingProduct = (props) => {
   const { id } = useParams();
 
   var itemsData = [];
+
+
+
 
   useEffect(() => {
     props.data.length !== 0 &&
@@ -50,31 +52,202 @@ const ListingProduct = (props) => {
     setData(list);
   }, [id]);
 
+
+
+
+
+  const filterByBrand = (keyword) => {
+
+    props.data.length !== 0 &&
+      props.data.map((item, index) => {
+
+        //page == single cat
+        if (props.single === true) {
+
+          item.items.length !== 0 &&
+            item.items.map((item_) => {
+              item_.products.map((item__, index__) => {
+                if (item__.brand.toLowerCase() === keyword.toLowerCase()) {
+                  //console.log(item__)
+                  itemsData.push({ ...item__, parentCatName: item.cat_name, subCatName: item_.cat_name })
+                }
+
+
+              })
+
+            })
+
+
+        }
+        //page == double cat
+        else {
+          item.items.length !== 0 &&
+            item.items.map((item_, index_) => {
+              // console.log(item_.cat_name.replace(/[^A-Za-z]/g,"-").toLowerCase())
+              if (item_.cat_name.split(' ').join('-').toLowerCase() == id.split(' ').join('-').toLowerCase()) {
+                item_.products.map((item__, index__) => {
+                  if (item__.brand.toLowerCase() === keyword.toLowerCase()) {
+                    itemsData.push({ ...item__, parentCatName: item.cat_name, subCatName: item_.cat_name })
+                  }
+
+                })
+
+              }
+            })
+        }
+
+      })
+
+
+
+    const list2 = itemsData.filter((item, index) => itemsData.indexOf(item) === index);
+    //console.log(itemsData)
+
+
+    setData(list2);
+
+    window.scrollTo(0, 0)
+
+  }
+
+
+
+
+
+  const filterBYPrice = (minValue, maxValue) => {
+    props.data.length !== 0 &&
+      props.data.map((item) => {
+        // single page
+        if (props.single === true) {
+          if (id.toLowerCase() === item.cat_name.toLowerCase()) {
+            item.items.length !== 0 &&
+              item.items.map((items_) => {
+                items_.products.length !== 0 &&
+                  items_.products.map((product) => {
+                    let price = parseInt(product.price.toString().replace(/,/g, '')
+                    )
+                    if (minValue <= price && maxValue >= price) {
+                      itemsData.push({
+                        ...product, parentCatName: item.cat_name,
+                        subCatName: item.cat_name
+                      });
+                    }
+                  })
+              })
+          }
+        }
+        else {
+          item.items.length !== 0 &&
+            item.items.map((item_, index_) => {
+              if (item_.cat_name.split('').join('-').toLowerCase() == id.split('').join('-').toLowerCase()) {
+                item_.products.map((product) => {
+                  let price = parseInt(product.price.toString().replace(/,/g, '')
+                  )
+                  if (minValue <= price && maxValue >= price) {
+                    itemsData.push({
+                      ...product, parentCatName: item.cat_name,
+                      subCatName: item.cat_name
+                    });
+                  }
+                })
+              }
+            })
+        }
+      })
+    const list = itemsData.filter(
+      (item, index) => itemsData.indexOf(item) === index
+    );
+
+    setData(list);
+  }
+
+  const filterByRating = (keyword) => {
+
+    props.data.length !== 0 &&
+      props.data.map((item, index) => {
+
+        //page == single cat
+        if (props.single === true) {
+
+          if (item.cat_name.toLowerCase() == id.toLowerCase()) {
+
+            item.items.length !== 0 &&
+              item.items.map((item_) => {
+                item_.products.map((item__, index__) => {
+                  itemsData.push({ ...item__, parentCatName: item.cat_name, subCatName: item_.cat_name })
+                })
+
+              })
+
+
+          }
+        }
+        //page == double cat
+        else {
+          item.items.length !== 0 &&
+            item.items.map((item_, index_) => {
+              // console.log(item_.cat_name.replace(/[^A-Za-z]/g,"-").toLowerCase())
+              if (item_.cat_name.split(' ').join('-').toLowerCase() == id.split(' ').join('-').toLowerCase()) {
+                item_.products.map((item__, index__) => {
+
+                  itemsData.push({ ...item__, parentCatName: item.cat_name, subCatName: item_.cat_name })
+
+                })
+
+              }
+            })
+        }
+
+      })
+
+
+
+
+    const list2 = itemsData.filter((item, index) => itemsData.indexOf(item) === index);
+
+    setData(list2);
+
+    data?.map((item) => {
+      if (item.rating === keyword) {
+        itemsData.push({ ...item, parentCatName: item.cat_name, subCatName: item.cat_name })
+      }
+    })
+
+
+    const list3 = itemsData.filter((item, index) => itemsData.indexOf(item) === index);
+
+    setData(list3);
+
+
+    window.scrollTo(0, 0)
+
+  }
+
+
+
   return (
     <div>
       <section className="listingPage">
         <div className="container-fluid">
           <div className="breadcrumb flex-column">
-            <h2>Snack</h2>
+            <h2 className="text-capitalize">{sessionStorage.getItem("cat")}</h2>
             <ul className="list list-inline mb-0">
               <li className="list-inline-item">
                 <Link to={"/"}>Home</Link>
               </li>
-              props.single === true && (
+
               <li className="list-inline-item">
                 <Link
-                  to={`/${sessionStorage.getItem("cat")}`}
+                  to={`/cat/${sessionStorage.getItem("cat")}`}
                   className="text-capitalize"
                 >
                   {sessionStorage.getItem("cat")}
                 </Link>
               </li>
-              )
+
               {props.single === false && (
-                <li className="list-inline-item">
-                  <Link to={`/${id}`} className="text-capitalize">
-                    {id}{" "}
-                  </Link>
+                <li className="list-inline-item text-capitalize">
+                  {id}
                 </li>
               )}
             </ul>
@@ -83,7 +256,7 @@ const ListingProduct = (props) => {
             <div className="row">
               <div className="col-md-3 slidebarWrapper">
                 {Data.length !== 0 && (
-                  <Slidebar data={props.data} currentcatData={Data} />
+                  <Slidebar data={props.data} currentcatData={Data} filterByBrand={filterByBrand} filterBYPrice={filterBYPrice} filterByRating={filterByRating} />
                 )}
               </div>
 
@@ -134,7 +307,7 @@ const ListingProduct = (props) => {
                         className="btn_ "
                         onClick={() => setisopenDown2(!isOpenDropDwon2)}
                       >
-                        jvbbvj
+
                       </Button>
                       {isOpenDropDwon2 !== false && (
                         <ul className="dropdownMenu">
