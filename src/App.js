@@ -14,7 +14,7 @@ function App() {
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
-    getData("http://localhost:3001/productData");
+    getData("http://localhost:5000/productData");
   }, []);
 
   const getData = async (url) => {

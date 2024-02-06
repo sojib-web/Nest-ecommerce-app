@@ -2,6 +2,7 @@
   width: 100%;
   height: auto;
   padding: 45px 0px;
+  margin-bottom: 30px;
 }
 
 .breadcrumb {
@@ -19,6 +20,14 @@
   font-weight: bold;
 }
 
+.breadcrumb ul li {
+  margin-right: 15px !important;
+}
+.breadcrumb ul li a {
+  color: black;
+  text-decoration: none;
+  font-size: 22px;
+}
 .breadcram2 Breadcrumbs {
   padding-top: 20px;
   margin-left: 30px;
@@ -85,4 +94,32 @@
 
 .rightCounter {
   max-width: 80%;
+}
+
+.rightCounter .topStrip {
+  padding: 0px 25px;
+}
+.rightCounter .topStrip p {
+  font-size: 20px;
+}
+.rightCounter .Listbtn {
+  margin-left: auto;
+}
+.rightCounter .topStrip .tab_ {
+  /* width: 200px; */
+}
+.rightCounter .topStrip .tab_ .btn_ {
+  background: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 5px !important;
+  padding: 10px 20px !important;
+  color: rgba(0, 0, 0, 0.7);
+  text-transform: capitalize !;
+  font-size: 20px;
+  margin-left: 20px;
+  width: 100% !important;
+}
+
+.rightCounter .topStrip .tab_ .dropdownMenu {
+  top: 100%;
 }

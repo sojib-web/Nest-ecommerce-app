@@ -31,7 +31,7 @@ const Home = (props) => {
   useEffect(() => {
     productData.length !== 0 &&
       productData.map((item) => {
-        console.log(item);
+        // console.log(item);
         item.items.length !== 0 &&
           item.items.map((items_) => {
             // console.log(items_.cat_name);
@@ -48,7 +48,7 @@ const Home = (props) => {
   useEffect(() => {
     var arr = [];
     setActiveTabData(arr);
-    console.log(arr);
+    // console.log(arr);
     productData.length !== 0 &&
       productData.map((item, index) => {
         item.items.map((innerItem, index_) => {
@@ -115,7 +115,7 @@ const Home = (props) => {
           <div className="productRow ">
             {activeTabData.length !== 0 &&
               activeTabData.map((item, index) => {
-                console.log(item);
+                // console.log(item);
                 return (
                   <div className="item" key={index}>
                     <Product tag={item.type} item={item} />

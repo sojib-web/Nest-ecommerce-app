@@ -38,13 +38,19 @@ const Navbar = (props) => {
                   navData.map((item, index) => (
                     <li className="list-inline-item" key={index}>
                       <Button>
-                        <Link
-                          to={`/cat/${
+                        <a
+                          href={`/cat/${
                             item.cat_name ? item.cat_name.toLowerCase() : ""
                           }`}
+                          onClick={() =>
+                            sessionStorage.setItem(
+                              "cat",
+                              item.cat_name.toLowerCase()
+                            )
+                          }
                         >
                           {item.cat_name}
-                        </Link>
+                        </a>
                       </Button>
                       {item.items && item.items.length !== 0 && (
                         <div className="dropdown_menu">
@@ -52,14 +58,20 @@ const Navbar = (props) => {
                             {item.items.map((innerItem, innerIndex) => (
                               <li key={innerIndex}>
                                 <Button>
-                                  <Link
-                                    to={`/cat/${innerItem.cat_name.toLowerCase()}/${innerItem.cat_name.replace(
+                                  <a
+                                    href={`/cat/${innerItem.cat_name.toLowerCase()}/${innerItem.cat_name.replace(
                                       /\s/g,
                                       "-"
                                     )}`}
+                                    onClick={() =>
+                                      sessionStorage.setItem(
+                                        "cat",
+                                        item.cat_name.toLowerCase()
+                                      )
+                                    }
                                   >
                                     {innerItem.cat_name}
-                                  </Link>
+                                  </a>
                                 </Button>
                               </li>
                             ))}
@@ -127,27 +139,25 @@ const Navbar = (props) => {
                           return (
                             <div className="col" key={index}>
                               {item.cat_name && (
-                                <Link
-                                  to={`/cat/${item.cat_name.toLowerCase()}`}
-                                >
+                                <a href={`/cat/${item.cat_name.toLowerCase()}`}>
                                   <h4 className="text-g text-capitalize">
                                     {item.cat_name}
                                   </h4>
-                                </Link>
+                                </a>
                               )}
                               {item.items && item.items.length !== 0 && (
                                 <ul className="mt-4 mb-0">
                                   {item.items.map((innerItem, innerIndex) => (
                                     <li key={innerIndex}>
                                       {innerItem.cat_name && (
-                                        <Link
+                                        <a
                                           onClick={props.closeNav}
-                                          to={`/cat/${item.cat_name.toLowerCase()}/${innerItem.cat_name
+                                          href={`/cat/${item.cat_name.toLowerCase()}/${innerItem.cat_name
                                             .replace(/\s/g, "-")
                                             .toLowerCase()}`}
                                         >
                                           {innerItem.cat_name}
-                                        </Link>
+                                        </a>
                                       )}
                                     </li>
                                   ))}

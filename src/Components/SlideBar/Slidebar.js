@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../SlideBar/Slidebar.css";
 import CatImg from "../../Assets/images/category-1.svg";
 import Slider from "@mui/material/Slider";
@@ -14,12 +14,35 @@ function valuetext(value) {
 }
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
-const Slidebar = () => {
+
+const Slidebar = (props) => {
   const [value, setValue] = React.useState([0, 1000]);
+  const [totalLength, setTotallength] = useState([]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  var catLength = 0;
+  var lengthArray = [];
+  useEffect(() => {
+    props.data.length !== 0 &&
+      props.data.map((item, index) => {
+        item.items.length !== 0 &&
+          item.items.map((item_) => {
+            catLength += item_.products.length;
+          });
+        lengthArray.push(catLength);
+        // console.log(catLength);
+        catLength = 0;
+      });
+    const list = lengthArray.filter(
+      (item, index) => lengthArray.indexOf(item) === index
+    );
+    setTotallength(list);
+    // console.log(list);
+  });
+
   return (
     <div>
       <div className="sidebar">
@@ -27,7 +50,23 @@ const Slidebar = () => {
           <h3>Category</h3>
 
           <div className="catlist">
-            <div className="catItem d-flex align-items-center">
+            {props.data.length !== 0 &&
+              props.data.map((item, index) => {
+                return (
+                  <Link to={`/cat/${item.cat_name.toLowerCase()}`}>
+                    <div className="catItem d-flex align-items-center">
+                      <span className="img">
+                        <img src={CatImg} alt="" width={40} />
+                      </span>
+                      <h4 className="mb-0 ml-3 mr-3">{item.cat_name}</h4>
+                      <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
+                        {totalLength[index]}
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            {/* <div className="catItem d-flex align-items-center">
               <span className="img">
                 <img src={CatImg} alt="" width={40} />
               </span>
@@ -83,7 +122,7 @@ const Slidebar = () => {
               <span className="d-flex align-items-center   justify-content-center rounded-circle m-auto">
                 30
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
 
