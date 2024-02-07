@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./ProDetails.css";
 import BreadCrum from "../../BreadCrum/BreadCrum";
 import Rating from "@mui/material/Rating";
@@ -20,8 +20,9 @@ import Slidebar from "../../SlideBar/Slidebar";
 
 import tabImg from "../../../Assets/images/author-2.png";
 import Product from "../../Products/Product";
+import { Link, useParams } from "react-router-dom";
 
-const ProDetails = () => {
+const ProDetails = (props) => {
   const [zoomImage, setZoomImage] = useState(
     "https://nest-frontend.netlify.app/assets/imgs/shop/product-16-4.jpg"
   );
@@ -32,9 +33,16 @@ const ProDetails = () => {
   const [inputValue, setInputvalue] = useState(1);
 
   const [activeTabs, setActivetabs] = useState(0);
+  const [currentProduct, setCurrentProduct] = useState({});
+
+  const [productCat, setProductcat] = useState({
+    parentCat: sessionStorage.getItem("parentCat"),
+    subCatName: sessionStorage.getItem("subCatName"),
+  });
 
   const ZoomSlider = useRef();
   const ZoomSliderBig = useRef();
+  let { id } = useParams();
 
   const RelatesProducts = {
     dots: false,
@@ -59,7 +67,7 @@ const ProDetails = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 3,
     slidesToScroll: 1,
     fade: false,
     arrows: true,
@@ -84,15 +92,54 @@ const ProDetails = () => {
       setInputvalue(inputValue - 1);
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    props.data.length !== 0 &&
+      props.data.map((item) => {
+        item.items.length !== 0 &&
+          item.items.map((items_) => {
+            items_.products.length !== 0 &&
+              items_.products.map((product) => {
+                // console.log(product);
+                if (parseInt(product.id) === parseInt(id)) {
+                  setCurrentProduct(product);
+                  console.log(product);
+                }
+              });
+          });
+      });
+  }, [id]);
+
   return (
     <section className="detailsPage detailContainer">
       {/* breadcrum section  */}
       <div className="breadcrumbWrapper">
         <div className="container-fluid">
-          <BreadCrum />
+          <ul className="breadcrumd breadcrumb2 md-0">
+            <li>
+              <Link>Home</Link>
+            </li>
+            <li>
+              <Link
+                to={`/cat/${
+                  productCat.parentCat.split("").join("-").toLowerCase
+                }`}
+                className="text-capitalize"
+              >
+                {productCat.parentCat}
+              </Link>
+            </li>
+            <li>
+              <Link className="text-capitalize">{productCat.subCatName}</Link>
+            </li>
+            <li>{currentProduct.productName}</li>
+          </ul>
         </div>
       </div>
       {/* breadcrum section  end */}
+
+      {/* {console.log(currentProduct)} */}
       <div className="container detailContainer">
         <div className="row">
           {/* productZoom  Start here  */}
@@ -102,206 +149,133 @@ const ProDetails = () => {
               className="productZoomSlide"
               ref={ZoomSliderBig}
             >
-              <div className="productZoom">
-                <InnerImageZoom
-                  zoomType="hover"
-                  zoomScale={1}
-                  src={`${zoomImage}?im=Resize=(${bigImageSize[0]},${bigImageSize[0]})`}
-                />
-              </div>
+              {currentProduct.productImages !== undefined &&
+                currentProduct.productImages.map((imgUrl, index) => {
+                  return (
+                    <div className="productZoom">
+                      <InnerImageZoom
+                        zoomType="hover"
+                        zoomScale={1}
+                        src={`${imgUrl}?im=Resize=(${bigImageSize[0]},${bigImageSize[0]})`}
+                      />
+                    </div>
+                  );
+                })}
             </Slider>
             <Slider {...settings} className="productZoomSlide" ref={ZoomSlider}>
-              <div className="item">
-                <img
-                  src={`https://www.jiomart.com/images/product/original/490000073/tata-iodised-salt-1-kg-product-images-o490000073-p490000073-1-202302131739.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
-                  alt=""
-                  className="w-100"
-                  onClick={() =>
-                    goto(
-                      "https://www.jiomart.com/images/product/original/490000073/tata-iodised-salt-1-kg-product-images-o490000073-p490000073-1-202302131739.jpg",
-                      0
-                    )
-                  }
-                />
-              </div>
-
-              <div className="item">
-                <img
-                  src={`https://www.jiomart.com/images/product/original/491551493/good-life-sugar-m-1-kg-product-images-o491551493-p491551493-0-202204281542.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
-                  alt=""
-                  className="w-100"
-                  onClick={() =>
-                    goto(
-                      "https://www.jiomart.com/images/product/original/491551493/good-life-sugar-m-1-kg-product-images-o491551493-p491551493-0-202204281542.jpg",
-                      1
-                    )
-                  }
-                />
-              </div>
-              <div className="item">
-                <img
-                  src={`https://www.jiomart.com/images/product/original/491551493/good-life-sugar-m-1-kg-product-images-o491551493-p491551493-0-202204281542.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
-                  alt=""
-                  className="w-100"
-                  onClick={() =>
-                    goto(
-                      "https://www.jiomart.com/images/product/original/491551493/good-life-sugar-m-1-kg-product-images-o491551493-p491551493-0-202204281542.jpg",
-                      2
-                    )
-                  }
-                />
-              </div>
-              <div className="item">
-                <img
-                  src={`https://www.jiomart.com/images/product/original/491278308/priya-fortified-with-vitamin-a-d-refined-sunflower-oil-1-l-product-images-o491278308-p491278308-0-202203170524.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
-                  alt=""
-                  className="w-100"
-                  onClick={() =>
-                    goto(
-                      "https://www.jiomart.com/images/product/original/491278308/priya-fortified-with-vitamin-a-d-refined-sunflower-oil-1-l-product-images-o491278308-p491278308-0-202203170524.jpg",
-                      3
-                    )
-                  }
-                />
-              </div>
-              <div className="item">
-                <img
-                  src={`https://www.jiomart.com/images/product/original/491278308/priya-fortified-with-vitamin-a-d-refined-sunflower-oil-1-l-product-images-o491278308-p491278308-1-202203170524.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
-                  alt=""
-                  className="w-100"
-                  onClick={() =>
-                    goto(
-                      "https://www.jiomart.com/images/product/original/491278308/priya-fortified-with-vitamin-a-d-refined-sunflower-oil-1-l-product-images-o491278308-p491278308-1-202203170524.jpg",
-                      4
-                    )
-                  }
-                />
-              </div>
-
-              <div className="item">
-                <img
-                  src={`https://www.jiomart.com/images/product/original/490001387/amul-butter-100-g-carton-product-images-o490001387-p490001387-1-202203170403.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
-                  alt=""
-                  className="w-100"
-                  onClick={() =>
-                    goto(
-                      "https://www.jiomart.com/images/product/original/490001387/amul-butter-100-g-carton-product-images-o490001387-p490001387-1-202203170403.jpg",
-                      5
-                    )
-                  }
-                />
-              </div>
-              <div className="item">
-                <img
-                  src={`https://www.jiomart.com/images/product/original/490001387/amul-butter-100-g-carton-product-images-o490001387-p490001387-0-202203170403.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
-                  alt=""
-                  className="w-100"
-                  onClick={() =>
-                    goto(
-                      "https://www.jiomart.com/images/product/original/490001387/amul-butter-100-g-carton-product-images-o490001387-p490001387-0-202203170403.jpg",
-                      6
-                    )
-                  }
-                />
-              </div>
-              <div className="item">
-                <img
-                  src={`https://www.jiomart.com/images/product/original/490000363/maggi-2-minute-masala-noodles-70-g-product-images-o490000363-p490000363-0-202305292130.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
-                  alt=""
-                  className="w-100"
-                  onClick={() =>
-                    goto(
-                      "https://www.jiomart.com/images/product/original/490000363/maggi-2-minute-masala-noodles-70-g-product-images-o490000363-p490000363-0-202305292130.jpg",
-                      7
-                    )
-                  }
-                />
-              </div>
-              <div className="item">
-                <img
-                  src={`https://www.jiomart.com/images/product/original/490000363/maggi-2-minute-masala-noodles-70-g-product-images-o490000363-p490000363-2-202305292130.jpg?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
-                  alt=""
-                  className="w-100"
-                  onClick={() =>
-                    goto(
-                      "https://www.jiomart.com/images/product/original/490000363/maggi-2-minute-masala-noodles-70-g-product-images-o490000363-p490000363-2-202305292130.jpg",
-                      8
-                    )
-                  }
-                />
-              </div>
+              {currentProduct.productImages !== undefined &&
+                currentProduct.productImages.map((imgUrl, index) => {
+                  return (
+                    <div className="item">
+                      <img
+                        src={`${imgUrl}?im=Resize=(${smallImageSize[0]},${smallImageSize[1]})`}
+                        alt=""
+                        className="w-100"
+                        onClick={() => goto(index)}
+                      />
+                    </div>
+                  );
+                })}
             </Slider>
           </div>
           {/* productZoom  End here  */}
 
           {/* productInfo   Start here  */}
           <div className="col-md-7 product-info">
-            <h1>Seeds of Change Organic Quinoa,Brown</h1>
+            <h1>{currentProduct.productName}</h1>
             <div className="d-flex align-items-center mb-4">
-              <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+              <Rating
+                name="half-rating"
+                defaultValue={parseFloat(currentProduct.rating)}
+                precision={0.5}
+              />
               <span className="TextPro">(32 reviews)</span>
             </div>
             <div className="proPrice d-flex align-items-center">
-              <span>$38</span>
-              <span className="proPrice2 flex-column">$38</span>
+              <span>TK {currentProduct.price}</span>
+              <span className="proPrice2 flex-column">
+                TK {currentProduct.oldPrice}
+              </span>
             </div>
-            {/* <div className="offer flex-column ">
-                  <span className="Offer">26% Off</span>{" "}
-                </div> */}
+            <div className="offer flex-column ">
+              <span className="Offer">{currentProduct.discount} Offer</span>{" "}
+            </div>
+
+            {/* <div className="weight flex-column ">
+              <span className="weight">weight: {currentProduct.weight} </span>
+            </div> */}
+
             <div className="textPro2">
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Aliquam rem officia, Lorem ipsum dolor, sit amet consectetur
-                adipisicing elit. Aliquam rem officia, corrupti reiciendis
-                minima nisi modi, quasi, odio minus dolore impedit fuga eum
-                eligendi.
-              </p>
+              <p>{currentProduct.description}</p>
             </div>
-            <div className="SizeOption d-flex align-items-center ">
-              <span>Size / Weight: </span>
-              <ul className="list list-inline mb-0 ">
-                <li className="list-inline-item">
-                  <a
-                    className={`tag ${activeSize === 0 ? "active" : ""}`}
-                    onClick={() => isActive(1)}
-                  >
-                    56g
-                  </a>
-                </li>
-                <li className="list-inline-item">
-                  <a
-                    className={`tag ${activeSize === 1 ? "active" : ""}`}
-                    onClick={() => isActive(1)}
-                  >
-                    56g
-                  </a>
-                </li>{" "}
-                <li className="list-inline-item">
-                  <a
-                    className={`tag ${activeSize === 2 ? "active" : ""}`}
-                    onClick={() => isActive(2)}
-                  >
-                    34g
-                  </a>
-                </li>{" "}
-                <li className="list-inline-item">
-                  <a
-                    className={`tag ${activeSize === 3 ? "active" : ""}`}
-                    onClick={() => isActive(3)}
-                  >
-                    43g
-                  </a>
-                </li>{" "}
-                <li className="list-inline-item">
-                  <a
-                    className={`tag ${activeSize === 4 ? "active" : ""}`}
-                    onClick={() => isActive(4)}
-                  >
-                    12g
-                  </a>
-                </li>
-              </ul>
-            </div>
+
+            {currentProduct.weight !== undefined &&
+              currentProduct.weight.length && (
+                <div className="SizeOption d-flex align-items-center ">
+                  <span>Size / Weight: </span>
+                  <ul className="list list-inline mb-0 pl-4">
+                    {currentProduct.weight.map((item, index) => {
+                      return (
+                        <li className="list-inline-item">
+                          <a
+                            className={`tag ${
+                              activeSize === index ? "active" : ""
+                            }`}
+                            onClick={() => isActive(index)}
+                          >
+                            {item}g
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+
+            {currentProduct.RAM !== undefined && currentProduct.RAM.length && (
+              <div className="SizeOption d-flex align-items-center ">
+                <span>RAM: </span>
+                <ul className="list list-inline mb-0 pl-4">
+                  {currentProduct.RAM.map((RAM, index) => {
+                    return (
+                      <li className="list-inline-item">
+                        <a
+                          className={`tag ${
+                            activeSize === index ? "active" : ""
+                          }`}
+                          onClick={() => isActive(index)}
+                        >
+                          {RAM} GB
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+
+            {currentProduct.SIZE !== undefined &&
+              currentProduct.SIZE.length && (
+                <div className="SizeOption d-flex align-items-center ">
+                  <span>SIZE: </span>
+                  <ul className="list list-inline mb-0 pl-4">
+                    {currentProduct.SIZE.map((SIZE, index) => {
+                      return (
+                        <li className="list-inline-item">
+                          <a
+                            className={`tag ${
+                              activeSize === index ? "active" : ""
+                            }`}
+                            onClick={() => isActive(index)}
+                          >
+                            {SIZE}
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
 
             <div className="addcartSection pt-4 pb-4 d-flex align-items-center">
               <div className="counterSection mr-2">
@@ -335,17 +309,30 @@ const ProDetails = () => {
             <div className="customTabs pt-4">
               <ul className="list list-inline">
                 <li className="list-inline-item">
-                  <Button className={`${activeTabs === 0 && "active"}`} onClick={() => setActivetabs(0)}>Description</Button>
+                  <Button
+                    className={`${activeTabs === 0 && "active"}`}
+                    onClick={() => setActivetabs(0)}
+                  >
+                    Description
+                  </Button>
                 </li>
 
                 <li className="list-inline-item">
-                  <Button className={`${activeTabs === 1 && "active"}`} onClick={() => setActivetabs(1)}>
+                  <Button
+                    className={`${activeTabs === 1 && "active"}`}
+                    onClick={() => setActivetabs(1)}
+                  >
                     Additional info
                   </Button>
                 </li>
 
                 <li className="list-inline-item">
-                  <Button className={`${activeTabs === 2 && "active"}`} onClick={() => setActivetabs(2)}>Reviews (3)</Button>
+                  <Button
+                    className={`${activeTabs === 2 && "active"}`}
+                    onClick={() => setActivetabs(2)}
+                  >
+                    Reviews (3)
+                  </Button>
                 </li>
               </ul>
               <br />
@@ -358,12 +345,13 @@ const ProDetails = () => {
                     koala depending and much yikes off far quetzal goodness and
                     from for grimaced goodness unaccountably and meadowlark near
                     unblushingly crucial scallop tightly neurotic hungrily some
-                    and dear furiously this apart. Spluttered narrowly yikes left
-                    moth in yikes bowed this that grizzly much hello on spoon-fed
-                    that alas rethought much decently richly and wow against the
-                    frequent fluidly at formidable acceptably flapped besides and
-                    much circa far over the bucolically hey precarious goldfinch
-                    mastodon goodness gnashed a jellyfish and one however because.
+                    and dear furiously this apart. Spluttered narrowly yikes
+                    left moth in yikes bowed this that grizzly much hello on
+                    spoon-fed that alas rethought much decently richly and wow
+                    against the frequent fluidly at formidable acceptably
+                    flapped besides and much circa far over the bucolically hey
+                    precarious goldfinch mastodon goodness gnashed a jellyfish
+                    and one however because.
                   </p>
                   {/* </div> */}
 
@@ -375,12 +363,13 @@ const ProDetails = () => {
                     koala depending and much yikes off far quetzal goodness and
                     from for grimaced goodness unaccountably and meadowlark near
                     unblushingly crucial scallop tightly neurotic hungrily some
-                    and dear furiously this apart. Spluttered narrowly yikes left
-                    moth in yikes bowed this that grizzly much hello on spoon-fed
-                    that alas rethought much decently richly and wow against the
-                    frequent fluidly at formidable acceptably flapped besides and
-                    much circa far over the bucolically hey precarious goldfinch
-                    mastodon goodness gnashed a jellyfish and one however because.
+                    and dear furiously this apart. Spluttered narrowly yikes
+                    left moth in yikes bowed this that grizzly much hello on
+                    spoon-fed that alas rethought much decently richly and wow
+                    against the frequent fluidly at formidable acceptably
+                    flapped besides and much circa far over the bucolically hey
+                    precarious goldfinch mastodon goodness gnashed a jellyfish
+                    and one however because.
                   </p>
 
                   <br />
@@ -391,7 +380,8 @@ const ProDetails = () => {
                   <br />
                   <h2>Warnings</h2>
                   <p>
-                    Oil separation occurs naturally. May contain pieces of shell.
+                    Oil separation occurs naturally. May contain pieces of
+                    shell.
                   </p>
                 </div>
               )}
@@ -517,8 +507,8 @@ const ProDetails = () => {
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing
                             elit. Delectus, suscipit exercitationem accusantium
-                            obcaecati quos voluptate nesciunt facilis itaque modi
-                            commodi dignissimos sequi repudiandae minus ab
+                            obcaecati quos voluptate nesciunt facilis itaque
+                            modi commodi dignissimos sequi repudiandae minus ab
                             deleniti totam officia id incidunt?
                           </p>
                         </div>
@@ -548,8 +538,8 @@ const ProDetails = () => {
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing
                             elit. Delectus, suscipit exercitationem accusantium
-                            obcaecati quos voluptate nesciunt facilis itaque modi
-                            commodi dignissimos sequi repudiandae minus ab
+                            obcaecati quos voluptate nesciunt facilis itaque
+                            modi commodi dignissimos sequi repudiandae minus ab
                             deleniti totam officia id incidunt?
                           </p>
                         </div>
@@ -579,8 +569,8 @@ const ProDetails = () => {
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing
                             elit. Delectus, suscipit exercitationem accusantium
-                            obcaecati quos voluptate nesciunt facilis itaque modi
-                            commodi dignissimos sequi repudiandae minus ab
+                            obcaecati quos voluptate nesciunt facilis itaque
+                            modi commodi dignissimos sequi repudiandae minus ab
                             deleniti totam officia id incidunt?
                           </p>
                         </div>
@@ -649,35 +639,54 @@ const ProDetails = () => {
                         </div>
 
                         <br />
-
                       </div>
                       <div className="progressBarBox d-flex align-items-center">
                         <div className="progressBarSpan">
                           <span className="mr-3">5 Star</span>
                         </div>
-                        <div className="progress" style={{ width: '85%', height: '20px' }}>
-                          <div className="progressbar bg-success" style={{ width: '56%', height: '20px' }}>75</div>
+                        <div
+                          className="progress"
+                          style={{ width: "85%", height: "20px" }}
+                        >
+                          <div
+                            className="progressbar bg-success"
+                            style={{ width: "56%", height: "20px" }}
+                          >
+                            75
+                          </div>
                         </div>
-
-
                       </div>
 
                       <div className="progressBarBox d-flex align-items-center">
                         <div className="progressBarSpan">
                           <span className="mr-3">3 Star</span>
                         </div>
-                        <div className="progress" style={{ width: '85%', height: '20px' }}>
-                          <div className="progressbar bg-success" style={{ width: '60%', height: '20px' }}>60</div>
+                        <div
+                          className="progress"
+                          style={{ width: "85%", height: "20px" }}
+                        >
+                          <div
+                            className="progressbar bg-success"
+                            style={{ width: "60%", height: "20px" }}
+                          >
+                            60
+                          </div>
                         </div>
-
-
                       </div>
                       <div className="progressBarBox d-flex align-items-center">
                         <div className="progressBarSpan">
                           <span className="mr-3">4 Star</span>
                         </div>
-                        <div className="progress" style={{ width: '85%', height: '20px' }}>
-                          <div className="progressbar bg-success" style={{ width: '30%', height: '20px' }}>27</div>
+                        <div
+                          className="progress"
+                          style={{ width: "85%", height: "20px" }}
+                        >
+                          <div
+                            className="progressbar bg-success"
+                            style={{ width: "30%", height: "20px" }}
+                          >
+                            27
+                          </div>
                         </div>
                       </div>
 
@@ -685,26 +694,25 @@ const ProDetails = () => {
                         <div className="progressBarSpan">
                           <span className="mr-3">5 Star</span>
                         </div>
-                        <div className="progress" style={{ width: '85%', height: '20px' }}>
-                          <div className="progressbar bg-success" style={{ width: '75%', height: '20px' }}>75</div>
+                        <div
+                          className="progress"
+                          style={{ width: "85%", height: "20px" }}
+                        >
+                          <div
+                            className="progressbar bg-success"
+                            style={{ width: "75%", height: "20px" }}
+                          >
+                            75
+                          </div>
                         </div>
                       </div>
-
-
                     </div>
-
-
                   </div>
                 </div>
-
-
               )}
-
             </div>
           </div>
-
         </div>
-
       </div>
 
       <div className="RelatedProduct">

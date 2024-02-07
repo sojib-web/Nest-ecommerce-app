@@ -17,6 +17,10 @@ const Product = (props) => {
     setProductData(props.item);
   }, [props.item]);
 
+  const setProductCat = () => {
+    sessionStorage.getItem("parentCat", productData.parentCatName);
+    sessionStorage.getItem("subCatName", productData.subCatName);
+  };
   return (
     <div className="ProductThum">
       {props.tag !== null && props.tag !== undefined && (
@@ -24,7 +28,7 @@ const Product = (props) => {
       )}
       {productData !== undefined && (
         <>
-          <Link>
+          <Link to={`/product/${productData.id}`}>
             <div className="imgWrapper">
               <div className="p-4 wrapper mb-3 wrapper">
                 <img src={productData.catImg} className="w-100" alt="" />

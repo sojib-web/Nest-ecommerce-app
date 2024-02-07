@@ -38,8 +38,8 @@ const Navbar = (props) => {
                   navData.map((item, index) => (
                     <li className="list-inline-item" key={index}>
                       <Button>
-                        <a
-                          href={`/cat/${
+                        <Link
+                          to={`/cat/${
                             item.cat_name ? item.cat_name.toLowerCase() : ""
                           }`}
                           onClick={() =>
@@ -50,7 +50,7 @@ const Navbar = (props) => {
                           }
                         >
                           {item.cat_name}
-                        </a>
+                        </Link>
                       </Button>
                       {item.items && item.items.length !== 0 && (
                         <div className="dropdown_menu">
@@ -58,8 +58,8 @@ const Navbar = (props) => {
                             {item.items.map((innerItem, innerIndex) => (
                               <li key={innerIndex}>
                                 <Button>
-                                  <a
-                                    href={`/cat/${innerItem.cat_name.toLowerCase()}/${innerItem.cat_name.replace(
+                                  <Link
+                                    to={`/cat/${innerItem.cat_name.toLowerCase()}/${innerItem.cat_name.replace(
                                       /\s/g,
                                       "-"
                                     )}`}
@@ -71,7 +71,7 @@ const Navbar = (props) => {
                                     }
                                   >
                                     {innerItem.cat_name}
-                                  </a>
+                                  </Link>
                                 </Button>
                               </li>
                             ))}

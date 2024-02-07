@@ -48,13 +48,19 @@ const Home = (props) => {
   useEffect(() => {
     var arr = [];
     setActiveTabData(arr);
-    // console.log(arr);
     productData.length !== 0 &&
       productData.map((item, index) => {
         item.items.map((innerItem, index_) => {
           if (innerItem.cat_name === activeTab) {
+            innerItem.products.length !== 0 &&
+              innerItem.products.map((product) => {
+                arr.push({
+                  ...product,
+                  parentCatName: item.cat_name,
+                  subCatName: innerItem.cat_name,
+                });
+              });
             setActiveTabData(innerItem.products);
-            // console.log(innerItem.products);
           }
         });
       });

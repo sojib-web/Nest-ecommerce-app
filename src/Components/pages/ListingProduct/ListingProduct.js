@@ -14,12 +14,10 @@ const ListingProduct = (props) => {
 
   var itemsData = [];
 
-
-
-
   useEffect(() => {
     props.data.length !== 0 &&
       props.data.map((item) => {
+        // single page
         if (props.single === true) {
           if (item.cat_name.toLowerCase() === id.toLowerCase()) {
             item.items.length !== 0 &&
@@ -52,178 +50,176 @@ const ListingProduct = (props) => {
     setData(list);
   }, [id]);
 
-
-
-
-
   const filterByBrand = (keyword) => {
-
     props.data.length !== 0 &&
       props.data.map((item, index) => {
-
         //page == single cat
         if (props.single === true) {
-
           item.items.length !== 0 &&
             item.items.map((item_) => {
               item_.products.map((item__, index__) => {
                 if (item__.brand.toLowerCase() === keyword.toLowerCase()) {
                   //console.log(item__)
-                  itemsData.push({ ...item__, parentCatName: item.cat_name, subCatName: item_.cat_name })
+                  itemsData.push({
+                    ...item__,
+                    parentCatName: item.cat_name,
+                    subCatName: item_.cat_name,
+                  });
                 }
-
-
-              })
-
-            })
-
-
+              });
+            });
         }
         //page == double cat
         else {
           item.items.length !== 0 &&
             item.items.map((item_, index_) => {
               // console.log(item_.cat_name.replace(/[^A-Za-z]/g,"-").toLowerCase())
-              if (item_.cat_name.split(' ').join('-').toLowerCase() == id.split(' ').join('-').toLowerCase()) {
+              if (
+                item_.cat_name.split(" ").join("-").toLowerCase() ==
+                id.split(" ").join("-").toLowerCase()
+              ) {
                 item_.products.map((item__, index__) => {
                   if (item__.brand.toLowerCase() === keyword.toLowerCase()) {
-                    itemsData.push({ ...item__, parentCatName: item.cat_name, subCatName: item_.cat_name })
+                    itemsData.push({
+                      ...item__,
+                      parentCatName: item.cat_name,
+                      subCatName: item_.cat_name,
+                    });
                   }
-
-                })
-
+                });
               }
-            })
+            });
         }
+      });
 
-      })
-
-
-
-    const list2 = itemsData.filter((item, index) => itemsData.indexOf(item) === index);
+    const filterByBrandList = itemsData.filter(
+      (item, index) => itemsData.indexOf(item) === index
+    );
     //console.log(itemsData)
 
+    setData(filterByBrandList);
 
-    setData(list2);
-
-    window.scrollTo(0, 0)
-
-  }
-
-
-
-
+    window.scrollTo(0, 0);
+  };
 
   const filterBYPrice = (minValue, maxValue) => {
     props.data.length !== 0 &&
       props.data.map((item) => {
         // single page
         if (props.single === true) {
-          if (id.toLowerCase() === item.cat_name.toLowerCase()) {
+          if (id === item.cat_name.toLowerCase()) {
             item.items.length !== 0 &&
               item.items.map((items_) => {
                 items_.products.length !== 0 &&
                   items_.products.map((product) => {
-                    let price = parseInt(product.price.toString().replace(/,/g, '')
-                    )
+                    let price = parseInt(
+                      product.price.toString().replace(/,/g, "")
+                    );
                     if (minValue <= price && maxValue >= price) {
                       itemsData.push({
-                        ...product, parentCatName: item.cat_name,
-                        subCatName: item.cat_name
+                        ...product,
+                        parentCatName: item.cat_name,
+                        subCatName: item.cat_name,
                       });
                     }
-                  })
-              })
+                  });
+              });
           }
-        }
-        else {
+        } else {
           item.items.length !== 0 &&
             item.items.map((item_, index_) => {
-              if (item_.cat_name.split('').join('-').toLowerCase() == id.split('').join('-').toLowerCase()) {
+              if (
+                item_.cat_name.split("").join("-").toLowerCase() ==
+                id.split("").join("-").toLowerCase()
+              ) {
                 item_.products.map((product) => {
-                  let price = parseInt(product.price.toString().replace(/,/g, '')
-                  )
+                  let price = parseInt(
+                    product.price.toString().replace(/,/g, "")
+                  );
                   if (minValue <= price && maxValue >= price) {
                     itemsData.push({
-                      ...product, parentCatName: item.cat_name,
-                      subCatName: item.cat_name
+                      ...product,
+                      parentCatName: item.cat_name,
+                      subCatName: item.cat_name,
                     });
                   }
-                })
+                });
               }
-            })
+            });
         }
-      })
-    const list = itemsData.filter(
+      });
+    const filterBYPriceList = itemsData.filter(
       (item, index) => itemsData.indexOf(item) === index
     );
 
-    setData(list);
-  }
+    setData(filterBYPriceList);
+  };
 
   const filterByRating = (keyword) => {
-
     props.data.length !== 0 &&
       props.data.map((item, index) => {
-
         //page == single cat
         if (props.single === true) {
-
-          if (item.cat_name.toLowerCase() == id.toLowerCase()) {
-
-            item.items.length !== 0 &&
-              item.items.map((item_) => {
-                item_.products.map((item__, index__) => {
-                  itemsData.push({ ...item__, parentCatName: item.cat_name, subCatName: item_.cat_name })
-                })
-
-              })
-
-
-          }
+          item.items.length !== 0 &&
+            item.items.map((items_) => {
+              let rating = parseFloat(items_.rating);
+              if (rating === keyword) {
+                itemsData.push({
+                  ...items_,
+                  parentCatName: item.cat_name,
+                  subCatName: items_.cat_name,
+                });
+              }
+            });
         }
         //page == double cat
         else {
           item.items.length !== 0 &&
             item.items.map((item_, index_) => {
               // console.log(item_.cat_name.replace(/[^A-Za-z]/g,"-").toLowerCase())
-              if (item_.cat_name.split(' ').join('-').toLowerCase() == id.split(' ').join('-').toLowerCase()) {
+              if (
+                item_.cat_name.split(" ").join("-").toLowerCase() ==
+                id.split(" ").join("-").toLowerCase()
+              ) {
                 item_.products.map((item__, index__) => {
-
-                  itemsData.push({ ...item__, parentCatName: item.cat_name, subCatName: item_.cat_name })
-
-                })
-
+                  let rating = parseFloat(item__.rating);
+                  if (rating === keyword) {
+                    itemsData.push({
+                      ...item__,
+                      parentCatName: item.cat_name,
+                      subCatName: item_.cat_name,
+                    });
+                  }
+                });
               }
-            })
+            });
         }
+      });
 
-      })
+    const filterByRatingList = itemsData.filter(
+      (item, index) => itemsData.indexOf(item) === index
+    );
 
+    setData(filterByRatingList);
 
+    // Data?.map((item) => {
+    //   if (item.rating === keyword) {
+    //     itemsData.push({
+    //       ...item,
+    //       parentCatName: item.cat_name,
+    //       subCatName: item.cat_name,
+    //     });
+    //   }
+    // });
 
-
-    const list2 = itemsData.filter((item, index) => itemsData.indexOf(item) === index);
-
-    setData(list2);
-
-    data?.map((item) => {
-      if (item.rating === keyword) {
-        itemsData.push({ ...item, parentCatName: item.cat_name, subCatName: item.cat_name })
-      }
-    })
-
-
-    const list3 = itemsData.filter((item, index) => itemsData.indexOf(item) === index);
+    const list3 = itemsData.filter(
+      (item, index) => itemsData.indexOf(item) === index
+    );
 
     setData(list3);
 
-
-    window.scrollTo(0, 0)
-
-  }
-
-
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div>
@@ -246,9 +242,7 @@ const ListingProduct = (props) => {
               </li>
 
               {props.single === false && (
-                <li className="list-inline-item text-capitalize">
-                  {id}
-                </li>
+                <li className="list-inline-item text-capitalize">{id}</li>
               )}
             </ul>
           </div>
@@ -256,7 +250,13 @@ const ListingProduct = (props) => {
             <div className="row">
               <div className="col-md-3 slidebarWrapper">
                 {Data.length !== 0 && (
-                  <Slidebar data={props.data} currentcatData={Data} filterByBrand={filterByBrand} filterBYPrice={filterBYPrice} filterByRating={filterByRating} />
+                  <Slidebar
+                    data={props.data}
+                    currentcatData={Data}
+                    filterByBrand={filterByBrand}
+                    filterBYPrice={filterBYPrice}
+                    filterByRating={filterByRating}
+                  />
                 )}
               </div>
 
@@ -306,9 +306,7 @@ const ListingProduct = (props) => {
                       <Button
                         className="btn_ "
                         onClick={() => setisopenDown2(!isOpenDropDwon2)}
-                      >
-
-                      </Button>
+                      ></Button>
                       {isOpenDropDwon2 !== false && (
                         <ul className="dropdownMenu">
                           <li>
