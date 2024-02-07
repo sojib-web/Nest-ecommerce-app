@@ -36,9 +36,10 @@ const ProDetails = (props) => {
   const [currentProduct, setCurrentProduct] = useState({});
 
   const [productCat, setProductcat] = useState({
-    parentCat: sessionStorage.getItem("parentCat"),
-    subCatName: sessionStorage.getItem("subCatName"),
+    parentCat: sessionStorage.getItem("parentCat") || "",
+    subCatName: sessionStorage.getItem("subCatName") || "",
   });
+
 
   const ZoomSlider = useRef();
   const ZoomSliderBig = useRef();
@@ -104,7 +105,7 @@ const ProDetails = (props) => {
                 // console.log(product);
                 if (parseInt(product.id) === parseInt(id)) {
                   setCurrentProduct(product);
-                  console.log(product);
+                  // console.log(product);
                 }
               });
           });
@@ -122,16 +123,16 @@ const ProDetails = (props) => {
             </li>
             <li>
               <Link
-                to={`/cat/${
-                  productCat.parentCat.split("").join("-").toLowerCase
-                }`}
+                to={`/cat/${productCat.parentCat.split(" ").join("-").toLowerCase()}`}
+                onClick={() => sessionStorage.setItem('cat', productCat.parentCat.split(' ').join('-').toLowerCase())}
                 className="text-capitalize"
               >
                 {productCat.parentCat}
               </Link>
             </li>
             <li>
-              <Link className="text-capitalize">{productCat.subCatName}</Link>
+              <Link to={`/cat/${productCat.parentCat.toLowerCase()}/${productCat.parentCat.replace(/\s/g, '-').toLowerCase()}`}
+                onClick={() => sessionStorage.setItem('cat', productCat.parentCat.split('').join('-').toLowerCase())} className="text-capitalize">{productCat.subCatName}</Link>
             </li>
             <li>{currentProduct.productName}</li>
           </ul>
@@ -218,9 +219,8 @@ const ProDetails = (props) => {
                       return (
                         <li className="list-inline-item">
                           <a
-                            className={`tag ${
-                              activeSize === index ? "active" : ""
-                            }`}
+                            className={`tag ${activeSize === index ? "active" : ""
+                              }`}
                             onClick={() => isActive(index)}
                           >
                             {item}g
@@ -240,9 +240,8 @@ const ProDetails = (props) => {
                     return (
                       <li className="list-inline-item">
                         <a
-                          className={`tag ${
-                            activeSize === index ? "active" : ""
-                          }`}
+                          className={`tag ${activeSize === index ? "active" : ""
+                            }`}
                           onClick={() => isActive(index)}
                         >
                           {RAM} GB
@@ -263,9 +262,8 @@ const ProDetails = (props) => {
                       return (
                         <li className="list-inline-item">
                           <a
-                            className={`tag ${
-                              activeSize === index ? "active" : ""
-                            }`}
+                            className={`tag ${activeSize === index ? "active" : ""
+                              }`}
                             onClick={() => isActive(index)}
                           >
                             {SIZE}
