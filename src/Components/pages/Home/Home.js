@@ -60,10 +60,11 @@ const Home = (props) => {
                   subCatName: innerItem.cat_name,
                 });
               });
-            setActiveTabData(innerItem.products);
+            setActiveTabData(arr);
           }
         });
       });
+    // console.log(arr);
   }, [activeTab, activeTabData]);
   // console.log(activeTabData)
 

@@ -22,7 +22,7 @@ const Product = (props) => {
     sessionStorage.getItem("subCatName", productData.subCatName);
   };
   return (
-    <div className="ProductThum">
+    <div className="ProductThum" onClick={setProductCat}>
       {props.tag !== null && props.tag !== undefined && (
         <span className={`badge ${props.tag}`}>{props.tag}</span>
       )}
