@@ -122,16 +122,17 @@ const ProDetails = (props) => {
               if (prodCat.subCatName === item_.cat_name) {
                 item_.products.length !== 0 &&
                   item_.products.map((product, index) => {
-                    if (product.id !== parseInt(id)) {
-                      related_products.push(product);
-                    }
+                    if (product.id !== parseInt(id))
+                      related_products.push(product)
                   });
               }
             });
         }
       });
     if (related_products.length !== 0) {
+      // console.log(related_products)
       setRelatedProducts(related_products);
+
     }
   }, [id]);
 
@@ -265,9 +266,8 @@ const ProDetails = (props) => {
                       return (
                         <li className="list-inline-item">
                           <a
-                            className={`tag ${
-                              activeSize === index ? "active" : ""
-                            }`}
+                            className={`tag ${activeSize === index ? "active" : ""
+                              }`}
                             onClick={() => isActive(index)}
                           >
                             {item}g
@@ -287,9 +287,8 @@ const ProDetails = (props) => {
                     return (
                       <li className="list-inline-item">
                         <a
-                          className={`tag ${
-                            activeSize === index ? "active" : ""
-                          }`}
+                          className={`tag ${activeSize === index ? "active" : ""
+                            }`}
                           onClick={() => isActive(index)}
                         >
                           {RAM} GB
@@ -310,9 +309,8 @@ const ProDetails = (props) => {
                       return (
                         <li className="list-inline-item">
                           <Link
-                            className={`tag ${
-                              activeSize === index ? "active" : ""
-                            }`}
+                            className={`tag ${activeSize === index ? "active" : ""
+                              }`}
                             onClick={() => isActive(index)}
                           >
                             {SIZE}
@@ -489,98 +487,47 @@ const ProDetails = (props) => {
                     <div className="col-md-8">
                       <h3>Customer questions & answers</h3>
                       <br />
-                      <div className="card p-4 reviewsCard flex-row">
-                        <div className="image">
-                          <div className="rounded-circle">
-                            <img src={tabImg} alt="" />
-                          </div>
-                          <span className="text-g d-block text-center font-weight-bold">
-                            Selina
-                          </span>
-                        </div>
 
-                        <div className="info">
-                          <div className="d-flex align-items-center">
-                            <h6>january 2024 at 3:12 pm </h6>
-                            <div className="Rating">
-                              <Rating
-                                name="half-rating"
-                                defaultValue={2.5}
-                                precision={0.5}
-                              />
+                      {
+                        currentProduct?.reviews.length !== 0 &&
+                        currentProduct.reviews.map((review, index) => {
+                          console.log(review)
+                          return (
+                            <div className="card p-4 reviewsCard flex-row " key={index}>
+                              <div className="image">
+                                <div className="rounded-circle">
+                                  <img src={tabImg} alt="" />
+                                </div>
+                                <span className="text-g d-block text-center font-weight-bold">
+                                  Selina
+                                </span>
+                              </div>
+
+                              <div className="info">
+                                <div className="d-flex align-items-center">
+                                  <h6>january 2024 at 3:12 pm </h6>
+                                  <div className="Rating">
+                                    <Rating
+                                      name="half-rating"
+                                      Value={parseFloat(review.rating)}
+                                      precision={0.5}
+                                    />
+                                  </div>
+                                </div>
+                                <p>
+                                  {review.review}
+                                </p>
+                              </div>
                             </div>
-                          </div>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Delectus, suscipit exercitationem accusantium
-                            obcaecati quos voluptate nesciunt facilis itaque
-                            modi commodi dignissimos sequi repudiandae minus ab
-                            deleniti totam officia id incidunt?
-                          </p>
-                        </div>
-                      </div>
+                          )
+                        })
+                      }
 
-                      <div className="card p-4 reviewsCard flex-row">
-                        <div className="image">
-                          <div className="rounded-circle">
-                            <img src={tabImg} alt="" />
-                          </div>
-                          <span className="text-g d-block text-center font-weight-bold">
-                            Selina
-                          </span>
-                        </div>
 
-                        <div className="info">
-                          <div className="d-flex align-items-center">
-                            <h6>january 2024 at 3:12 pm </h6>
-                            <div className="Rating">
-                              <Rating
-                                name="half-rating"
-                                defaultValue={2.5}
-                                precision={0.5}
-                              />
-                            </div>
-                          </div>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Delectus, suscipit exercitationem accusantium
-                            obcaecati quos voluptate nesciunt facilis itaque
-                            modi commodi dignissimos sequi repudiandae minus ab
-                            deleniti totam officia id incidunt?
-                          </p>
-                        </div>
-                      </div>
 
-                      <div className="card p-4 reviewsCard flex-row">
-                        <div className="image">
-                          <div className="rounded-circle">
-                            <img src={tabImg} alt="" />
-                          </div>
-                          <span className="text-g d-block text-center font-weight-bold">
-                            Selina
-                          </span>
-                        </div>
 
-                        <div className="info">
-                          <div className="d-flex align-items-center">
-                            <h6>january 2024 at 3:12 pm </h6>
-                            <div className="Rating">
-                              <Rating
-                                name="half-rating"
-                                defaultValue={2.5}
-                                precision={0.5}
-                              />
-                            </div>
-                          </div>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Delectus, suscipit exercitationem accusantium
-                            obcaecati quos voluptate nesciunt facilis itaque
-                            modi commodi dignissimos sequi repudiandae minus ab
-                            deleniti totam officia id incidunt?
-                          </p>
-                        </div>
-                      </div>
+
+
                       <br />
                       <br />
                       <form className="reviewForm">
@@ -735,6 +682,8 @@ const ProDetails = (props) => {
                 </div>
               );
             })}
+
+
         </Slider>
       </div>
     </section>
