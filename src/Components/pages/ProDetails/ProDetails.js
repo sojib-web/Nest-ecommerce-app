@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./ProDetails.css";
-import BreadCrum from "../../BreadCrum/BreadCrum";
+// import Breadcrumb from "../../BreadCrum/BreadCrum";
 import Rating from "@mui/material/Rating";
 import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
@@ -35,20 +35,21 @@ const ProDetails = (props) => {
   const [activeTabs, setActivetabs] = useState(0);
   const [currentProduct, setCurrentProduct] = useState({});
 
-  const [productCat, setProductcat] = useState({
+  const [prodCat, setProdCat] = useState({
     parentCat: sessionStorage.getItem("parentCat"),
     subCatName: sessionStorage.getItem("subCatName"),
   });
 
+  const [relatedProducts, setRelatedProducts] = useState([]);
   const ZoomSlider = useRef();
   const ZoomSliderBig = useRef();
   let { id } = useParams();
 
   const RelatesProducts = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: 7,
+    slidesToShow: 5,
     slidesToScroll: 1,
     fade: false,
     arrows: true,
@@ -109,6 +110,29 @@ const ProDetails = (props) => {
               });
           });
       });
+
+    // relatated product
+    const related_products = [];
+
+    props.data.length !== 0 &&
+      props.data.map((item) => {
+        if (prodCat.parentCat === item.cat_name) {
+          item.items.length !== 0 &&
+            item.items.map((item_) => {
+              if (prodCat.subCatName === item_.cat_name) {
+                item_.products.length !== 0 &&
+                  item_.products.map((product, index) => {
+                    if (product.id !== parseInt(id)) {
+                      related_products.push(product);
+                    }
+                  });
+              }
+            });
+        }
+      });
+    if (related_products.length !== 0) {
+      setRelatedProducts(related_products);
+    }
   }, [id]);
 
   return (
@@ -116,53 +140,46 @@ const ProDetails = (props) => {
       {/* breadcrum section  */}
       <div className="breadcrumbWrapper">
         <div className="container-fluid">
-          <ul className="breadcrumd breadcrumb2 md-0">
+          <ul className="breadcrumb breadcrumb2 mb-0">
             <li>
-              <Link>Home</Link>
+              <Link>Home</Link>{" "}
             </li>
             <li>
               <Link
-                to={`/cat/${
-                  productCat.parentCat
-                    ? productCat.parentCat.split(" ").join("-").toLowerCase()
-                    : ""
-                }`}
+                to={`/cat/${prodCat.parentCat
+                  .split(" ")
+                  .join("-")
+                  .toLowerCase()}`}
                 onClick={() =>
                   sessionStorage.setItem(
                     "cat",
-                    productCat.parentCat
-                      ? productCat.parentCat.split(" ").join("-").toLowerCase()
-                      : ""
+                    prodCat.parentCat.split(" ").join("-").toLowerCase()
                   )
                 }
                 className="text-capitalize"
               >
-                {productCat.parentCat}
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={`/cat/${
-                  productCat.parentCat && productCat.subCatName
-                    ? productCat.parentCat.toLowerCase() +
-                      "/" +
-                      productCat.subCatName.replace(/\s/g, "-").toLowerCase()
-                    : ""
-                }`}
-                onClick={() =>
-                  sessionStorage.setItem(
-                    "cat",
-                    productCat.parentCat
-                      ? productCat.parentCat.split("").join("-").toLowerCase()
-                      : ""
-                  )
-                }
-                className="text-capitalize"
-              >
-                {productCat.subCatName}
-              </Link>
+                {prodCat.parentCat}
+              </Link>{" "}
             </li>
 
+            <li>
+              <li>
+                <Link
+                  to={`/cat/${prodCat.parentCat.toLowerCase()}/${prodCat.subCatName
+                    .replace(/\s/g, "-")
+                    .toLowerCase()}`}
+                  onClick={() =>
+                    sessionStorage.setItem(
+                      "cat",
+                      prodCat.subCatName.toLowerCase()
+                    )
+                  }
+                  className="text-capitalize"
+                >
+                  {prodCat.subCatName}
+                </Link>{" "}
+              </li>{" "}
+            </li>
             <li>{currentProduct.productName}</li>
           </ul>
         </div>
@@ -292,14 +309,14 @@ const ProDetails = (props) => {
                     {currentProduct.SIZE.map((SIZE, index) => {
                       return (
                         <li className="list-inline-item">
-                          <a
+                          <Link
                             className={`tag ${
                               activeSize === index ? "active" : ""
                             }`}
                             onClick={() => isActive(index)}
                           >
                             {SIZE}
-                          </a>
+                          </Link>
                         </li>
                       );
                     })}
@@ -370,49 +387,8 @@ const ProDetails = (props) => {
               {activeTabs === 0 && (
                 <div className="TabContents">
                   {/* <div className="TabcontentItem"> */}
-                  <p>
-                    Uninhibited carnally hired played in whimpered dear gorilla
-                    koala depending and much yikes off far quetzal goodness and
-                    from for grimaced goodness unaccountably and meadowlark near
-                    unblushingly crucial scallop tightly neurotic hungrily some
-                    and dear furiously this apart. Spluttered narrowly yikes
-                    left moth in yikes bowed this that grizzly much hello on
-                    spoon-fed that alas rethought much decently richly and wow
-                    against the frequent fluidly at formidable acceptably
-                    flapped besides and much circa far over the bucolically hey
-                    precarious goldfinch mastodon goodness gnashed a jellyfish
-                    and one however because.
-                  </p>
+                  <p>{currentProduct.description}</p>
                   {/* </div> */}
-
-                  <br />
-                  <h2>Packaging & Delivery</h2>
-                  <br />
-                  <p>
-                    Uninhibited carnally hired played in whimpered dear gorilla
-                    koala depending and much yikes off far quetzal goodness and
-                    from for grimaced goodness unaccountably and meadowlark near
-                    unblushingly crucial scallop tightly neurotic hungrily some
-                    and dear furiously this apart. Spluttered narrowly yikes
-                    left moth in yikes bowed this that grizzly much hello on
-                    spoon-fed that alas rethought much decently richly and wow
-                    against the frequent fluidly at formidable acceptably
-                    flapped besides and much circa far over the bucolically hey
-                    precarious goldfinch mastodon goodness gnashed a jellyfish
-                    and one however because.
-                  </p>
-
-                  <br />
-                  <h2>Suggested Use</h2>
-                  <p>
-                    Refrigeration not necessary. <br /> Stir before serving
-                  </p>
-                  <br />
-                  <h2>Warnings</h2>
-                  <p>
-                    Oil separation occurs naturally. May contain pieces of
-                    shell.
-                  </p>
                 </div>
               )}
 
@@ -751,32 +727,14 @@ const ProDetails = (props) => {
         </div>
         <hr />
         <Slider {...RelatesProducts} className="productSlider">
-          <div className="item">
-            <Product tag="new" />
-          </div>
-
-          <div className="item">
-            <Product tag="new" />
-          </div>
-          <div className="item">
-            <Product tag="new" />
-          </div>
-
-          <div className="item">
-            <Product tag="new" />
-          </div>
-          <div className="item">
-            <Product tag="new" />
-          </div>
-          <div className="item">
-            <Product tag="new" />
-          </div>
-          <div className="item">
-            <Product tag="new" />
-          </div>
-          <div className="item">
-            <Product tag="new" />
-          </div>
+          {relatedProducts.length !== 0 &&
+            relatedProducts.map((product, index) => {
+              return (
+                <div className="item" key={index}>
+                  <Product tag={product.type} item={product} />
+                </div>
+              );
+            })}
         </Slider>
       </div>
     </section>

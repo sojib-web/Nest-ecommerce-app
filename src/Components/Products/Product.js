@@ -18,8 +18,8 @@ const Product = (props) => {
   }, [props.item]);
 
   const setProductCat = () => {
-    sessionStorage.getItem("parentCat", productData.parentCatName);
-    sessionStorage.getItem("subCatName", productData.subCatName);
+    sessionStorage.setItem("parentCat", productData.parentCatName);
+    sessionStorage.setItem("subCatName", productData.subCatName);
   };
   return (
     <div className="ProductThum" onClick={setProductCat}>

@@ -7,6 +7,7 @@ import Product from "../../Products/Product";
 import bannerImg from "../../../Assets/images/banner 2.jpg";
 import Slider from "react-slick";
 import TopProducts from "./TopProducts/TopProducts";
+import { Link } from "react-router-dom";
 
 const Home = (props) => {
   const [productData, setprodData] = useState(props.data);
@@ -66,7 +67,8 @@ const Home = (props) => {
       });
     // console.log(arr);
   }, [activeTab, activeTabData]);
-  // console.log(activeTabData)
+
+  // console.log(activeTabData);
 
   const BestSellsArry = [];
   useEffect(() => {
@@ -101,7 +103,7 @@ const Home = (props) => {
                   // console.log(item)
                   return (
                     <li className="list-inline-item">
-                      <a
+                      <Link
                         className={`cursor text-capitalize ${
                           activeTabIndex === index ? "act" : ""
                         }`}
@@ -112,7 +114,7 @@ const Home = (props) => {
                         }}
                       >
                         {item}
-                      </a>
+                      </Link>
                     </li>
                   );
                 })}
