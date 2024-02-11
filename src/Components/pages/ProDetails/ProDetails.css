@@ -2,7 +2,6 @@
   width: 100%;
   height: auto;
   padding: 45px 0px;
-
 }
 
 .productZoom {
@@ -235,6 +234,10 @@ input[type="number"] {
   color: #3bb77e !important;
 }
 
+.TabContenets .info {
+  width: 80%;
+}
+
 /* 
 .card {
   border: 20px !important;
@@ -345,7 +348,6 @@ input[type="number"] {
 .reviewRating {
   margin-left: 20px;
 }
-
 
 .progressBarBox {
   margin-bottom: 20px;

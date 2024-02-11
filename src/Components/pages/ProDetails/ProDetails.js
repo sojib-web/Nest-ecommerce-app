@@ -21,6 +21,7 @@ import Slidebar from "../../SlideBar/Slidebar";
 import tabImg from "../../../Assets/images/author-2.png";
 import Product from "../../Products/Product";
 import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
 const ProDetails = (props) => {
   const [zoomImage, setZoomImage] = useState(
@@ -38,6 +39,15 @@ const ProDetails = (props) => {
   const [prodCat, setProdCat] = useState({
     parentCat: sessionStorage.getItem("parentCat"),
     subCatName: sessionStorage.getItem("subCatName"),
+  });
+
+  const [rating, setRating] = useState(0.0);
+  const [reviewsArr, setReviewsArr] = useState([]);
+  const [reviewFileds, setReviewFileds] = useState({
+    review: "",
+    name: "",
+    rating: 0.0,
+    productId: 0,
   });
 
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -123,7 +133,7 @@ const ProDetails = (props) => {
                 item_.products.length !== 0 &&
                   item_.products.map((product, index) => {
                     if (product.id !== parseInt(id))
-                      related_products.push(product)
+                      related_products.push(product);
                   });
               }
             });
@@ -132,9 +142,68 @@ const ProDetails = (props) => {
     if (related_products.length !== 0) {
       // console.log(related_products)
       setRelatedProducts(related_products);
-
     }
+
+    showReviews();
   }, [id]);
+
+  const changeInput = (name, value) => {
+    if (name === "rating") {
+      setRating(value);
+    }
+    setReviewFileds(() => ({
+      ...reviewFileds,
+      [name]: value,
+      productId: id,
+    }));
+  };
+
+  const reviews_Arr = [];
+  const submitReview = async (e) => {
+    e.preventDefault();
+
+    try {
+      await axios
+        .post("http://localhost:5000/productReviews", reviewFileds)
+        .then((response) => {
+          // console.log(response.data);
+          reviews_Arr.push(response.data);
+          setReviewFileds(() => ({
+            review: "",
+            name: "",
+            rating: 0.0,
+            productId: id,
+          }));
+        });
+    } catch (error) {
+      console.log("Error in Submitting Review", error);
+    }
+
+    showReviews();
+  };
+
+  const reviews_Arr2 = [];
+  const showReviews = async () => {
+    try {
+      await axios
+        .get("http://localhost:5000/productReviews")
+        .then((response) => {
+          if (response.data.length !== 0) {
+            response.data.map((item) => {
+              if (parseInt(item.productId) === parseInt(id)) {
+                reviews_Arr2.push(item);
+              }
+            });
+          }
+        });
+    } catch (error) {
+      console.log(error.message);
+    }
+
+    if (reviews_Arr2.length !== 0) {
+      setReviewsArr(reviews_Arr2);
+    }
+  };
 
   return (
     <section className="detailsPage detailContainer">
@@ -266,8 +335,9 @@ const ProDetails = (props) => {
                       return (
                         <li className="list-inline-item">
                           <a
-                            className={`tag ${activeSize === index ? "active" : ""
-                              }`}
+                            className={`tag ${
+                              activeSize === index ? "active" : ""
+                            }`}
                             onClick={() => isActive(index)}
                           >
                             {item}g
@@ -287,8 +357,9 @@ const ProDetails = (props) => {
                     return (
                       <li className="list-inline-item">
                         <a
-                          className={`tag ${activeSize === index ? "active" : ""
-                            }`}
+                          className={`tag ${
+                            activeSize === index ? "active" : ""
+                          }`}
                           onClick={() => isActive(index)}
                         >
                           {RAM} GB
@@ -309,8 +380,9 @@ const ProDetails = (props) => {
                       return (
                         <li className="list-inline-item">
                           <Link
-                            className={`tag ${activeSize === index ? "active" : ""
-                              }`}
+                            className={`tag ${
+                              activeSize === index ? "active" : ""
+                            }`}
                             onClick={() => isActive(index)}
                           >
                             {SIZE}
@@ -487,19 +559,23 @@ const ProDetails = (props) => {
                     <div className="col-md-8">
                       <h3>Customer questions & answers</h3>
                       <br />
+                      {/* {console.log(reviewsArr)} */}
 
-                      {
-                        currentProduct?.reviews.length !== 0 &&
-                        currentProduct.reviews.map((review, index) => {
-                          console.log(review)
+                      {reviewsArr.length !== 0 &&
+                        reviewsArr !== undefined &&
+                        reviewsArr.map((item, index) => {
+                          // console.log(review);
                           return (
-                            <div className="card p-4 reviewsCard flex-row " key={index}>
+                            <div
+                              className="card p-4 reviewsCard flex-row "
+                              key={index}
+                            >
                               <div className="image">
                                 <div className="rounded-circle">
                                   <img src={tabImg} alt="" />
                                 </div>
                                 <span className="text-g d-block text-center font-weight-bold">
-                                  Selina
+                                  {item.name}
                                 </span>
                               </div>
 
@@ -509,38 +585,31 @@ const ProDetails = (props) => {
                                   <div className="Rating">
                                     <Rating
                                       name="half-rating"
-                                      Value={parseFloat(review.rating)}
+                                      defaultValue={parseFloat(item.rating)}
                                       precision={0.5}
                                     />
                                   </div>
                                 </div>
-                                <p>
-                                  {review.review}
-                                </p>
+                                <p>{item.review}</p>
                               </div>
                             </div>
-                          )
-                        })
-                      }
-
-
-
-
-
+                          );
+                        })}
 
                       <br />
                       <br />
-                      <form className="reviewForm">
+                      <form className="reviewForm" onSubmit={submitReview}>
+                        {/* {console.log(rating)} */}
                         <h4>Add a review</h4>
-                        <Rating
-                          name="half-rating"
-                          defaultValue={2.5}
-                          precision={0.5}
-                        />
                         <div className="form-group">
                           <textarea
                             className="form-control from1"
                             placeholder="Write a reviews"
+                            value={reviewFileds.review}
+                            name="review"
+                            onChange={(e) =>
+                              changeInput(e.target.name, e.target.value)
+                            }
                           ></textarea>
                         </div>
                         <div className="row">
@@ -550,30 +619,40 @@ const ProDetails = (props) => {
                                 type="text"
                                 className="form-control"
                                 placeholder="Customer Name:"
-                                required
+                                value={reviewFileds.name}
+                                name="name"
+                                onChange={(e) =>
+                                  changeInput(e.target.name, e.target.value)
+                                }
                               />
                             </div>
                           </div>
                           <div className="col-md-6">
                             <div className="form-group">
-                              <input
-                                type="text"
-                                className="form-control"
-                                placeholder="Email  "
+                              <Rating
+                                name="rating"
+                                value={reviewFileds.rating}
+                                defaultValue={rating}
+                                precision={0.5}
+                                onChange={(e) =>
+                                  changeInput(e.target.name, e.target.value)
+                                }
                               />
                             </div>
                           </div>
                         </div>
-                        <div className="form-group">
+                        {/* <div className="form-group">
                           <input
                             type="text"
                             className="form-control"
                             placeholder="Website "
                           />
-                        </div>
+                        </div> */}
                         <br /> <br />
                         <div className="form-group">
-                          <Button className=" btn-border">Submit Review</Button>
+                          <Button type="submit" className=" btn-border">
+                            Submit Review
+                          </Button>
                         </div>
                       </form>
                     </div>
@@ -682,8 +761,6 @@ const ProDetails = (props) => {
                 </div>
               );
             })}
-
-
         </Slider>
       </div>
     </section>
