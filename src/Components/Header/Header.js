@@ -19,11 +19,14 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import Navbar from "./Navbar/Navbar";
 
+import { useContext } from "react";
+import { MyContext } from "../../App";
+
 const Header = (props) => {
   // console.log(props);
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const headerRef = useRef();
-
+  const context = useContext(MyContext);
   const [categories] = useState([
     "Milks and Dairies",
     "Clothing & beauty",
@@ -135,7 +138,7 @@ const Header = (props) => {
                         <span>
                           <img src={CartIcon} alt="" />
                           <span className="badge bg-success rounded-circle">
-                            3
+                            {context.cartItems.length}
                           </span>
                           Cart
                         </span>

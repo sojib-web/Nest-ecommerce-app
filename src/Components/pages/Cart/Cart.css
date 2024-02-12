@@ -1,0 +1,77 @@
+.cartSection {
+  width: 100%;
+  height: auto;
+  padding: 35px 0px;
+}
+
+.cartSection .clearCart {
+  margin-left: auto;
+  font-weight: 500;
+  font-size: 20px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.clearCart2 {
+  margin-left: auto;
+}
+
+.cartSection .clearCart svg {
+  font-size: 40px !important;
+  padding-right: 10px !important;
+  cursor: pointer;
+}
+
+.cartWrapper table thead {
+  background: rgb(184, 168, 168);
+  overflow: hidden;
+}
+.cartWrapper table thead th:first-child {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.cartWrapper table thead th:last-child {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.cartWrapper table tbody td .img {
+  width: 150px;
+  padding: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+.cartWrapper table tbody td {
+  vertical-align: middle;
+}
+
+.cartWrapper table tbody td span {
+  font-weight: 600;
+  font-size: 18px;
+}
+.cartWrapper table tbody td span .text-g {
+  font-size: bold;
+}
+
+.cartWrapper .info {
+  padding-left: 30px;
+}
+.cartWrapper .info a {
+  color: rgba(0, 0, 0, 0.7);
+  text-decoration: none;
+}
+
+/* span .text-light {
+  color: rgba(0, 0, 0, 0.7);
+} */
+
+.cartRightBox {
+  padding-left: 100px;
+  margin-top: 100px;
+  padding-right: 200px;
+}
+
+.btn-ss button {
+  width: 100%;
+}

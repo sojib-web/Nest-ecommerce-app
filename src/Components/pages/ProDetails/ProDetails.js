@@ -16,12 +16,13 @@ import { Button } from "@mui/material";
 import ProductionQuantityLimitsOutlinedIcon from "@mui/icons-material/ProductionQuantityLimitsOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
-import Slidebar from "../../SlideBar/Slidebar";
+// import Slidebar from "../../SlideBar/Slidebar";
 
 import tabImg from "../../../Assets/images/author-2.png";
 import Product from "../../Products/Product";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import QuantityBox from "../../../Components/QuantityBox/QuantityBox";
 
 const ProDetails = (props) => {
   const [zoomImage, setZoomImage] = useState(
@@ -155,6 +156,7 @@ const ProDetails = (props) => {
       ...reviewFileds,
       [name]: value,
       productId: id,
+      date: new Date().toLocaleString(),
     }));
   };
 
@@ -172,7 +174,8 @@ const ProDetails = (props) => {
             review: "",
             name: "",
             rating: 0.0,
-            productId: id,
+            productId: 0,
+            date: "",
           }));
         });
     } catch (error) {
@@ -395,14 +398,8 @@ const ProDetails = (props) => {
               )}
 
             <div className="addcartSection pt-4 pb-4 d-flex align-items-center">
-              <div className="counterSection mr-2">
-                <input type="number" value={inputValue}></input>
-                <span className=" arrow plus" onClick={plus}>
-                  <KeyboardArrowUpOutlinedIcon />
-                </span>
-                <span className=" arrow minus" onClick={minus}>
-                  <KeyboardArrowDownOutlinedIcon />
-                </span>
+              <div className="">
+                <QuantityBox />
               </div>
               <div className="btnProduct">
                 <Button className="addCart">
@@ -581,7 +578,7 @@ const ProDetails = (props) => {
 
                               <div className="info">
                                 <div className="d-flex align-items-center">
-                                  <h6>january 2024 at 3:12 pm </h6>
+                                  <h6>{item.date}</h6>
                                   <div className="Rating">
                                     <Rating
                                       name="half-rating"

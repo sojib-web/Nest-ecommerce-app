@@ -1,0 +1,194 @@
+import React, { useEffect, useState } from "react";
+import "./Cart.css";
+import { Link } from "react-router-dom";
+import DeleteSweepOutlinedIcon from "@mui/icons-material/DeleteSweepOutlined";
+import img from "../../../Assets/images/cat-9.png";
+
+import Rating from "@mui/material/Rating";
+import { Button } from "@mui/material";
+import axios from "axios";
+import QuantityBox from "../../QuantityBox/QuantityBox";
+import { useContext } from "react";
+import { MyContext } from "../../../App";
+
+const Cart = () => {
+  const [cartItems, setCartItems] = useState([]);
+  const context = useContext(MyContext);
+
+  useEffect(() => {
+    getCartData("http://localhost:5000/cartItems");
+  }, []);
+
+  const getCartData = async (url) => {
+    try {
+      await axios.get(url).then((response) => {
+        setCartItems(response.data);
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const deleteItem = async (id) => {
+    const respone = await axios.delete(`http://localhost:5000/cartItems/${id}`);
+    if (respone !== null) {
+      getCartData("http://localhost:5000/cartItems");
+      context.removeItemsFromCart(id);
+    }
+  };
+
+  return (
+    <>
+      <div className="breadcrumbWrapper mb-4">
+        <div className="container-fluid">
+          <ul className="breadcrumb breadcrumb2 mb-0">
+            <li>
+              <Link to={"/"}>Home </Link>
+            </li>
+            <li>Shop</li>
+            <li>Cart</li>
+          </ul>
+        </div>
+      </div>
+
+      <section className="cartSection mb-5">
+        <div className="container-fluid ">
+          <div className="row">
+            <div className="col-md-7">
+              <div className="d-flex align-items-center w-100">
+                <div className="left">
+                  <h1 className="hd mb-0">Your cart</h1>
+                  <p>
+                    There are <span className="text-g">3 </span> products in
+                    your Cart
+                  </p>
+                </div>
+                <span className="clearCart d-flex align-items-center">
+                  <DeleteSweepOutlinedIcon />
+                  Clear Cart
+                </span>
+              </div>
+
+              <div className="cartWrapper mt-4">
+                <div className="table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th>Products</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th>Remove</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cartItems.length !== 0 &&
+                        cartItems.map((item, index) => {
+                          return (
+                            <tr>
+                              <td>
+                                <div className="d-flex align-items-center">
+                                  <Link to={`/product/${item.id}`}>
+                                    <div className="img">
+                                      <img
+                                        // + "im=Resize=(400,400)"
+                                        src={item.catImg}
+                                        alt=""
+                                        className="w-100"
+                                      />
+                                    </div>
+                                  </Link>
+                                  <div className="info ">
+                                    <Link to={`/product/${item.id}`}>
+                                      <h4>{item.productName}</h4>
+                                    </Link>
+
+                                    <Rating
+                                      name="half-rating"
+                                      defaultValue={parseFloat(item.rating)}
+                                      precision={0.5}
+                                    />
+                                    <span className="">
+                                      {parseFloat(item.rating)}
+                                    </span>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                {" "}
+                                <span className="">
+                                  TK: {parseInt(item.price.split(",").join(""))}
+                                </span>
+                              </td>
+                              <td>
+                                <QuantityBox />
+                              </td>
+                              <td>
+                                <span className="text-g">TK 20.33</span>
+                              </td>
+                              <td>
+                                <span
+                                  className="clearCart d-flex align-items-center"
+                                  onClick={() => deleteItem(item.id)}
+                                >
+                                  <DeleteSweepOutlinedIcon />
+                                </span>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            {/* //col-md-5 start */}
+            <div className="col-md-5 cartRightBox">
+              <div className="cart">
+                <div className="d-flex align-items-center mb-3">
+                  <h5 className="mb-0">Subtotal</h5>
+                  <h3 className="ml-auto font-weight-bold clearCart2">
+                    <span className="text-g ">TK 257</span>
+                  </h3>
+                </div>
+              </div>
+
+              <div className="cart ">
+                <div className="d-flex align-items-center mb-3">
+                  <h5 className="mb-0">Shipping</h5>
+                  <h3 className="ml-auto font-weight-bold clearCart2">
+                    <span>Free</span>
+                  </h3>
+                </div>
+              </div>
+
+              <div className="cart">
+                <div className="d-flex align-items-center mb-3">
+                  <h5 className="mb-0">Location For </h5>
+                  <h3 className="ml-auto font-weight-bold clearCart2">
+                    <span>Bangladeh</span>
+                  </h3>
+                </div>
+              </div>
+              <div className="cart">
+                <div className="d-flex align-items-center mb-3">
+                  <h5 className="mb-0">Total</h5>
+                  <h3 className="ml-auto font-weight-bold clearCart2">
+                    <span className="text-g ">TK 257</span>
+                  </h3>
+                </div>
+              </div>
+              <br />
+              <div className="btn-ss">
+                <Button className="btn-g btn-lg">Proced to CheckOut</Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Cart;

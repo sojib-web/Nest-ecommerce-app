@@ -9,10 +9,12 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import { useState } from "react";
+import { useContext } from "react";
+import { MyContext } from "../../App";
 
 const Product = (props) => {
   const [productData, setProductData] = useState();
-
+  const context = useContext(MyContext);
   useEffect(() => {
     setProductData(props.item);
   }, [props.item]);
@@ -20,6 +22,11 @@ const Product = (props) => {
   const setProductCat = () => {
     sessionStorage.setItem("parentCat", productData.parentCatName);
     sessionStorage.setItem("subCatName", productData.subCatName);
+  };
+
+  const addTocart = (item) => {
+    context.addTocart(item);
+    console.log(item);
   };
   return (
     <div className="ProductThum" onClick={setProductCat}>
@@ -79,11 +86,14 @@ const Product = (props) => {
                 $ {productData.price}
               </span>
               <span className="oldPrice">$ {productData.oldPrice}</span>
-              <Button className="transition">
-                <ShoppingCartOutlinedIcon className="btnIcon" />
-                Add
-              </Button>
             </div>
+            <Button
+              className="transition w-100 mt-3"
+              onClick={() => addTocart(productData)}
+            >
+              <ShoppingCartOutlinedIcon className="btnIcon" />
+              Add
+            </Button>
           </div>
         </>
       )}
