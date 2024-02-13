@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import { Link } from "react-router-dom";
 import DeleteSweepOutlinedIcon from "@mui/icons-material/DeleteSweepOutlined";
-import img from "../../../Assets/images/cat-9.png";
+// import img from "../../../Assets/images/cat-9.png";
 
 import Rating from "@mui/material/Rating";
 import { Button } from "@mui/material";
@@ -23,6 +23,7 @@ const Cart = () => {
     try {
       await axios.get(url).then((response) => {
         setCartItems(response.data);
+        // console.log(response.data);
       });
     } catch (error) {
       console.log(error.message);
@@ -30,11 +31,30 @@ const Cart = () => {
   };
 
   const deleteItem = async (id) => {
-    const respone = await axios.delete(`http://localhost:5000/cartItems/${id}`);
-    if (respone !== null) {
+    const response = await axios.delete(
+      `http://localhost:5000/cartItems/${id}`
+    );
+    if (response !== null) {
       getCartData("http://localhost:5000/cartItems");
       context.removeItemsFromCart(id);
     }
+  };
+
+  const emptyCart = () => {
+    let response = null;
+    cartItems.length !== 0 &&
+      cartItems.map((item) => {
+        response = axios.delete(
+          `http://localhost:5000/cartItems/${parseInt(item.id)}`
+        );
+      });
+    if (response !== null) {
+      getCartData("http://localhost:5000/cartItems");
+      context.emptyCart();
+    }
+  };
+  const updateCart = (items) => {
+    setCartItems(items);
   };
 
   return (
@@ -59,11 +79,14 @@ const Cart = () => {
                 <div className="left">
                   <h1 className="hd mb-0">Your cart</h1>
                   <p>
-                    There are <span className="text-g">3 </span> products in
-                    your Cart
+                    There are <span className="text-g">{cartItems.length}</span>{" "}
+                    products in your Cart
                   </p>
                 </div>
-                <span className="clearCart d-flex align-items-center">
+                <span
+                  className="clearCart d-flex align-items-center"
+                  onClick={() => emptyCart()}
+                >
                   <DeleteSweepOutlinedIcon />
                   Clear Cart
                 </span>
@@ -121,10 +144,19 @@ const Cart = () => {
                                 </span>
                               </td>
                               <td>
-                                <QuantityBox />
+                                <QuantityBox
+                                  item={item}
+                                  cartItems={cartItems}
+                                  index={index}
+                                  updateCart={updateCart}
+                                />
                               </td>
                               <td>
-                                <span className="text-g">TK 20.33</span>
+                                <span className="text-g">
+                                  TK:
+                                  {parseInt(item.price.split(",").join("")) *
+                                    parseInt(item.quantity)}
+                                </span>
                               </td>
                               <td>
                                 <span

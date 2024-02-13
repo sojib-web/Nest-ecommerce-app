@@ -18,7 +18,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import Navbar from "./Navbar/Navbar";
-
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { MyContext } from "../../App";
 
@@ -136,10 +136,13 @@ const Header = (props) => {
 
                       <li className="list-inline-item">
                         <span>
-                          <img src={CartIcon} alt="" />
-                          <span className="badge bg-success rounded-circle">
-                            {context.cartItems.length}
-                          </span>
+                          <Link to={"/cart"}>
+                            {" "}
+                            <img src={CartIcon} alt="" />
+                            <span className="badge bg-success rounded-circle">
+                              {context.cartItems.length}
+                            </span>
+                          </Link>
                           Cart
                         </span>
                       </li>

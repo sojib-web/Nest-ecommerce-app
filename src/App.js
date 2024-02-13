@@ -19,6 +19,7 @@ function App() {
 
   useEffect(() => {
     getData("http://localhost:5000/productData");
+    getCartData("http://localhost:5000/cartItems");
   }, []);
 
   const getData = async (url) => {
@@ -32,6 +33,16 @@ function App() {
     }
   };
 
+  const getCartData = async (url) => {
+    try {
+      await axios.get(url).then((response) => {
+        setCartItems(response.data);
+        // console.log(response.data);
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   const addTocart = async (item) => {
     item.quantity = 1;
     try {
@@ -47,9 +58,20 @@ function App() {
     }
   };
 
+  const removeItemsFromCart = (id) => {
+    const arr = cartItems.filter((obj) => obj.id !== id);
+    setCartItems(arr);
+  };
+
+  const emptyCart = () => {
+    setCartItems([]);
+  };
+
   const value = {
     cartItems,
     addTocart,
+    removeItemsFromCart,
+    emptyCart,
   };
   return (
     productData.length !== 0 && (
