@@ -3,17 +3,18 @@ import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutl
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 
 const QuantityBox = (props) => {
-  const [inputValue, setInputvalue] = useState(1);
+
   const [cartItems, setCartItems] = useState([]);
 
-  useEffect(() => {
-    setCartItems(props.cartItems);
-    // setInputvalue(props.item.quantity);
-  }, [props.cartItems]);
+  const [inputValue, setInputValue] = useState(props.item?.quantity || 1);
+  // useEffect(() => {
+  //   setCartItems(props.cartItems);
+  //   // setInputvalue(props.item.quantity);
+  // }, [props.cartItems]);
 
-  const updateCart = (items) => {
-    setCartItems(items);
-  };
+  // const updateCart = (items) => {
+  //   setCartItems(items);
+  // };
 
   // const plus = () => {
   //   setInputvalue(inputValue + 1);
@@ -24,6 +25,36 @@ const QuantityBox = (props) => {
   //     setInputvalue(inputValue - 1);
   //   }
   // };
+
+
+
+  const incrementQuantity = () => {
+    const newValue = inputValue + 1;
+    setInputValue(newValue);
+    updateCartItem(newValue);
+  };
+
+
+  const decrementQuantity = () => {
+    if (inputValue > 1) {
+      const newValue = inputValue - 1;
+      setInputValue(newValue);
+      updateCartItem(newValue);
+    }
+  };
+
+
+  const updateCartItem = (newQuantity) => {
+    if (!props.item) {
+      return;
+    }
+    const updatedItems = props.cartItems.map((item, index) => {
+      return index === parseInt(props.index)
+        ? { ...item, quantity: newQuantity }
+        : item;
+    });
+    props.updateCart(updatedItems);
+  };
   return (
     <>
       <div className="addcartSection pt-4 pb-4 d-flex align-items-center">
@@ -31,20 +62,11 @@ const QuantityBox = (props) => {
           <input type="number" value={inputValue}></input>
           <span
             className=" arrow plus"
-            onClick={() => {
-              setInputvalue(inputValue + 1);
-              const innerCart = props.cartItems?.map((cartItem, key) => {
-                return key === parseInt(props.index)
-                  ? { ...cartItem, quantity: inputValue + 1 }
-                  : { ...cartItem };
-              });
-              updateCart(innerCart);
-              setCartItems(innerCart);
-            }}
+            onClick={incrementQuantity}
           >
             <KeyboardArrowUpOutlinedIcon />
           </span>
-          <span className=" arrow minus">
+          <span className=" arrow minus" onClick={decrementQuantity}>
             <KeyboardArrowDownOutlinedIcon />
           </span>
         </div>

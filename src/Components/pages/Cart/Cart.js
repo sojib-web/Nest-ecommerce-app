@@ -109,7 +109,7 @@ const Cart = () => {
                         cartItems.map((item, index) => {
                           return (
                             <tr>
-                              <td>
+                              <td width={'50%'}>
                                 <div className="d-flex align-items-center">
                                   <Link to={`/product/${item.id}`}>
                                     <div className="img">
@@ -137,7 +137,7 @@ const Cart = () => {
                                   </div>
                                 </div>
                               </td>
-                              <td>
+                              <td width={'20%'}>
                                 {" "}
                                 <span className="">
                                   TK: {parseInt(item.price.split(",").join(""))}
@@ -181,7 +181,10 @@ const Cart = () => {
                 <div className="d-flex align-items-center mb-3">
                   <h5 className="mb-0">Subtotal</h5>
                   <h3 className="ml-auto font-weight-bold clearCart2">
-                    <span className="text-g ">TK 257</span>
+                    <span className="text-g ">{
+                      cartItems.length !== 0 &&
+                      cartItems.map(item => parseInt(item.price.split(',').join('')) * item.quantity).reduce((total, value) => total + value, 0)
+                    }</span>
                   </h3>
                 </div>
               </div>
@@ -207,7 +210,10 @@ const Cart = () => {
                 <div className="d-flex align-items-center mb-3">
                   <h5 className="mb-0">Total</h5>
                   <h3 className="ml-auto font-weight-bold clearCart2">
-                    <span className="text-g ">TK 257</span>
+                    <span className="text-g ">TK {
+                      cartItems.length !== 0 &&
+                      cartItems.map(item => parseInt(item.price.split(',').join('')) * item.quantity).reduce((total, value) => total + value, 0)
+                    }</span>
                   </h3>
                 </div>
               </div>
