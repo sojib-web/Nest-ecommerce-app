@@ -11,6 +11,8 @@ import ProDetails from "./Components/pages/ProDetails/ProDetails";
 import Cart from "./Components/pages/Cart/Cart";
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import SignUp from "./Components/pages/SignUp/SignUp";
+import SignIn from "./Components/pages/SignIn/SignIn";
 
 const MyContext = createContext();
 function App() {
@@ -101,6 +103,8 @@ function App() {
             />
             <Route exact={true} path="/notFount" element={<NotFound />} />
             <Route exact={true} path="/cart" element={<Cart />} />
+            <Route exact={true} path="/SignIn" element={<SignIn />} />
+            <Route exact={true} path="/SignUp" element={<SignUp />} />
           </Routes>
           <Footer />
         </MyContext.Provider>

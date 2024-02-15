@@ -148,6 +148,12 @@ const Header = (props) => {
                       </li>
 
                       <li className="list-inline-item">
+                        <Link to={"/SignIn"}>
+                          <Button className=" btns btn-g">Sign In</Button>
+                        </Link>
+                      </li>
+
+                      {/* <li className="list-inline-item">
                         <span
                           onClick={() => setIsOpenDropDown(!isOpenDropDown)}
                         >
@@ -185,7 +191,7 @@ const Header = (props) => {
                             </li>
                           </ul>
                         )}
-                      </li>
+                      </li> */}
                     </ul>
                   </ClickAwayListener>
                 </div>

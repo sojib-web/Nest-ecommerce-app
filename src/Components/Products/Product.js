@@ -14,6 +14,7 @@ import { MyContext } from "../../App";
 
 const Product = (props) => {
   const [productData, setProductData] = useState();
+  const [isAdded, setIsAdded] = useState(false);
   const context = useContext(MyContext);
   useEffect(() => {
     setProductData(props.item);
@@ -26,6 +27,7 @@ const Product = (props) => {
 
   const addTocart = (item) => {
     context.addTocart(item);
+    setIsAdded(true);
     console.log(item);
   };
   return (
@@ -92,7 +94,7 @@ const Product = (props) => {
               onClick={() => addTocart(productData)}
             >
               <ShoppingCartOutlinedIcon className="btnIcon" />
-              Add
+              {isAdded === true ? "Added" : "Add"}
             </Button>
           </div>
         </>

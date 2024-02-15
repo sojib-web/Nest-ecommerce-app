@@ -3,8 +3,7 @@ import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutl
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 
 const QuantityBox = (props) => {
-
-  const [cartItems, setCartItems] = useState([]);
+  // const [cartItems, setCartItems] = useState([]);
 
   const [inputValue, setInputValue] = useState(props.item?.quantity || 1);
   // useEffect(() => {
@@ -26,14 +25,11 @@ const QuantityBox = (props) => {
   //   }
   // };
 
-
-
   const incrementQuantity = () => {
     const newValue = inputValue + 1;
     setInputValue(newValue);
     updateCartItem(newValue);
   };
-
 
   const decrementQuantity = () => {
     if (inputValue > 1) {
@@ -42,7 +38,6 @@ const QuantityBox = (props) => {
       updateCartItem(newValue);
     }
   };
-
 
   const updateCartItem = (newQuantity) => {
     if (!props.item) {
@@ -60,10 +55,7 @@ const QuantityBox = (props) => {
       <div className="addcartSection pt-4 pb-4 d-flex align-items-center">
         <div className="counterSection mr-2">
           <input type="number" value={inputValue}></input>
-          <span
-            className=" arrow plus"
-            onClick={incrementQuantity}
-          >
+          <span className=" arrow plus" onClick={incrementQuantity}>
             <KeyboardArrowUpOutlinedIcon />
           </span>
           <span className=" arrow minus" onClick={decrementQuantity}>

@@ -7,10 +7,7 @@ header {
 }
 
 .headerWrraper.fixed {
-
   top: -126px;
-
-
 }
 
 .headerWrraper {
@@ -22,8 +19,6 @@ header {
   width: 100%;
   z-index: 1000 !important;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-
-
 }
 
 .afterHeader {
@@ -123,6 +118,10 @@ header .headerTabs li span.badge {
   position: absolute;
   top: -25px;
   left: 8px;
+}
+
+.btns {
+  border-radius: 5px !important;
 }
 
 .dropdownMenu {

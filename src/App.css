@@ -33,7 +33,7 @@ body {
   text-transform: capitalize !important;
 }
 .btn-g:hover {
-  background: #fdc840;
+  background: #fdc840 !important;
 }
 
 .btn-lg {

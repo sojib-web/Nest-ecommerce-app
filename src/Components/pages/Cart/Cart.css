@@ -54,6 +54,13 @@
   font-size: bold;
 }
 
+.cartWrapper .btnLink a {
+  text-decoration: none;
+}
+.cartWrapper .btnLink svg {
+  font-size: 30px;
+  padding-right: 5px;
+}
 .cartWrapper .info {
   padding-left: 30px;
 }
@@ -74,4 +81,13 @@
 
 .btn-ss button {
   width: 100%;
+}
+
+.btn-sss button {
+  width: 21%;
+}
+
+.cartRightBox .cart2 {
+  position: sticky;
+  top: 150px;
 }

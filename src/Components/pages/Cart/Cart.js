@@ -10,35 +10,59 @@ import axios from "axios";
 import QuantityBox from "../../QuantityBox/QuantityBox";
 import { useContext } from "react";
 import { MyContext } from "../../../App";
-
+import KeyboardBackspaceOutlinedIcon from "@mui/icons-material/KeyboardBackspaceOutlined";
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const context = useContext(MyContext);
 
-  useEffect(() => {
-    getCartData("http://localhost:5000/cartItems");
-  }, []);
+  // useEffect(() => {
+  //   getCartData("http://localhost:5000/cartItems");
+  // }, []);
 
-  const getCartData = async (url) => {
+  // const getCartData = async (url) => {
+  //   try {
+  //     await axios.get(url).then((response) => {
+  //       setCartItems(response.data);
+  //       // console.log(response.data);
+  //     });
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+
+  // const deleteItem = async (id) => {
+  //   const response = await axios.delete(
+  //     `http://localhost:5000/cartItems/${id}`
+  //   );
+  //   if (response !== null) {
+  //     getCartData("http://localhost:5000/cartItems");
+  //     context.removeItemsFromCart(id);
+  //   }
+  // };
+
+  const fetchData = async () => {
     try {
-      await axios.get(url).then((response) => {
-        setCartItems(response.data);
-        // console.log(response.data);
-      });
+      const response = await axios.get("http://localhost:5000/cartItems");
+      console.log(response.data);
+      setCartItems(response.data);
     } catch (error) {
-      console.log(error.message);
+      console.error("Error fetching data:", error);
     }
   };
 
-  const deleteItem = async (id) => {
-    const response = await axios.delete(
-      `http://localhost:5000/cartItems/${id}`
-    );
-    if (response !== null) {
-      getCartData("http://localhost:5000/cartItems");
-      context.removeItemsFromCart(id);
+  const deletePost = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/cartItems/${id}`);
+      console.log("Post deleted:", id);
+      setCartItems(cartItems.map((item) => item.id !== id));
+    } catch (error) {
+      console.error("Error deleting post:", error);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const emptyCart = () => {
     let response = null;
@@ -49,7 +73,7 @@ const Cart = () => {
         );
       });
     if (response !== null) {
-      getCartData("http://localhost:5000/cartItems");
+      fetchData("http://localhost:5000/cartItems");
       context.emptyCart();
     }
   };
@@ -109,7 +133,7 @@ const Cart = () => {
                         cartItems.map((item, index) => {
                           return (
                             <tr>
-                              <td width={'50%'}>
+                              <td width={"50%"}>
                                 <div className="d-flex align-items-center">
                                   <Link to={`/product/${item.id}`}>
                                     <div className="img">
@@ -137,8 +161,7 @@ const Cart = () => {
                                   </div>
                                 </div>
                               </td>
-                              <td width={'20%'}>
-                                {" "}
+                              <td width={"20%"}>
                                 <span className="">
                                   TK: {parseInt(item.price.split(",").join(""))}
                                 </span>
@@ -161,7 +184,7 @@ const Cart = () => {
                               <td>
                                 <span
                                   className="clearCart d-flex align-items-center"
-                                  onClick={() => deleteItem(item.id)}
+                                  onClick={() => deletePost(item.id)}
                                 >
                                   <DeleteSweepOutlinedIcon />
                                 </span>
@@ -171,56 +194,85 @@ const Cart = () => {
                         })}
                     </tbody>
                   </table>
+
+                  <div className="btnLink">
+                    <Link to={"/"}>
+                      <div className="btn-sss d-flex align-items-center">
+                        <Button className="btn-g">
+                          {" "}
+                          <KeyboardBackspaceOutlinedIcon />
+                          Continue Shopping
+                        </Button>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* //col-md-5 start */}
             <div className="col-md-5 cartRightBox">
-              <div className="cart">
-                <div className="d-flex align-items-center mb-3">
-                  <h5 className="mb-0">Subtotal</h5>
-                  <h3 className="ml-auto font-weight-bold clearCart2">
-                    <span className="text-g ">{
-                      cartItems.length !== 0 &&
-                      cartItems.map(item => parseInt(item.price.split(',').join('')) * item.quantity).reduce((total, value) => total + value, 0)
-                    }</span>
-                  </h3>
+              <div className="cart2">
+                <div className="cart">
+                  <div className="d-flex align-items-center mb-3">
+                    <h5 className="mb-0">Subtotal</h5>
+                    <h3 className="ml-auto font-weight-bold clearCart2">
+                      <span className="text-g ">
+                        TK:
+                        {cartItems.length !== 0 &&
+                          cartItems
+                            .map(
+                              (item) =>
+                                parseInt(item.price.split(",").join("")) *
+                                item.quantity
+                            )
+                            .reduce((total, value) => total + value, 0)}
+                      </span>
+                    </h3>
+                  </div>
                 </div>
-              </div>
 
-              <div className="cart ">
-                <div className="d-flex align-items-center mb-3">
-                  <h5 className="mb-0">Shipping</h5>
-                  <h3 className="ml-auto font-weight-bold clearCart2">
-                    <span>Free</span>
-                  </h3>
+                <div className="cart ">
+                  <div className="d-flex align-items-center mb-3">
+                    <h5 className="mb-0">Shipping</h5>
+                    <h3 className="ml-auto font-weight-bold clearCart2">
+                      <span>Free</span>
+                    </h3>
+                  </div>
                 </div>
-              </div>
 
-              <div className="cart">
-                <div className="d-flex align-items-center mb-3">
-                  <h5 className="mb-0">Location For </h5>
-                  <h3 className="ml-auto font-weight-bold clearCart2">
-                    <span>Bangladeh</span>
-                  </h3>
+                <div className="cart">
+                  <div className="d-flex align-items-center mb-3">
+                    <h5 className="mb-0">Location For </h5>
+                    <h3 className="ml-auto font-weight-bold clearCart2">
+                      <span>Bangladeh</span>
+                    </h3>
+                  </div>
                 </div>
-              </div>
-              <div className="cart">
-                <div className="d-flex align-items-center mb-3">
-                  <h5 className="mb-0">Total</h5>
-                  <h3 className="ml-auto font-weight-bold clearCart2">
-                    <span className="text-g ">TK {
-                      cartItems.length !== 0 &&
-                      cartItems.map(item => parseInt(item.price.split(',').join('')) * item.quantity).reduce((total, value) => total + value, 0)
-                    }</span>
-                  </h3>
+                <div className="cart">
+                  <div className="d-flex align-items-center mb-3">
+                    <h5 className="mb-0">Total</h5>
+                    <h3 className="ml-auto font-weight-bold clearCart2">
+                      <span className="text-g ">
+                        TK:{" "}
+                        {cartItems.length !== 0 &&
+                          cartItems
+                            .map(
+                              (item) =>
+                                parseInt(item.price.split(",").join("")) *
+                                item.quantity
+                            )
+                            .reduce((total, value) => total + value, 0)}
+                      </span>
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="btn-ss d-flex align-items-center">
+                  <Button className="btn-g btn-lg">Proced to CheckOut</Button>
                 </div>
               </div>
               <br />
-              <div className="btn-ss">
-                <Button className="btn-g btn-lg">Proced to CheckOut</Button>
-              </div>
             </div>
           </div>
         </div>
