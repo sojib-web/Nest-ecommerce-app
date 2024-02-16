@@ -21,12 +21,17 @@ import Navbar from "./Navbar/Navbar";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { MyContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 const Header = (props) => {
   // console.log(props);
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const headerRef = useRef();
+
   const context = useContext(MyContext);
+  const history = useNavigate()
+
+
   const [categories] = useState([
     "Milks and Dairies",
     "Clothing & beauty",
@@ -75,7 +80,12 @@ const Header = (props) => {
         headerRef.current.classList.remove("fixed");
       }
     });
-  });
+  }, []);
+
+  const signOut = () => {
+    context.signOut();
+    history('/')
+  }
 
   return (
     <>
@@ -146,52 +156,55 @@ const Header = (props) => {
                           Cart
                         </span>
                       </li>
+                      {
+                        context.isLogin === 'true' ?
+                          <li className="list-inline-item">
+                            <span
+                              onClick={() => setIsOpenDropDown(!isOpenDropDown)}
+                            >
+                              <img src={AccoutIcon} alt="" />
+                              Account
+                            </span>
 
-                      <li className="list-inline-item">
-                        <Link to={"/SignIn"}>
-                          <Button className=" btns btn-g">Sign In</Button>
-                        </Link>
-                      </li>
+                            {isOpenDropDown !== false && (
+                              <ul className="dropdownMenu">
+                                <li>
+                                  <Button className="align-items-center">
+                                    <Person2OutlinedIcon /> My Account
+                                  </Button>
+                                </li>
+                                <li>
+                                  <Button>
+                                    {" "}
+                                    <LocalShippingOutlinedIcon /> Order Tracking
+                                  </Button>
+                                </li>
+                                <li>
+                                  <Button>
+                                    <FavoriteBorderOutlinedIcon /> My Wishlist
+                                  </Button>
+                                </li>
+                                <li>
+                                  <Button>
+                                    <SettingsOutlinedIcon /> Setting
+                                  </Button>
+                                </li>
+                                <li>
+                                  <Button onClick={signOut}>
+                                    <LogoutOutlinedIcon /> Sign out
+                                  </Button>
+                                </li>
+                              </ul>
+                            )}
+                          </li> : <li className="list-inline-item">
+                            <Link to={"/SignIn"}>
+                              <Button className=" btns btn-g">Sign In</Button>
+                            </Link>
+                          </li>
+                      }
 
-                      {/* <li className="list-inline-item">
-                        <span
-                          onClick={() => setIsOpenDropDown(!isOpenDropDown)}
-                        >
-                          <img src={AccoutIcon} alt="" />
-                          Account
-                        </span>
 
-                        {isOpenDropDown !== false && (
-                          <ul className="dropdownMenu">
-                            <li>
-                              <Button className="align-items-center">
-                                <Person2OutlinedIcon /> My Account
-                              </Button>
-                            </li>
-                            <li>
-                              <Button>
-                                {" "}
-                                <LocalShippingOutlinedIcon /> Order Tracking
-                              </Button>
-                            </li>
-                            <li>
-                              <Button>
-                                <FavoriteBorderOutlinedIcon /> My Wishlist
-                              </Button>
-                            </li>
-                            <li>
-                              <Button>
-                                <SettingsOutlinedIcon /> Setting
-                              </Button>
-                            </li>
-                            <li>
-                              <Button>
-                                <LogoutOutlinedIcon /> Sign out
-                              </Button>
-                            </li>
-                          </ul>
-                        )}
-                      </li> */}
+
                     </ul>
                   </ClickAwayListener>
                 </div>

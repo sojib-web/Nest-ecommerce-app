@@ -11,34 +11,13 @@ import QuantityBox from "../../QuantityBox/QuantityBox";
 import { useContext } from "react";
 import { MyContext } from "../../../App";
 import KeyboardBackspaceOutlinedIcon from "@mui/icons-material/KeyboardBackspaceOutlined";
+
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const context = useContext(MyContext);
+  const history = useNavigate()
 
-  // useEffect(() => {
-  //   getCartData("http://localhost:5000/cartItems");
-  // }, []);
-
-  // const getCartData = async (url) => {
-  //   try {
-  //     await axios.get(url).then((response) => {
-  //       setCartItems(response.data);
-  //       // console.log(response.data);
-  //     });
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
-
-  // const deleteItem = async (id) => {
-  //   const response = await axios.delete(
-  //     `http://localhost:5000/cartItems/${id}`
-  //   );
-  //   if (response !== null) {
-  //     getCartData("http://localhost:5000/cartItems");
-  //     context.removeItemsFromCart(id);
-  //   }
-  // };
 
   const fetchData = async () => {
     try {
@@ -62,7 +41,10 @@ const Cart = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+    if (context.isLogin !== 'true') {
+      history('/')
+    }
+  }, [context.isLogin, history]);
 
   const emptyCart = () => {
     let response = null;

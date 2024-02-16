@@ -14,14 +14,21 @@ import axios from "axios";
 import SignUp from "./Components/pages/SignUp/SignUp";
 import SignIn from "./Components/pages/SignIn/SignIn";
 
+import Loader from '../src/Assets/images/loading.gif'
+
 const MyContext = createContext();
 function App() {
   const [productData, setProductData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [isLogin, setisLogin] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getData("http://localhost:5000/productData");
     getCartData("http://localhost:5000/cartItems");
+
+    const is_login = localStorage.getItem('isLogin');
+    setisLogin(is_login)
   }, []);
 
   const getData = async (url) => {
@@ -29,6 +36,9 @@ function App() {
       await axios.get(url).then((respone) => {
         setProductData(respone.data);
         // console.log(respone.data);
+        setTimeout(() => {
+          setIsLoading(false)
+        }, 2000)
       });
     } catch (error) {
       console.log(error.message);
@@ -69,16 +79,34 @@ function App() {
     setCartItems([]);
   };
 
+  const signIn = () => {
+    const is_login = localStorage.getItem('isLogin');
+    setisLogin(is_login)
+  }
+
+  const signOut = () => {
+    localStorage.removeItem('isLogin')
+    setisLogin(false)
+  }
+
   const value = {
     cartItems,
+    isLogin,
     addTocart,
     removeItemsFromCart,
     emptyCart,
+    signOut,
+    signIn
   };
   return (
     productData.length !== 0 && (
       <BrowserRouter>
         <MyContext.Provider value={value}>
+          {
+            isLoading === true && <div className="loader">
+              <img src={Loader} alt="" />
+            </div>
+          }
           <Header data={productData} />
           <Routes>
             <Route

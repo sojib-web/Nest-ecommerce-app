@@ -11,6 +11,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../../FIrebase/Firebase";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+
 const auth = getAuth(app);
 
 const SignUp = () => {
@@ -46,6 +47,7 @@ const SignUp = () => {
   const onChangeField = (e) => {
     const name = e.target.name;
     const value = e.target.value;
+
     setFormFileds(() => ({
       ...fromFileds,
       [name]: value,
@@ -124,6 +126,7 @@ const SignUp = () => {
                     className="w-100"
                     onChange={onChangeField}
                     value={fromFileds.confirm_password}
+
                   />
                   <Button
                     className="Icon"
@@ -138,8 +141,8 @@ const SignUp = () => {
                 </div>
               </div>
 
-              <div className="form-groups mt-4 mb-4 w-100 " onClick={signUp}>
-                <Button className=" btn-g btn-lg w-100 mt-4 ">
+              <div className="form-groups mt-4 mb-4 w-100 ">
+                <Button className=" btn-g btn-lg w-100 mt-4" onClick={signUp} >
                   <p className="textCenter "> signUp</p>
                 </Button>
               </div>
