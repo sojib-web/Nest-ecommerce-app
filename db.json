@@ -1282,36 +1282,7 @@
   ],
   "cartItems": [
     {
-      "id": 3,
-      "productName": "Good Life Raw Peanuts 500 g",
-      "price": "89",
-      "oldPrice": "150",
-      "weight": [
-        50,
-        100,
-        150,
-        200,
-        250,
-        500
-      ],
-      "catImg": "https://www.jiomart.com/images/product/original/491278616/good-life-raw-peanuts-500-g-product-images-o491278616-p491278616-0-202306102242.jpg",
-      "discount": "16",
-      "brand": "Good Life",
-      "productImages": [
-        "https://www.jiomart.com/images/product/original/491278616/good-life-raw-peanuts-500-g-product-images-o491278616-p491278616-0-202306102242.jpg",
-        "https://www.jiomart.com/images/product/original/491278616/good-life-raw-peanuts-500-g-product-images-o491278616-p491278616-2-202306102242.jpg",
-        "https://www.jiomart.com/images/product/original/491278616/good-life-raw-peanuts-500-g-product-images-o491278616-p491278616-3-202306102243.jpg",
-        "https://www.jiomart.com/images/product/original/491278616/good-life-raw-peanuts-500-g-product-images-o491278616-p491278616-4-202306102243.jpg",
-        "https://www.jiomart.com/images/product/original/491278616/good-life-raw-peanuts-500-g-product-images-o491278616-p491278616-5-202306102243.jpg"
-      ],
-      "rating": 3.5,
-      "description": "Good Life Raw Peanuts is a healthy snack and the right choice for you. You can easily roast them at home. They are loaded with the goodness of health and taste. Peanut butter made with Peanuts clearly works well in sweet dishes, like cookies and brownies, which is why it pairs well with other sweeter foods like sweet potato. Buy Good Life Raw Peanuts online now!",
-      "parentCatName": "groceries",
-      "subCatName": "dals and pulses",
-      "quantity": 1
-    },
-    {
-      "id": 4,
+      "id": "4",
       "productName": "Tata Sampann Unpolished Chilka Moong 500 g",
       "price": "74",
       "oldPrice": "95",
@@ -1339,7 +1310,7 @@
       "quantity": 1
     },
     {
-      "id": 5,
+      "id": "5",
       "productName": "Good Life Moong Dal 1 kg",
       "price": "145",
       "oldPrice": "189",

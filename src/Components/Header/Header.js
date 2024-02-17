@@ -22,10 +22,15 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { MyContext } from "../../App";
 import { useNavigate } from "react-router-dom";
-
+import MenuIcon from '@mui/icons-material/Menu';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 const Header = (props) => {
   // console.log(props);
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [isopenSearch, setOpenSearch] = useState(false);
+
   const headerRef = useRef();
 
   const context = useContext(MyContext);
@@ -53,6 +58,7 @@ const Header = (props) => {
   // ...
 
   useEffect(() => {
+    // alert(windowWidth)
     getCountry("https://countriesnow.space/api/v0.1/countries");
   }, []);
 
@@ -87,18 +93,38 @@ const Header = (props) => {
     history('/')
   }
 
+  const openSearch = () => {
+    setOpenSearch(true)
+  }
   return (
     <>
       <div className="headerWrraper" ref={headerRef}>
         <header>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-sm-2">
-                <img src={Logo} alt="" />
+              <div className="col-sm-2 d-flex part1 align-items-center">
+                <Link to="/">
+                  <img src={Logo} alt="" />
+                </Link>
+                {
+                  windowWidth < 992 &&
+                  <div className=" navbarToggle d-flex align-items-center">
+                    <div className="location"><   LocationOnOutlinedIcon /></div>
+                    <div className="location" onClick={openSearch}><SearchIcon /></div>
+                    <div className="location "><MenuIcon /></div>
+                  </div>
+                }
               </div>
+
+
               {/* Headersearch Start here */}
-              <div className="col-sm-5">
-                <div className="headerSearch d-flex align-items-center">
+              <div className="col-sm-5 part2">
+                <div className={`headerSearch d-flex align-items-center ${isopenSearch === true ? 'open' : ''}`}>
+                  {
+                    windowWidth < 992 && <div className="closeSearch" onClick={() => setOpenSearch(false)} >
+                      <ArrowBackIosOutlinedIcon />
+                    </div>
+                  }
                   <Selectdrop
                     data={categories}
                     placeholder={"ALL Categories"}
@@ -112,7 +138,7 @@ const Header = (props) => {
                 </div>
               </div>
               {/* Headersearch Start here */}
-              <div className="col-sm-5 d-flex align-items-center">
+              <div className="col-sm-5 part3  d-flex align-items-center">
                 <div className="ml-auto d-flex align-items-center">
                   <div className="counrtyWrapper">
                     <Selectdrop

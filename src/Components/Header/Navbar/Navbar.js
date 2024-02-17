@@ -20,7 +20,7 @@ const Navbar = (props) => {
       <div className="container-fluid">
         <div className="row position-relative">
           <div className="col-sm-2 part1 d-flex align-items-center">
-            <Button className="bg-g text-white catTab">
+            <Button className="bg-g text-white catTab responsive_hide">
               <AppsOutlinedIcon /> &nbsp; Browse All Categories &nbsp;
               <KeyboardArrowDownIcon />
             </Button>
@@ -39,9 +39,8 @@ const Navbar = (props) => {
                     <li className="list-inline-item" key={index}>
                       <Button>
                         <Link
-                          to={`/cat/${
-                            item.cat_name ? item.cat_name.toLowerCase() : ""
-                          }`}
+                          to={`/cat/${item.cat_name ? item.cat_name.toLowerCase() : ""
+                            }`}
                           onClick={() =>
                             sessionStorage.setItem(
                               "cat",
