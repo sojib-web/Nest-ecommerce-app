@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import "./Responsive.css"
+import "./Responsive.css";
 import Header from "./Components/Header/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Components/pages/Home/Home";
@@ -15,7 +15,7 @@ import axios from "axios";
 import SignUp from "./Components/pages/SignUp/SignUp";
 import SignIn from "./Components/pages/SignIn/SignIn";
 
-import Loader from '../src/Assets/images/loading.gif'
+import Loader from "../src/Assets/images/loading.gif";
 
 const MyContext = createContext();
 function App() {
@@ -28,8 +28,8 @@ function App() {
     getData("http://localhost:5000/productData");
     getCartData("http://localhost:5000/cartItems");
 
-    const is_login = localStorage.getItem('isLogin');
-    setisLogin(is_login)
+    const is_login = localStorage.getItem("isLogin");
+    setisLogin(is_login);
   }, []);
 
   const getData = async (url) => {
@@ -38,8 +38,8 @@ function App() {
         setProductData(respone.data);
         // console.log(respone.data);
         setTimeout(() => {
-          setIsLoading(false)
-        }, 2000)
+          setIsLoading(false);
+        }, 2000);
       });
     } catch (error) {
       console.log(error.message);
@@ -81,14 +81,14 @@ function App() {
   };
 
   const signIn = () => {
-    const is_login = localStorage.getItem('isLogin');
-    setisLogin(is_login)
-  }
+    const is_login = localStorage.getItem("isLogin");
+    setisLogin(is_login);
+  };
 
   const signOut = () => {
-    localStorage.removeItem('isLogin')
-    setisLogin(false)
-  }
+    localStorage.removeItem("isLogin");
+    setisLogin(false);
+  };
 
   const value = {
     cartItems,
@@ -97,17 +97,17 @@ function App() {
     removeItemsFromCart,
     emptyCart,
     signOut,
-    signIn
+    signIn,
   };
   return (
     productData.length !== 0 && (
       <BrowserRouter>
         <MyContext.Provider value={value}>
-          {
-            isLoading === true && <div className="loader">
+          {isLoading === true && (
+            <div className="loader">
               <img src={Loader} alt="" />
             </div>
-          }
+          )}
           <Header data={productData} />
           <Routes>
             <Route

@@ -4,25 +4,18 @@
     flex: 0 0 100%;
   }
 
-
-
   .navbarToggle {
     width: 60px;
     margin-left: auto !important;
     margin-right: 120px;
-
   }
 
   .location {
-    margin-right: 15px;
+    margin-right: -10px;
   }
 
-
-
-
-
   .headerWrraper .part1 .navbarToggle svg {
-    font-size: 35px !important;
+    font-size: 30px !important;
     margin-right: auto !important;
   }
 
@@ -33,9 +26,6 @@
   .headerWrraper .d-flex.part3 {
     display: none !important;
   }
-
-
-
 }
 
 @media only screen and (min-width: 320px) and (max-width: 992px) {
@@ -50,11 +40,11 @@
   .headerSearch {
     position: fixed !important;
     top: 0px;
-    right: -100px;
+    right: -100%;
     opacity: 0;
     z-index: 100;
     width: 100%;
-    height: 100vh !important;
+    height: 100% !important;
     background: #fff;
     align-items: flex-start !important;
     flex-direction: column !important;
@@ -82,10 +72,12 @@
   }
 
   header .headerSearch .search .searchIcon {
-
     top: 22px !important;
     right: 10px !important;
+  }
 
+  header .logo {
+    width: 120px;
   }
 
   .closeSearch {
@@ -99,5 +91,83 @@
 
   .closeSearch svg {
     font-size: 35px !important;
+  }
+  .counrtyWrapper {
+    margin-left: 100px;
+  }
+
+  .openSelect {
+    margin-left: 20px;
+  }
+
+  .myAccDrop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: #3bb77e;
+    border-radius: 50%;
+    margin-left: 20px;
+  }
+  .myAccDrop svg {
+    color: #fff !important;
+    font-size: 20px !important;
+  }
+
+  header .headerTabs {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  nav {
+    width: 80% !important;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: -100%;
+    background: #fff;
+    z-index: 1000;
+    transition: all 0.3s;
+    opacity: 0;
+  }
+  nav.open {
+    opacity: 1;
+    right: 0px;
+  }
+  nav ul li {
+    width: 100%;
+    margin: 0px !important;
+  }
+
+  nav ul li button {
+    width: 100% !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+  }
+
+  .nav ul li button a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100%;
+  }
+  nav ul li button a svg {
+    margin-left: auto !important;
+    font-size: 30px !important;
+  }
+
+  nav ul li button * {
+    font-size: 25px !important;
+  }
+
+  .navbarOverlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: rgb(0, 0, 0, 0.5) !important;
+    z-index: 100;
+    display: none;
   }
 }

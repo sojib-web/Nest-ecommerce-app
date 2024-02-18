@@ -88,7 +88,7 @@ const Home = (props) => {
   }, []);
 
   return (
-    <div class="d-none">
+    <div>
       <SliderBanner />
       <CatSlider data={productData} />
       <Banner />
@@ -104,8 +104,9 @@ const Home = (props) => {
                   return (
                     <li className="list-inline-item">
                       <Link
-                        className={`cursor text-capitalize ${activeTabIndex === index ? "act" : ""
-                          }`}
+                        className={`cursor text-capitalize ${
+                          activeTabIndex === index ? "act" : ""
+                        }`}
                         onClick={() => {
                           // setActiveTabData([]);
                           setactivetab(item);
