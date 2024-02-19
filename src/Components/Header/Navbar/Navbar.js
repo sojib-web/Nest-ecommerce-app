@@ -7,10 +7,13 @@ import HeadphonesOutlinedIcon from "@mui/icons-material/HeadphonesOutlined";
 import image from "../../../Assets/images/banner-menu.png";
 
 import { Link } from "react-router-dom";
+import { MyContext } from "../../../App";
+import { useContext } from "react";
 
 const Navbar = (props) => {
   const [navData, setnavData] = useState([]);
   const [isOpenNavbar, setIsOpenNavbar] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     setnavData(props.data);
   }, []);
@@ -19,6 +22,7 @@ const Navbar = (props) => {
     setIsOpenNavbar(props.openNav);
   }, [props.openNav]);
 
+  const context = useContext(MyContext);
   return (
     <>
       {isOpenNavbar === true && (
@@ -148,6 +152,23 @@ const Navbar = (props) => {
                     </Button>
                   </li>
                 </ul>
+                {windowWidth < 992 && (
+                  <>
+                    {context.isLogin !== "true" && (
+                      <div className="pl-3 pr-3">
+                        <br />
+                        <Link to={"/SignIn"}>
+                          <Button
+                            onClick={props.closeNav}
+                            className="btn-g btn-lg w-100"
+                          >
+                            Sign In
+                          </Button>
+                        </Link>
+                      </div>
+                    )}
+                  </>
+                )}
               </nav>
             </div>
 

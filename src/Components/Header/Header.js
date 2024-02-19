@@ -28,6 +28,7 @@ import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 const Header = (props) => {
   // console.log(props);
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
+  const [isOpenAccDropDown, setisOpenAccDropDown] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isopenSearch, setOpenSearch] = useState(false);
   const [isOpenNavbar, setIsOpenNavbar] = useState(false);
@@ -113,6 +114,7 @@ const Header = (props) => {
 
   const closeNav = () => {
     setIsOpenNavbar(false);
+    setisOpenAccDropDown(false);
   };
   return (
     <>
@@ -159,7 +161,10 @@ const Header = (props) => {
                     </div>
 
                     {context.isLogin === "true" && (
-                      <div className="myAccDrop ">
+                      <div
+                        className="myAccDrop "
+                        onClick={() => setisOpenAccDropDown(!isOpenAccDropDown)}
+                      >
                         <PermIdentityOutlinedIcon />
                       </div>
                     )}
@@ -196,7 +201,7 @@ const Header = (props) => {
                 </div>
               </div>
               {/* Headersearch Start here */}
-              <div className="col-sm-5 part3  d-flex align-items-center">
+              <div className="col-sm-5 part3  d-flex align-items-center responsive_hide ">
                 <div className="ml-auto d-flex align-items-center">
                   <div className="counrtyWrapper">
                     <Selectdrop
@@ -298,6 +303,59 @@ const Header = (props) => {
         {/* data={props.data}  */}
       </div>
       <div className="afterHeader"></div>
+
+      {isOpenAccDropDown !== false && (
+        <>
+          <div className="navbarOverlay" onClick={closeNav}></div>
+          <ul className="dropdownMenu  dropdownMenuAcc">
+            <li>
+              <Button onClick={closeNav} className="align-items-center">
+                <Link to="">
+                  {" "}
+                  <Person2OutlinedIcon /> My Account
+                </Link>
+              </Button>
+            </li>
+
+            <li>
+              <Button onClick={closeNav}>
+                <Link to={"/cart"}>
+                  <img src={CartIcon} alt="" /> Cart
+                </Link>
+              </Button>
+            </li>
+            <li>
+              <Button onClick={closeNav}>
+                <Link to={"/cart"}>
+                  <img src={HeartIcon} alt="" /> My Wishlist
+                </Link>
+              </Button>
+            </li>
+            <li>
+              <Button onClick={closeNav}>
+                <Link to="">
+                  <LocalShippingOutlinedIcon /> Order Tracking
+                </Link>
+              </Button>
+            </li>
+
+            <li>
+              <Button onClick={closeNav}>
+                <Link to="">
+                  <SettingsOutlinedIcon /> Setting
+                </Link>
+              </Button>
+            </li>
+            <li>
+              <Button onClick={signOut}>
+                <Link to="" onClick={closeNav}>
+                  <LogoutOutlinedIcon /> Sign out
+                </Link>
+              </Button>
+            </li>
+          </ul>
+        </>
+      )}
     </>
   );
 };

@@ -23,6 +23,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [isLogin, setisLogin] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     getData("http://localhost:5000/productData");
@@ -93,6 +94,7 @@ function App() {
   const value = {
     cartItems,
     isLogin,
+    windowWidth,
     addTocart,
     removeItemsFromCart,
     emptyCart,

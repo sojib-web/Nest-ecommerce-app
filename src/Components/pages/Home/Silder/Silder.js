@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "./Silder.css";
 import Slider1 from "../../../../Assets/images/slider-1.png";
 import Slider2 from "../../../../Assets/images/slider-2.png";
 import NewsLetter from "../../../NewsLetter/NewsLetter";
-
-
-
+import { MyContext } from "../../../../App";
+import { useContext } from "react";
 
 const Silder = () => {
+  const context = useContext(MyContext);
   const settings = {
     dots: true,
     infinite: true,
@@ -16,8 +16,9 @@ const Silder = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     fade: true,
-    arrows: true,
+    arrows: context.windowWidth > 992 ? true : false,
   };
+
   return (
     <section className="homeSilder">
       <div className="container-fluid position-relative">
@@ -43,7 +44,7 @@ const Silder = () => {
             </div>
           </div>
         </Slider>
-        <NewsLetter />
+        {context.windowWidth > 992 && <NewsLetter />}
       </div>
     </section>
   );

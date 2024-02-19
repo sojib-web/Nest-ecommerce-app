@@ -3,9 +3,13 @@ import "./CatSlider.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 
+import { MyContext } from "../../App";
+import { useContext } from "react";
+
 const CatSlider = (props) => {
   const [allData, setAlldata] = useState(props.data);
   const [totalLength, setTotallength] = useState([]);
+  const context = useContext(MyContext);
 
   const [itemBg, setItemBg] = useState([
     "#ffffceb",
@@ -31,10 +35,13 @@ const CatSlider = (props) => {
     dots: false,
     infinite: false,
     speed: 500,
+    autoplaySpeed: 1000,
     slidesToShow: 10,
     slidesToScroll: 1,
     fade: false,
-    arrows: true,
+    arrows: context.windowWidth > 992 ? true : false,
+    autoplay: context.windowWidth > 992 ? 2000 : false,
+    centerMode: context.windowWidth > 992 ? true : false,
   };
 
   var catLength = 0;
