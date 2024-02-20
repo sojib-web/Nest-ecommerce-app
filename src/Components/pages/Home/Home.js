@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SliderBanner from "./Silder/Silder";
 import CatSlider from "../../CatSlider/CatSlider";
 import Banner from "../../Banner/Banner";
@@ -8,6 +8,8 @@ import bannerImg from "../../../Assets/images/banner 2.jpg";
 import Slider from "react-slick";
 import TopProducts from "./TopProducts/TopProducts";
 import { Link } from "react-router-dom";
+import { MyContext } from "../../../App";
+import { useContext } from "react";
 
 const Home = (props) => {
   const [productData, setprodData] = useState(props.data);
@@ -18,14 +20,17 @@ const Home = (props) => {
 
   const [BestSells, setBestSell] = useState([]);
 
+  const [isLoadingProduct, setisLoadingProduct] = useState(false);
+  const context = useContext(MyContext);
+
   const settings = {
-    dots: false,
-    infinite: true,
+    dots: context.windowWidth < 992 ? false : true,
+    infinite: false,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
     fade: false,
-    arrows: true,
+    arrows: context.windowWidth < 992 ? false : true,
   };
   const catArr = [];
 
@@ -62,6 +67,9 @@ const Home = (props) => {
                 });
               });
             setActiveTabData(arr);
+            setTimeout(() => {
+              setisLoadingProduct(false);
+            }, [1000]);
           }
         });
       });
@@ -87,6 +95,8 @@ const Home = (props) => {
     setBestSell(BestSellsArry);
   }, []);
 
+  useEffect(() => {}, [isLoadingProduct]);
+
   return (
     <div>
       <SliderBanner />
@@ -95,9 +105,9 @@ const Home = (props) => {
 
       <section className="homeProducts">
         <div className="container-fluid">
-          <div className="d-flex align-items-center ">
-            <h2 className="hd mb-0 mt-0 ">Popular Products</h2>
-            <ul className=" list list-inline ml-auto filterTab mb-0">
+          <div className="d-flex align-items-center homeProductsTitleWrapper ">
+            <h2 className="hd mb-0 mt-0 res_full ">Popular Products</h2>
+            <ul className=" list list-inline ml-auto filterTab mb-0 res_full">
               {catArry.length !== 0 &&
                 catArry.map((item, index) => {
                   // console.log(item)
@@ -111,6 +121,7 @@ const Home = (props) => {
                           // setActiveTabData([]);
                           setactivetab(item);
                           setactiveTabIndex(index);
+                          setisLoadingProduct(true);
                         }}
                       >
                         {item}
@@ -121,7 +132,9 @@ const Home = (props) => {
             </ul>
           </div>
 
-          <div className="productRow ">
+          <div
+            className={`productRow ${isLoadingProduct === true && "loading"}`}
+          >
             {activeTabData.length !== 0 &&
               activeTabData.map((item, index) => {
                 // console.log(item);
@@ -139,23 +152,11 @@ const Home = (props) => {
         <div className="container-fluid">
           <div className="d-flex align-items-center ">
             <h2 className="hd mb-0 mt-0 ">Daily Best Sells</h2>
-            <ul className=" list list-inline ml-auto filterTab mb-0">
-              {/* <li className="list-inline-item">
-                <a className="cursor">Featured </a>
-              </li>
-
-              <li className="list-inline-item">
-                <a className="cursor">Popular </a>
-              </li>
-
-              <li className="list-inline-item">
-                <a className="cursor">New addd </a>
-              </li> */}
-            </ul>
+            <ul className=" list list-inline ml-auto filterTab mb-0"></ul>
           </div>
-          <br /> <br />
+          <br className="responsive_hide" /> <br className="responsive_hide" />
           <div className="row">
-            <div className="col-md-3 sliderbannerImage">
+            <div className="col-md-3 sliderbannerImage responsive_hide">
               <img src={bannerImg} alt="" className="w-100" />
             </div>
 

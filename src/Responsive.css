@@ -65,6 +65,9 @@
   .responsive_hide {
     display: none !important;
   }
+  .res_full {
+    width: 100%;
+  }
 
   .headerWrraper .part1 {
     max-width: 100%;
@@ -281,12 +284,14 @@
 
   .hd {
     margin-bottom: 15px !important;
+    width: 100% !important;
   }
 
   .BannerSection .row {
-    display: block !;
     white-space: nowrap !important;
     overflow-x: scroll !important;
+    width: 100%;
+    padding-left: 30px;
   }
 
   .BannerSection .row::-webkit-scrollbar {
@@ -297,5 +302,76 @@
     width: 400px !important;
     float: none !important;
     display: inline-block !important;
+  }
+
+  .homeProductsTitleWrapper {
+    flex-direction: column;
+  }
+
+  .homeProductsTitleWrapper h2 {
+    width: 100% !important;
+  }
+
+  .homeProducts .filterTab {
+    white-space: nowrap;
+    overflow-x: scroll;
+    width: 100%;
+    display: block !important;
+    margin-top: 10px !important;
+  }
+  .homeProducts .filterTab li {
+    display: inline-block !important;
+    vertical-align: top;
+    width: max-content;
+    margin-left: 0px !important;
+    margin-right: 20px !important;
+  }
+
+  .homeProducts .productRow {
+    white-space: nowrap;
+    overflow-x: scroll !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  .homeProducts .productRow .item {
+    width: 400px !important;
+    vertical-align: top !important;
+    display: inline-block !important;
+    margin-left: 10px !important;
+  }
+
+  .homeProducts .productRow .item * {
+    white-space: normal !important;
+  }
+  /* .homeProductsRow2 .col-md-9 {
+    width: 100% !important;
+  }
+  .homeProductsRow2 {
+    width: 100% !important;
+  } */
+
+  /* .homeProductsRow2 .slick-track {
+    overflow-x: scroll !important;
+    width: 100% !important;
+    display: block !important;
+  } */
+  .homeProductsRow2 .col-md-9 {
+    width: 100% !important;
+  }
+  .homeProductsRow2 .slick-track {
+    white-space: nowrap;
+    overflow-x: scroll;
+    display: block !important;
+  }
+
+  .homeProductsRow2 .slick-track .slick-slide {
+    width: 400px !important;
+    vertical-align: top !important;
+    display: inline-block !important;
+    float: none !important;
+  }
+  .homeProductsRow2 .slick-track .slick-slide * {
+    white-space: normal !important;
   }
 }

@@ -1282,36 +1282,7 @@
   ],
   "cartItems": [
     {
-      "id": 3,
-      "productName": "Good Life Raw Peanuts 500 g",
-      "price": "89",
-      "oldPrice": "150",
-      "weight": [
-        50,
-        100,
-        150,
-        200,
-        250,
-        500
-      ],
-      "catImg": "https://www.jiomart.com/images/product/original/491278616/good-life-raw-peanuts-500-g-product-images-o491278616-p491278616-0-202306102242.jpg",
-      "discount": "16",
-      "brand": "Good Life",
-      "productImages": [
-        "https://www.jiomart.com/images/product/original/491278616/good-life-raw-peanuts-500-g-product-images-o491278616-p491278616-0-202306102242.jpg",
-        "https://www.jiomart.com/images/product/original/491278616/good-life-raw-peanuts-500-g-product-images-o491278616-p491278616-2-202306102242.jpg",
-        "https://www.jiomart.com/images/product/original/491278616/good-life-raw-peanuts-500-g-product-images-o491278616-p491278616-3-202306102243.jpg",
-        "https://www.jiomart.com/images/product/original/491278616/good-life-raw-peanuts-500-g-product-images-o491278616-p491278616-4-202306102243.jpg",
-        "https://www.jiomart.com/images/product/original/491278616/good-life-raw-peanuts-500-g-product-images-o491278616-p491278616-5-202306102243.jpg"
-      ],
-      "rating": 3.5,
-      "description": "Good Life Raw Peanuts is a healthy snack and the right choice for you. You can easily roast them at home. They are loaded with the goodness of health and taste. Peanut butter made with Peanuts clearly works well in sweet dishes, like cookies and brownies, which is why it pairs well with other sweeter foods like sweet potato. Buy Good Life Raw Peanuts online now!",
-      "parentCatName": "groceries",
-      "subCatName": "dals and pulses",
-      "quantity": 1
-    },
-    {
-      "id": 4,
+      "id": "4",
       "productName": "Tata Sampann Unpolished Chilka Moong 500 g",
       "price": "74",
       "oldPrice": "95",
@@ -1339,7 +1310,7 @@
       "quantity": 1
     },
     {
-      "id": 5,
+      "id": "5",
       "productName": "Good Life Moong Dal 1 kg",
       "price": "145",
       "oldPrice": "189",
@@ -1366,7 +1337,7 @@
       "quantity": 1
     },
     {
-      "id": 3,
+      "id": "3",
       "productName": "Good Life Raw Peanuts 500 g",
       "price": "89",
       "oldPrice": "150",
@@ -1390,6 +1361,33 @@
       ],
       "rating": 3.5,
       "description": "Good Life Raw Peanuts is a healthy snack and the right choice for you. You can easily roast them at home. They are loaded with the goodness of health and taste. Peanut butter made with Peanuts clearly works well in sweet dishes, like cookies and brownies, which is why it pairs well with other sweeter foods like sweet potato. Buy Good Life Raw Peanuts online now!",
+      "parentCatName": "groceries",
+      "subCatName": "dals and pulses",
+      "quantity": 1
+    },
+    {
+      "id": "2",
+      "productName": "Moong Dal 2 kg",
+      "price": "246",
+      "oldPrice": "320",
+      "weight": [
+        50,
+        100,
+        150,
+        200,
+        250,
+        500
+      ],
+      "catImg": "https://www.jiomart.com/images/product/original/491432711/moong-dal-2-kg-product-images-o491432711-p491432711-0-202205191636.jpg",
+      "discount": "16",
+      "brand": "Private Label",
+      "productImages": [
+        "https://www.jiomart.com/images/product/original/491432711/moong-dal-2-kg-product-images-o491432711-p491432711-0-202205191636.jpg",
+        "https://www.jiomart.com/images/product/original/491432711/moong-dal-2-kg-product-images-o491432711-p491432711-1-202205191636.jpg",
+        "https://www.jiomart.com/images/product/original/491432711/moong-dal-2-kg-legal-images-o491432711-p491432711-3-202205191636.jpg"
+      ],
+      "rating": 4,
+      "description": "Moong Dal is essentially packed with loads of nutrients that are extremely beneficial for your health. Moong contains almost every important element that your body might need. Buy Moong Dal online today.",
       "parentCatName": "groceries",
       "subCatName": "dals and pulses",
       "quantity": 1
@@ -1422,10 +1420,10 @@
       "quantity": 1
     },
     {
-      "id": 1,
-      "productName": "Good Life Whole Moong 500 g",
-      "price": "20",
-      "oldPrice": "140",
+      "id": 34,
+      "productName": "Daawat Rozana Super Basmati Broken Rice 5 kg",
+      "price": "100",
+      "oldPrice": "130",
       "weight": [
         50,
         100,
@@ -1434,21 +1432,123 @@
         250,
         500
       ],
-      "catImg": "https://www.jiomart.com/images/product/original/491187309/good-life-whole-moong-500-g-product-images-o491187309-p491187309-0-202308311426.jpg",
-      "discount": "12",
-      "brand": "AASHIRVAAD",
+      "catImg": "https://www.jiomart.com/images/product/original/491019524/daawat-rozana-super-basmati-rice-5-kg-product-images-o491019524-p491019524-0-202203171025.jpg",
+      "discount": "10",
+      "brand": "Daawat",
       "productImages": [
-        "https://www.jiomart.com/images/product/original/491187309/good-life-whole-moong-500-g-product-images-o491187309-p491187309-0-202308311426.jpg",
-        "https://www.jiomart.com/images/product/original/491187309/good-life-whole-moong-500-g-product-images-o491187309-p491187309-1-202308311426.jpg",
-        "https://www.jiomart.com/images/product/original/491187309/good-life-whole-moong-500-g-product-images-o491187309-p491187309-2-202308311426.jpg",
-        "https://www.jiomart.com/images/product/original/491187309/good-life-whole-moong-500-g-product-images-o491187309-p491187309-3-202308311426.jpg",
-        "https://www.jiomart.com/images/product/original/491187309/good-life-whole-moong-500-g-product-images-o491187309-p491187309-4-202308311426.jpg",
-        "https://www.jiomart.com/images/product/original/491187309/good-life-whole-moong-500-g-legal-images-o491187309-p491187309-5-202308311427.jpg"
+        "https://www.jiomart.com/images/product/original/491019524/daawat-rozana-super-basmati-rice-5-kg-product-images-o491019524-p491019524-0-202203171025.jpg",
+        "https://www.jiomart.com/images/product/original/491019524/daawat-rozana-super-basmati-rice-5-kg-product-images-o491019524-p491019524-1-202203171025.jpg",
+        "https://www.jiomart.com/images/product/original/491019524/daawat-rozana-super-basmati-rice-5-kg-legal-images-o491019524-p491019524-2-202203171025.jpg"
       ],
-      "rating": 3.5,
-      "description": "Good Life Whole Moong is one of the light meal to digest. It is often given to people who prefer diet for fitness. It contains antioxidants which are very healthy for the good functioning of the human body. It can be included in our daily diet as it can fulfil the nutritional and dietary requirements of an entire meal. Buy Good Life Whole Moong online now!",
+      "rating": 4.5,
+      "description": "Basmati Broken Rice is everyday Broken Rice that makes each meal memorable. It is ideal for people who like to include Broken Rice in their daily meal consumption. Aromatic, flavourful, and defined by its distinctly long and slender grains, Daawat Rozana Super Basmati Broken Rice turns every meal into comfort food. Go and grab your pack now! Buy Daawat Rozana Super Basmati Broken Rice online now!\n",
+      "parentCatName": "groceries",
+      "subCatName": "Rice & Rice Products",
+      "quantity": 1
+    },
+    {
+      "id": 33,
+      "productName": "Daawat Rozana Gold Basmati Broken Rice 5 kg",
+      "price": "130",
+      "oldPrice": "170",
+      "weight": [
+        50,
+        100,
+        150,
+        200,
+        250,
+        500
+      ],
+      "catImg": "https://www.jiomart.com/images/product/original/490005638/daawat-rozana-gold-basmati-rice-5-kg-product-images-o490005638-p490005638-0-202203171005.jpg",
+      "discount": "8",
+      "brand": "Daawat",
+      "productImages": [
+        "https://www.jiomart.com/images/product/original/490005638/daawat-rozana-gold-basmati-rice-5-kg-product-images-o490005638-p490005638-0-202203171005.jpg",
+        "https://www.jiomart.com/images/product/original/490005638/daawat-rozana-gold-basmati-rice-5-kg-product-images-o490005638-p490005638-1-202203171005.jpg",
+        "https://www.jiomart.com/images/product/original/490005638/daawat-rozana-gold-basmati-rice-5-kg-legal-images-o490005638-p490005638-2-202203171005.jpg"
+      ],
+      "rating": 5,
+      "description": "Daawat Rozana Gold Basmati Broken Rice has been an integral part of different Broken Rice recipes in every Indian household. It is processed under the supervision of experts. It can be used in a variety of Broken Rice dishes including biryani, pulao, and other Indian dishes. One can have it with meat, curries, dals and many more food items. Buy Daawat Rozana Gold Basmati Broken Rice online now!\n",
+      "parentCatName": "groceries",
+      "subCatName": "Rice & Rice Products",
+      "quantity": 1
+    },
+    {
+      "id": 4,
+      "productName": "Tata Sampann Unpolished Chilka Moong 500 g",
+      "price": "74",
+      "oldPrice": "95",
+      "weight": [
+        50,
+        100,
+        150,
+        200,
+        250,
+        500
+      ],
+      "catImg": "https://www.jiomart.com/images/product/original/490830947/tata-sampann-high-protein-unpolished-chilka-moong-500-g-product-images-o490830947-p490830947-0-202203150526.jpg",
+      "discount": "18",
+      "brand": "Tata Sampann",
+      "productImages": [
+        "https://www.jiomart.com/images/product/original/490830947/tata-sampann-high-protein-unpolished-chilka-moong-500-g-product-images-o490830947-p490830947-0-202203150526.jpg",
+        "https://www.jiomart.com/images/product/original/490830947/tata-sampann-high-protein-unpolished-chilka-moong-500-g-product-images-o490830947-p490830947-1-202203150526.jpg",
+        "https://www.jiomart.com/images/product/original/490830947/tata-sampann-high-protein-unpolished-chilka-moong-500-g-legal-images-o490830947-p490830947-2-202203150526.jpg",
+        "https://www.jiomart.com/images/product/original/490830947/tata-sampann-high-protein-unpolished-chilka-moong-500-g-legal-images-o490830947-p490830947-5-202203150526.jpg"
+      ],
+      "rating": 4,
+      "description": "Moong Dal is procured from reliable and high-quality sources. The beans are best consumed after being sprouted. Dosa with the whole moong also turns out to be yummy, another exotic way to eat moong is to eat it as a korma which is spiced up with tangy tomatoes and a cashew paste. It is mainly used as the base for curries such as sambar, dal, etc. Buy Tata Sampann Unpolished Chilka Moong online now!",
       "parentCatName": "groceries",
       "subCatName": "dals and pulses",
+      "quantity": 1
+    },
+    {
+      "id": 47,
+      "productName": "BULLMER Men Beige Cotton Blend Printed Single Sweatshirts",
+      "price": "699.00",
+      "oldPrice": "989.00",
+      "weight": [],
+      "RAM": [],
+      "SIZE": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "catImg": "https://www.jiomart.com/images/product/original/rvqq9gohkt/bullmer-men-beige-cotton-blend-printed-single-sweatshirts-product-images-rvqq9gohkt-0-202210291839.jpg",
+      "discount": "60",
+      "brand": "BULLMER",
+      "productImages": [
+        "https://www.jiomart.com/images/product/original/rvqq9gohkt/bullmer-men-beige-cotton-blend-printed-single-sweatshirts-product-images-rvqq9gohkt-0-202210291839.jpg",
+        "https://www.jiomart.com/images/product/original/rvqq9gohkt/bullmer-men-beige-cotton-blend-printed-single-sweatshirts-product-images-rvqq9gohkt-1-202210291839.jpg",
+        "https://www.jiomart.com/images/product/original/rvqq9gohkt/bullmer-men-beige-cotton-blend-printed-single-sweatshirts-product-images-rvqq9gohkt-2-202210291839.jpg"
+      ],
+      "rating": 4.5,
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. ",
+      "quantity": 1
+    },
+    {
+      "id": 46,
+      "productName": "Plutus Men Black Solid Polyester Casual Jacket M",
+      "price": "499.00",
+      "oldPrice": "699.00",
+      "weight": [],
+      "RAM": [],
+      "SIZE": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "catImg": "https://www.jiomart.com/images/product/original/rvurcwrojo/plutus-men-black-solid-polyester-casual-jacket-m-product-images-rvurcwrojo-0-202209240106.jpg",
+      "discount": "60",
+      "brand": "PLUTUS",
+      "productImages": [
+        "https://www.jiomart.com/images/product/original/rvurcwrojo/plutus-men-black-solid-polyester-casual-jacket-m-product-images-rvurcwrojo-0-202209240106.jpg",
+        "https://www.jiomart.com/images/product/original/rvurcwrojo/plutus-men-black-solid-polyester-casual-jacket-m-product-images-rvurcwrojo-1-202209240106.jpg",
+        "https://www.jiomart.com/images/product/original/rvurcwrojo/plutus-men-black-solid-polyester-casual-jacket-m-product-images-rvurcwrojo-2-202209240106.jpg",
+        "https://www.jiomart.com/images/product/original/rvurcwrojo/plutus-men-black-solid-polyester-casual-jacket-m-product-images-rvurcwrojo-3-202209240106.jpg",
+        "https://www.jiomart.com/images/product/original/rvurcwrojo/plutus-men-black-solid-polyester-casual-jacket-m-product-images-rvurcwrojo-4-202209240106.jpg"
+      ],
+      "rating": 5,
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. ",
       "quantity": 1
     }
   ]
