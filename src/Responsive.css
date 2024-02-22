@@ -1,8 +1,14 @@
 @media only screen and (min-width: 320px) and (max-width: 575px) {
+
   nav,
   .dropdownMenuAcc {
     width: 80% !important;
   }
+
+  .home_slider_main .item {
+    margin-top: 10px !important;
+  }
+
   .home_slider_main .info h2 {
     font-size: 7vw !important;
   }
@@ -11,11 +17,14 @@
     font-size: 4vw !important;
   }
 }
+
 @media only screen and (min-width: 575px) and (max-width: 767) {
+
   nav,
   .dropdownMenuAcc {
     width: 50% !important;
   }
+
   .home_slider_main .info h2 {
     font-size: 5vw !important;
   }
@@ -26,10 +35,12 @@
 }
 
 @media only screen and (min-width: 767px) and (max-width: 992px) {
+
   nav,
   .dropdownMenuAcc {
     width: 30% !important;
   }
+
   .home_slider_main .info h2 {
     font-size: 7vw !important;
   }
@@ -39,7 +50,44 @@
   }
 }
 
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+
+  .lastStrip .part_1,
+  .part_2,
+  .part_3 {
+    padding: 10px 0px !important;
+  }
+
+  .lastStrip {
+    justify-content: center;
+  }
+
+  .lastStrip .col-md-3 {
+    text-align: center;
+  }
+
+  .lastStrip .part3 .d-flex {
+    justify-content: center;
+  }
+
+  .lastStrip .TopWrapper {
+    flex-direction: column !important;
+  }
+
+  footer .lastStrip .Phon p {
+    font-size: 23px !important;
+    opacity: 0.8;
+  }
+
+  .mx-5 {
+    margin-right: 3rem !important;
+    margin-left: 2rem !important;
+  }
+}
+
+
 @media only screen and (min-width: 320px) and (max-width: 992px) {
+
   body,
   html {
     overflow: hidden !important;
@@ -48,23 +96,28 @@
   .headerWrraper.fixed {
     top: 0px !important;
   }
+
   .header {
     box-shadow: 0px 1px 5px #0000001a;
   }
+
   .nav {
     position: absolute !important;
     border: 0px !important;
   }
+
   .afterHeader {
     margin-top: 100px !important;
   }
+
   .container-fluid {
-    padding: 0px 15px !important;
+    padding: 0px 25px !important;
   }
 
   .responsive_hide {
     display: none !important;
   }
+
   .res_full {
     width: 100%;
   }
@@ -152,6 +205,7 @@
   .closeSearch svg {
     font-size: 35px !important;
   }
+
   .counrtyWrapper {
     margin-left: 100px;
   }
@@ -170,6 +224,7 @@
     border-radius: 50%;
     margin-left: 20px;
   }
+
   .myAccDrop svg {
     color: #fff !important;
     font-size: 20px !important;
@@ -179,6 +234,7 @@
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
+
   nav {
     width: 60% !important;
     height: 100%;
@@ -190,10 +246,12 @@
     transition: all 0.3s;
     opacity: 0;
   }
+
   nav.open {
     opacity: 1;
     right: 0px;
   }
+
   nav ul li {
     width: 100%;
     margin: 0px !important;
@@ -211,6 +269,7 @@
     justify-content: space-between !important;
     width: 100%;
   }
+
   nav ul li button a svg {
     margin-left: auto !important;
     font-size: 30px !important;
@@ -230,6 +289,7 @@
     z-index: 100;
     display: none;
   }
+
   .nav nav .dropdown_menu {
     display: none !important;
   }
@@ -274,6 +334,10 @@
     float: none !important;
   }
 
+  .cat_slider_main .item {
+    margin-left: 70px !important;
+  }
+
   .cat_slider_main .item:hover .info .cat_slider_main .slick-current .info {
     transform: scale(1) !important;
   }
@@ -285,6 +349,7 @@
   .hd {
     margin-bottom: 15px !important;
     width: 100% !important;
+    text-align: center !important;
   }
 
   .BannerSection .row {
@@ -319,6 +384,7 @@
     display: block !important;
     margin-top: 10px !important;
   }
+
   .homeProducts .filterTab li {
     display: inline-block !important;
     vertical-align: top;
@@ -335,7 +401,7 @@
   }
 
   .homeProducts .productRow .item {
-    width: 400px !important;
+    width: 350px !important;
     vertical-align: top !important;
     display: inline-block !important;
     margin-left: 10px !important;
@@ -344,6 +410,7 @@
   .homeProducts .productRow .item * {
     white-space: normal !important;
   }
+
   /* .homeProductsRow2 .col-md-9 {
     width: 100% !important;
   }
@@ -359,6 +426,7 @@
   .homeProductsRow2 .col-md-9 {
     width: 100% !important;
   }
+
   .homeProductsRow2 .slick-track {
     white-space: nowrap;
     overflow-x: scroll;
@@ -371,7 +439,125 @@
     display: inline-block !important;
     float: none !important;
   }
+
   .homeProductsRow2 .slick-track .slick-slide * {
     white-space: normal !important;
   }
+
+
+  .topProductsSection .row {
+    white-space: nowrap;
+    overflow-x: scroll;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .topProductsSection .row .col {
+    width: 400px !important;
+    vertical-align: top !important;
+    display: inline-block !important;
+    float: none !important;
+  }
+
+  .topProductsSection .row .col * {
+    white-space: normal !important;
+  }
+
+  .newsLetterSection .box {
+    padding: 40px !important;
+
+  }
+
+  .newsLetterSection .box .info {
+    width: 100% !important;
+  }
+
+  .newsLetterSection .box .info h2 {
+    font-size: 35px !important;
+  }
+
+
+  .footerbases .row {
+    white-space: nowrap;
+    overflow-x: scroll;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .footerbases .row .col {
+    width: 400px !important;
+    vertical-align: top !important;
+    display: inline-block !important;
+    float: none !important;
+    padding-bottom: 20px;
+  }
+
+  .footerbases .row::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .col-md-3 .part1 p {
+    padding-left: 20px !important;
+  }
+
+  footer img {
+    width: 180px !important;
+    margin-left: 20px !important;
+  }
+
+  footer .text {
+    font-size: 20px !important;
+    margin-left: 30px !important;
+  }
+
+  footer .footerText {
+    font-size: 20px;
+
+
+  }
+
+  footer .footerElement {
+
+    padding-left: 20px !important;
+    padding-top: 0px;
+  }
+
+  footer .part2 {
+    padding-top: 25px;
+    padding-bottom: 30px !important;
+  }
+
+  footer .part2 .row {
+    white-space: nowrap;
+    overflow-x: scroll;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  footer .part2 .row .col {
+    width: 230px !important;
+    vertical-align: top !important;
+    display: inline-block !important;
+    float: none !important;
+    padding-bottom: 20px;
+  }
+
+  footer .part3 h3 {
+    margin-bottom: 0px !important;
+
+  }
+
+  footer .part3 p {
+    margin-bottom: 0px !important;
+
+  }
+
+  footer .widthImg {
+    width: 100% !important;
+    margin-right: 20px !important;
+  }
+
+
+
+
 }

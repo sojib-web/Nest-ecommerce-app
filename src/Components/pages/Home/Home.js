@@ -24,8 +24,8 @@ const Home = (props) => {
   const context = useContext(MyContext);
 
   const settings = {
-    dots: context.windowWidth < 992 ? false : true,
-    infinite: false,
+    dots: false,
+    infinite: context.windowWidth < 992 ? false : true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -95,7 +95,7 @@ const Home = (props) => {
     setBestSell(BestSellsArry);
   }, []);
 
-  useEffect(() => {}, [isLoadingProduct]);
+  useEffect(() => { }, [isLoadingProduct]);
 
   return (
     <div>
@@ -114,9 +114,8 @@ const Home = (props) => {
                   return (
                     <li className="list-inline-item">
                       <Link
-                        className={`cursor text-capitalize ${
-                          activeTabIndex === index ? "act" : ""
-                        }`}
+                        className={`cursor text-capitalize ${activeTabIndex === index ? "act" : ""
+                          }`}
                         onClick={() => {
                           // setActiveTabData([]);
                           setactivetab(item);

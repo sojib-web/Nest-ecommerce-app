@@ -261,7 +261,7 @@ const Footer = () => {
                 <h3>Install App</h3>
                 <p>From App Store or Google Play</p>
                 <br />
-                <div className="d-flex  " width={150}>
+                <div className="d-flex widthImg " width={150}>
                   <Link>
                     {" "}
                     <img src={AppleLogo} alt="" width={150} />
@@ -271,25 +271,27 @@ const Footer = () => {
                     <img src={AppleLogo} alt="" className="mx-2" width={150} />
                   </Link>
                 </div>
-                <br /> <br />
-                <br />
-                <p>From App Store or Google Play</p>
-                <Link>
-                  {" "}
-                  <img src={PaymentImg} alt="" className="Payment_img" />
-                </Link>
+                <br /> <br className="responsive_hide" />
+                <br className="responsive_hide" />
+                <div className="">
+                  <p>From App Store or Google Play</p>
+                  <Link>
+                    {" "}
+                    <img src={PaymentImg} alt="" className="Payment_img" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
           <hr />
           <div className="row lastStrip">
-            <div className="col-md-3">
+            <div className="col-md-3 part_1">
               <p className="lastStrip_P-text">
                 © 2022, <strong>Nest</strong> - HTML Ecommerce Template{" "}
               </p>
             </div>
 
-            <div className="col-md-6 d-flex">
+            <div className="col-md-6 d-flex part_2 TopWrapper">
               <div className="m-auto d-flex align-items-center ml-auto ">
                 <div className="Phon d-flex align-items-center mx-5 ">
                   <span>
@@ -313,7 +315,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="col-md-3 part3">
+            <div className="col-md-3 part3 part_3">
               <div className="d-flex align-items-center flow_text">
                 <h5>Follow Us</h5>
                 <ul className="list list-inline">
