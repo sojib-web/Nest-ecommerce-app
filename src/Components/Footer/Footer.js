@@ -293,17 +293,17 @@ const Footer = () => {
 
             <div className="col-md-6 d-flex part_2 TopWrapper">
               <div className="m-auto d-flex align-items-center ml-auto ">
-                <div className="Phon d-flex align-items-center mx-5 ">
+                <div className="Phon d-flex align-items-center mx-5 responsive_hide">
                   <span>
                     <HeadphonesOutlinedIcon />
                   </span>
-                  <div className="info ml-3">
+                  <div className="info ml-3 ">
                     <h3 className="text-g mb-0">1900-888</h3>
                     <p className="mb-0"> 24/7 Support Center</p>
                   </div>
                 </div>
 
-                <div className="Phon d-flex align-items-center  mx-5">
+                <div className="Phon d-flex align-items-center  mx-5 responsive_hide">
                   <span>
                     <HeadphonesOutlinedIcon />
                   </span>

@@ -301,13 +301,14 @@ const ListingProduct = (props) => {
                         </ul>
                       )}
                     </div>
-
-                    <div className="tab_ ml-5 position-relative">
+                    <div className="tab_ position-relative">
                       <Button
                         className="btn_ "
-                        onClick={() => setisopenDown2(!isOpenDropDwon2)}
-                      ></Button>
-                      {isOpenDropDwon2 !== false && (
+                        onClick={() => setisopenDown(!isOpenDropDwon)}
+                      >
+                        Show: 50
+                      </Button>
+                      {isOpenDropDwon !== false && (
                         <ul className="dropdownMenu">
                           <li>
                             <Button className="align-items-center">

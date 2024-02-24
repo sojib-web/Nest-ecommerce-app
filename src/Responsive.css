@@ -1,5 +1,4 @@
 @media only screen and (min-width: 320px) and (max-width: 575px) {
-
   nav,
   .dropdownMenuAcc {
     width: 80% !important;
@@ -19,7 +18,6 @@
 }
 
 @media only screen and (min-width: 575px) and (max-width: 767) {
-
   nav,
   .dropdownMenuAcc {
     width: 50% !important;
@@ -35,7 +33,6 @@
 }
 
 @media only screen and (min-width: 767px) and (max-width: 992px) {
-
   nav,
   .dropdownMenuAcc {
     width: 30% !important;
@@ -51,7 +48,6 @@
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {
-
   .lastStrip .part_1,
   .part_2,
   .part_3 {
@@ -84,10 +80,12 @@
     margin-left: 2rem !important;
   }
 }
-
-
+@media only screen and (min-width: 320px) and (max-width: 350px) {
+  .homeProducts .productRow .item {
+    width: 100% !important;
+  }
+}
 @media only screen and (min-width: 320px) and (max-width: 992px) {
-
   body,
   html {
     overflow: hidden !important;
@@ -444,7 +442,6 @@
     white-space: normal !important;
   }
 
-
   .topProductsSection .row {
     white-space: nowrap;
     overflow-x: scroll;
@@ -465,7 +462,6 @@
 
   .newsLetterSection .box {
     padding: 40px !important;
-
   }
 
   .newsLetterSection .box .info {
@@ -475,7 +471,6 @@
   .newsLetterSection .box .info h2 {
     font-size: 35px !important;
   }
-
 
   .footerbases .row {
     white-space: nowrap;
@@ -512,12 +507,9 @@
 
   footer .footerText {
     font-size: 20px;
-
-
   }
 
   footer .footerElement {
-
     padding-left: 20px !important;
     padding-top: 0px;
   }
@@ -544,20 +536,37 @@
 
   footer .part3 h3 {
     margin-bottom: 0px !important;
-
   }
 
   footer .part3 p {
     margin-bottom: 0px !important;
-
   }
 
   footer .widthImg {
     width: 100% !important;
     margin-right: 20px !important;
   }
+  footer .lastStrip .lastStrip_P-text {
+    padding-top: 0px;
+  }
 
+  .lastStrip .col-md-3 {
+    text-align: center;
+    padding-top: 0px !important;
+  }
 
+  /* .d-flex {
+    display: contents !important;
+  } */
 
+  .breadcrumb {
+    padding: 15px 25px !important;
+  }
 
+  .rightCounter .topStrip p {
+    font-size: 19px !important;
+  }
+  .slidebarWrapper {
+    display: none !important;
+  }
 }
